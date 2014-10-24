@@ -1,0 +1,39 @@
+
+/** Color monserrat**/
+.monserrat-color{
+	color:#78251d;
+}
+
+/** Ancho del contendor**/
+.container {
+    max-width: 970px;
+  }
+
+/** MArgenes de la barra superior**/
+.header{
+  margin-bottom: 10px;
+}
+
+
+/** Estilos de Tabs**/
+.tab-yacare{
+	width: 24.7%;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.tab-a-yacare{
+	padding: 15px 10px;
+	color: white;
+	background-color: rgba(120, 37, 29, 0.5);
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+	color: #fff;
+	background-color: #78251d;
+}
+
+a:hover{
+	color: #78251d;
+}
+/** **/
