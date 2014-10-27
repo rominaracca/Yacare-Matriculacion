@@ -1,22 +1,36 @@
+
+<div class="jumbotron">
+  <h1>Datos de carrera</h1>
+</div>
+
+<!-- Formulario de Matriculación-->
 <div class="panel panel-default">
-  <div class="panel-heading"> Matricula</div>
+  <div class="panel-heading"> Turno</div>
   <div class="panel-body">
 
 <form role="form">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Carrera</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  
+  <div class="form-group col-md-6">
+    <label for="inputAnio">Año</label>
+      <select class="form-control" id="inputAnio">
+  <option selected disabled>-- Selecione --</option>
+  <option>Primero</option>
+  <option>Segundo</option>
+  <option>Tercero</option>
+</select>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Año</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Turno</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  
+ <div class="form-group col-md-6">
+    <label for="inputTurno">Turno</label>
+     <select class="form-control">
+  <option selected disabled>-- Selecione --</option>
+  <option>Mañana</option>
+  <option>Tarde</option>
+</select>
   </div>
   
 </form>
 
   </div>
 </div>
+<button type="submit" class="btn btn-default save-button">Guardar</button>

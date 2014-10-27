@@ -4,7 +4,7 @@
 	color:#78251d;
 }
 
-/** Ancho del contendor**/
+/** Ancho del contendor de la pagina**/
 .container {
     max-width: 970px;
   }
@@ -36,4 +36,47 @@
 a:hover{
 	color: #78251d;
 }
-/** **/
+
+
+/** Contenedor de perfil de alumno**/
+.profile-container{
+	 display: flex;
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
+	margin-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	
+}
+
+/** Imagen de perfil de alumno**/
+.profile-img{
+	width: 200px;
+	height: 200px;
+}
+
+
+
+/** Estilos para los inputs de los formularios**/
+.row-form{
+	display: inline-block;
+	width: 100%;
+}
+
+/** Boton guardar***/
+.save-button{
+	display: block;
+	width: 100px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #78251d;
+	color: #fff;
+}
+
+.save-button:hover{
+	color: #78251d;
+}
+
+
+
