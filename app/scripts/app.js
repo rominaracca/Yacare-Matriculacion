@@ -12,7 +12,8 @@ angular
   .module('yacareMatriculacionApp', [
     'ngAnimate',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -24,9 +25,9 @@ angular
         templateUrl: 'views/tutor.html',
         controller: 'TutorCtrl'
       })
-      .when('/matricula', {
-        templateUrl: 'views/matricula.html',
-        controller: 'MatriculaCtrl'
+      .when('/emergencia', {
+        templateUrl: 'views/emergencia.html',
+        controller: 'EmergenciaCtrl'
       })
       .when('/resumen', {
         templateUrl: 'views/resumen.html',

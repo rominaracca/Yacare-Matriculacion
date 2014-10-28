@@ -9,7 +9,7 @@
     max-width: 970px;
   }
 
-/** MArgenes de la barra superior**/
+/** Margenes de la barra superior**/
 .header{
   margin-bottom: 10px;
 }
@@ -40,13 +40,13 @@ a:hover{
 
 /** Contenedor de perfil de alumno**/
 .profile-container{
-	 display: flex;
 	 max-width: 100%;
 	 background-color: #eee;
 	 border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
+	height: 230px;
 	
 }
 
@@ -56,6 +56,18 @@ a:hover{
 	height: 200px;
 }
 
+/** Boton Editar perfil **/
+.edit-button{
+	background-color: rgba(120, 37, 29, 0.78);
+	color: #fff;
+    margin-top: 4px;
+
+}
+
+.edit-button:hover{
+	background-color: rgba(120, 37, 29, 0.5);
+	color: #fff;
+}
 
 
 /** Estilos para los inputs de los formularios**/
