@@ -63,8 +63,19 @@ a:hover{
 	padding-top: 15px;
 	padding-bottom: 15px;
 	height: 240px;
+}
+
+.profile-container-emergencia{
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
+	margin-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	height: 190px;
 	
 }
+
 
 
 /** Imagen de perfil de alumno**/
@@ -95,6 +106,17 @@ a:hover{
 .edit-button-tutor:hover{
 	background-color: rgba(120, 37, 29, 0.5);
 	color: #fff;
+}
+
+.edit-button-emergencia{
+	background-color: rgba(120, 37, 29, 0.78);
+	color: #fff;
+    margin-top: 85px;
+}
+
+.edit-button-emergencia:hover{
+background-color: rgba(120, 37, 29, 0.5);
+	color: #fff;	
 }
 
 /** Estilos para los inputs de los formularios**/
