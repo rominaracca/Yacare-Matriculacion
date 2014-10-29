@@ -4,6 +4,10 @@
 	color:#78251d;
 }
 
+.card-shadow{
+	box-shadow: 5px 5px 5px rgba(120, 37, 29, 0.27)
+}
+
 /** Ancho del contendor de la pagina**/
 .container {
     max-width: 970px;
