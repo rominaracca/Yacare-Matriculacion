@@ -13,12 +13,11 @@ angular.module('yacareMatriculacionApp')
  $scope.today = function() {
     $scope.dt = new Date();
   };
-  $scope.today();
   
+  $scope.opened = false;
   $scope.open = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
-
     $scope.opened = true;
   };
 
@@ -51,5 +50,16 @@ angular.module('yacareMatriculacionApp')
       }
     ]
 
+    $scope.phones = [
+      {type:'personal',
+       eMail: 'nlegresti@psi.unc.edu.ar'
+      },
+      {type:'fijo',
+       eMail: 'nicolegresti@gmail.com'
+      },
+      {type:'celular',
+       eMail: 'otronico@hotmail.com'
+      }
+    ]
 
   });

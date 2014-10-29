@@ -73,67 +73,59 @@
 	<div class="panel-heading"> Medios de contacto del alumno</div>
 	<div class="panel-body">
 
-		<form role="form">
+		<form role="form" class="form-horizontal">
+			
+			<div class="col-md-6" id="telefonos">
+				<h4 style="text-align: center;">Telefonos</h4>
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="telephone">Fijo</label>
+					<div class="col-md-9">
+						<input type="tel" class="form-control" id="telephone" value="0351-467011" style="text-align: right;">
+					</div>
+				</div>
 
-			<div class="form-group col-md-6">
-				<label for="inputTelFijo">Telefono Fijo</label>
-				<input type="tel" class="form-control" id="inputTelFijo">
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="phone">Personal</label>
+					<div class="col-md-9">
+						<input type="tel" class="form-control" id="phone" value="0351-152474333" style="text-align: right;">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="mobil">Celular</label>
+					<div class="col-md-9">
+						<input type="tel" class="form-control" id="mobil" value="0351-156333444" style="text-align: right;">
+					</div>
+				</div>
 			</div>
 
-			<div class="form-group col-md-6">
-				<label for="inputMail">E-Mail</label>
-				<input type="email" class="form-control" id="inputMail">
+			<div class="col-md-6" id="emails">
+				<h4 style="text-align: center;">E-mails</h4>
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="persMail">Personal</label>
+					<div class="col-md-9">
+						<input type="tel" class="form-control" id="persMail" value="nicolegresti@gmail.com">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="instMail">Institucional</label>
+					<div class="col-md-9">
+						<input type="tel" class="form-control" id="instMail" value="nlegresti@psi.unc.edu.ar">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-3 control-label" for="otherMail">Otro</label>
+					<div class="col-md-9">
+						<input type="tel" class="form-control" id="otherMail" value="otronico@hotmail.com">
+					</div>
+				</div>
 			</div>
 
 		</form>
 	</div>
 </div>
-
-
-
-<div class="container">
-	<div class="row">
-		
-	    <div class="col-md-4">
-            <div class="contacts">
-                <label>Contacto:</label>
-                    <div class="form-group multiple-form-group input-group">
-                        <div class="input-group-btn input-group-select">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <span class="concept">Telefono Fijo</span> <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#phone">Telefono Fijo</a></li>
-                                <li><a href="#fax">Telefono Movil</a></li>
-                                <li><a href="#skype">Fax</a></li>
-                                <li><a href="#skype">Skype</a></li>
-                            </ul>
-                            <input type="hidden" class="input-group-select-val" name="contacts['type'][]" value="phone">
-                        </div>
-                        <input type="text" name="contacts['value'][]" class="form-control">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-add">+</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
-
-
-<!-- Mi codifçog:-->
-
-<div ng-repeat="email in eMails">
-	
-		<input type="email" class="form-control" ng-focus="addEmail($last)" name="email" ng-model="email.eMail"><a ng-click="removeEmail(eMails, $index)">hgfhfgh-</a>
-		
-</div>
-
-
-
-
-<!--FIN  Mi codifçog:-->
-
 
 <button type="submit" class="btn btn-default save-button">Guardar</button>
 
@@ -211,7 +203,7 @@
 					<div class="form-group col-md-6">
 						<label for="inputFechaNacimiento">Fecha de Nacimiento</label>
 						<p class="input-group">
-							<input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false"/>
+							<input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false" id="datepicker"/>
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 							</span>
