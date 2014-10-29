@@ -50,18 +50,30 @@ a:hover{
 	
 }
 
+/** Contenedor de perfil de tutor**/
+.profile-container-tutor{
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
+	margin-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	height: 300px;
+	
+}
+
+
 /** Imagen de perfil de alumno**/
 .profile-img{
 	width: 200px;
 	height: 200px;
 }
 
-/** Boton Editar perfil **/
+/** Boton Editar perfil alumno**/
 .edit-button{
 	background-color: rgba(120, 37, 29, 0.78);
 	color: #fff;
     margin-top: 4px;
-
 }
 
 .edit-button:hover{
@@ -69,6 +81,17 @@ a:hover{
 	color: #fff;
 }
 
+/** Boton Editar perfil tutor**/
+.edit-button-tutor{
+	background-color: rgba(120, 37, 29, 0.78);
+	color: #fff;
+    margin-top: 190px;
+}
+
+.edit-button-tutor:hover{
+	background-color: rgba(120, 37, 29, 0.5);
+	color: #fff;
+}
 
 /** Estilos para los inputs de los formularios**/
 .row-form{
@@ -91,4 +114,6 @@ a:hover{
 }
 
 
-
+.modal-dialog{
+	width: 700px;
+}
