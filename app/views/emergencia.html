@@ -5,9 +5,10 @@
       <h4><b>Pedro García</b></h4>
     </div>
     <div class="col-md-8">
-        <p> <b>DNI</b><p> 
-       <p class="monserrat-color">Tipo de relación con el alumno: <b>Padre</b>
-      
+        <p> <b>DNI</b>: <b>10.111.111</b> <p> 
+        <p> <b>pedro.garcia@dominio.com</b> <p> 
+        <p> <b>+54 9 351 6123456</b></p>
+        <p class="monserrat-color">Tipo de relación con el alumno: <b>Tutor</b>
     </div>
   </div>
   <div class="col-md-offset-1 col-md-1">
@@ -16,4 +17,85 @@
   <div class="col-md-1">
     <button class="btn btn-default edit-button-tutor">Eliminar</button>  
   </div>
+</div>
+
+
+<!-- Modal edicion de datos del contacto en caso de emergencia -->
+<div class="modal fade" id="myEditModalContactoEmergencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">     
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Datos de contacto en caso de emergencia</h4>
+      </div>
+
+      <div class="modal-body">
+        <form role="form" style="display: inline-block;">
+          <div class="form-group col-md-6">
+            <label for="inputNombre">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputSegundoNombre">Segundo Nombre</label>
+            <input type="text" class="form-control" id="inputSegundoNombre">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="inputApellido">Apellido</label>
+            <input type="text" class="form-control" id="inputApellido">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputSegundoApellido">Segundo Apellido</label>
+            <input type="text" class="form-control" id="inputSegundoApellido">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="inputTipoDocTutor">Tipo de Documento</label>
+            <select class="form-control">
+              <option selected disabled>-- Selecione --</option>
+              <option>DNI</option>
+              <option>Pasaporte</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputNroDocTutor">Número de documento</label>
+            <input type="text" class="form-control" id="inputNroDocTutor">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="inputTelefonoTutor">Teléfono</label>
+            <input type="text" class="form-control" id="inputTelefonoTutor">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmailTutor">E-mail</label>
+            <input type="email" class="form-control" id="inputEmailTutor">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="inputRelacion">Tipo de relación con el alumno</label>
+            <select class="form-control">
+              <option selected disabled>-- Selecione --</option>
+              <option>Padre</option>
+              <option>Madre</option>
+              <option>Hijo</option>
+              <option>Sobrino</option>
+              <option>Primo</option>
+              <option>Tio</option>
+              <option>Hermano</option>
+              <option>Abuelo</option>
+              <option>Tutor</option>
+            </select>
+          </div>
+        </form>
+      </div> <!-- cierre de modal-body -->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+
+    </div> <!-- cierre de modal-content -->
+  </div> <!-- cierre de modal-dialog -->
 </div>
