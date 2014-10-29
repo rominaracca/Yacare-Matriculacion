@@ -58,7 +58,7 @@ a:hover{
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	height: 300px;
+	height: 240px;
 	
 }
 
@@ -85,7 +85,7 @@ a:hover{
 .edit-button-tutor{
 	background-color: rgba(120, 37, 29, 0.78);
 	color: #fff;
-    margin-top: 190px;
+    margin-top: 135px;
 }
 
 .edit-button-tutor:hover{
@@ -113,6 +113,19 @@ a:hover{
 	color: #78251d;
 }
 
+/** Boton agregar otro tutor**/
+.add-tutor-button{
+	display: block;
+	width: 100px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #78251d;
+	color: #fff;	
+}
+
+.add-tutor-button:hover{
+color: #78251d;
+}
 
 .modal-dialog{
 	width: 700px;

@@ -11,7 +11,7 @@ angular.module('yacareMatriculacionApp')
   .controller('TutorCtrl', function ($scope) {
 	   
 	$scope.today = function() {
-    	$scope.dt = new Date();
+    	$scope.dt-tutor = new Date();
   	};
   	$scope.today();
   
@@ -20,5 +20,13 @@ angular.module('yacareMatriculacionApp')
     	$event.stopPropagation();
 	    $scope.opened = true;
   	};
+
+
+  $scope.newTutor = [];
+    $scope.addTutor = function() {
+      $scope.newTutor.push('a');
+   }
+    
+
 
   });
