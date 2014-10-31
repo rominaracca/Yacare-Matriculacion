@@ -1,7 +1,9 @@
 
 /** Color monserrat**/
 .monserrat-color{
-	color:#78251d;
+	/* color monserrrat:  color:#78251d; */
+	color:#174C19;
+	/* color verde yacare: 7CA730*/
 }
 
 .card-shadow{
@@ -29,24 +31,25 @@
 .tab-a-yacare{
 	padding: 15px 10px;
 	color: white;
-	background-color: rgba(120, 37, 29, 0.5);
+	background-color: rgba(23, 76, 25, 0.5);
+	/* color monserrat  background-color: rgba(120, 37, 29, 0.5);*/
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
 	color: #fff;
-	background-color: #78251d;
+	background-color: #174C19;
 }
 
 a:hover{
-	color: #78251d;
+	color: #174C19;
 }
 
 
 /** Contenedor de perfil de alumno**/
 .profile-container{
-	max-width: 100%;
-	background-color: #eee;
-	border-radius: 6px;
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -56,9 +59,9 @@ a:hover{
 
 /** Contenedor de perfil de tutor**/
 .profile-container-tutor{
-	max-width: 100%;
-	background-color: #eee;
-	border-radius: 6px;
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -66,13 +69,14 @@ a:hover{
 }
 
 .profile-container-emergencia{
-	max-width: 100%;
-	background-color: #eee;
-	border-radius: 6px;
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	height: 190px;
+	
 }
 
 /** Imagen de perfil de alumno**/
@@ -82,56 +86,65 @@ a:hover{
 }
 
 /** Boton Editar perfil alumno**/
+.edit-button{
+	background-color: rgba(23, 76, 25, 0.78);
+	color: #fff;
+    margin-top: 4px;
+    border: 0px;
+}
+
+.edit-button:hover{
+	background-color: rgba(23, 76, 25, 0.5);
+	color: #fff;
+}
+
+/** Boton Editar perfil tutor**/
+.edit-button-tutor{
+	background-color: rgba(23, 76, 25, 0.78);
+	color: #fff;
+    margin-top: 135px;
+    border: 0px;
+}
+
+.edit-button-tutor:hover{
+	background-color: rgba(23, 76, 25, 0.5);
+	color: #fff;
+}
+
 .edit-button-perfil-alumno{
-	background-color: rgba(120, 37, 29, 0.78);
+	background-color: rgba(23, 76, 25, 0.78);
 	color: #fff;
     margin-top: 9px;
     border: 0px;
 }
 
 .edit-button-perfil-alumno:hover{
-	background-color: rgba(120, 37, 29, 0.5);
+	background-color: rgba(23, 76, 25, 0.5);
 	color: #fff;
 }
 
 .edit-button-direccion-alumno{
-	background-color: rgba(120, 37, 29, 0.78);
+	background-color: rgba(23, 76, 25, 0.78);
 	color: #fff;
     margin-top: 80px;
-	margin-left: 78px;
-	border: 0px;
+    margin-left: 78px;
+    border: 0px;
 }
 
 .edit-button-direccion-alumno:hover{
-	background-color: rgba(120, 37, 29, 0.5);
-	color: #fff;
-}
-
-.edit-button:hover{
-	background-color: rgba(120, 37, 29, 0.5);
-	color: #fff;
-}
-
-/** Boton Editar perfil tutor**/
-.edit-button-tutor{
-	background-color: rgba(120, 37, 29, 0.78);
-	color: #fff;
-    margin-top: 135px;
-}
-
-.edit-button-tutor:hover{
-	background-color: rgba(120, 37, 29, 0.5);
+	background-color: rgba(23, 76, 25, 0.5);
 	color: #fff;
 }
 
 .edit-button-emergencia{
-	background-color: rgba(120, 37, 29, 0.78);
+	background-color: rgba(23, 76, 25, 0.78);
 	color: #fff;
     margin-top: 85px;
+    border: 0px;
 }
 
 .edit-button-emergencia:hover{
-background-color: rgba(120, 37, 29, 0.5);
+	background-color: rgba(23, 76, 25, 0.5);
 	color: #fff;	
 }
 
@@ -147,12 +160,12 @@ background-color: rgba(120, 37, 29, 0.5);
 	width: 100px;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: #78251d;
+	background-color: #174C19;
 	color: #fff;
 }
 
 .save-button:hover{
-	color: #78251d;
+	color: #174C19;
 }
 
 /** Boton agregar otro tutor**/
@@ -161,12 +174,12 @@ background-color: rgba(120, 37, 29, 0.5);
 	width: 100px;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: #78251d;
+	background-color: #174C19;
 	color: #fff;	
 }
 
 .add-tutor-button:hover{
-	color: #78251d;
+	color: #174C19;
 }
 
 .modal-dialog{
@@ -176,6 +189,6 @@ background-color: rgba(120, 37, 29, 0.5);
 
 /** re definicion de colores de modal **/
 .modal-header{
-	background-color: #78251d;
+	background-color: #174C19;
 	color: #fff;
 }
