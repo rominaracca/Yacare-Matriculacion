@@ -150,9 +150,16 @@ background-color: rgba(120, 37, 29, 0.5);
 }
 
 .add-tutor-button:hover{
-color: #78251d;
+	color: #78251d;
 }
 
 .modal-dialog{
 	width: 700px;
+}
+
+
+/** re definicion de colores de modal **/
+.modal-header{
+	background-color: #78251d;
+	color: #fff;
 }
