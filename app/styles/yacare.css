@@ -85,10 +85,29 @@ a:hover{
 }
 
 /** Boton Editar perfil alumno**/
-.edit-button{
+.edit-button-perfil-alumno{
 	background-color: rgba(120, 37, 29, 0.78);
 	color: #fff;
-    margin-top: 4px;
+    margin-top: 37px;
+    border: 0px;
+}
+
+.edit-button-perfil-alumno:hover{
+	background-color: rgba(120, 37, 29, 0.5);
+	color: #fff;
+}
+
+.edit-button-direccion-alumno{
+	background-color: rgba(120, 37, 29, 0.78);
+	color: #fff;
+    margin-top: 80px;
+	margin-left: 78px;
+	border: 0px;
+}
+
+.edit-button-direccion-alumno:hover{
+	background-color: rgba(120, 37, 29, 0.5);
+	color: #fff;
 }
 
 .edit-button:hover{
