@@ -2,17 +2,18 @@
 <div class="profile-container-tutor card-shadow">
   <div class="col-md-offset-1" >
     <div class="monserrat-color col-md-8"> 
-      <h4><b>Juan Legresti</b></h4>
+      <h4><b>Legresti, Juan </b> - <b> Padre </b> de <b> Nicolas </b></h4>
     </div>
     <div class="col-md-8">
       <p><b>DNI</b>:<b>33.333.333</b></p>
-      <p><b>Hombre</b> nacido el <b>08</b> de <b>Junio</b> de <b>1950</b>
+      <p><b>Hombre,</b> nacido el <b>08</b> de <b>Junio</b> de <b>1950</b>
       en <b>Córdoba</b>, <b>Argentina</b>. <img src="images/flags/ar.png"> </p>
-      <p> Vive en <b>Av. Emilio Olmos</b> número <b>700</b> piso <b>1º</b> departamento <b>B</b> edificio <b>Vicente I</b> barrio <b>Nueva Córdoba</b>,<b>Córdoba</b>, <b>Córdoba</b>, <b>Argentina</b> CP: <b>5000</b></p>
+      <p> Con domicilio en <b>Av. Emilio Olmos</b> número <b>700</b> piso <b>1º</b> departamento <b>B</b> edificio <b>Vicente I</b> barrio <b>Nueva Córdoba</b>,<b>Córdoba</b>, <b>Córdoba</b>, <b>Argentina</b> CP: <b>5000</b></p>
 
-      <p><b>juan.legresti@dominio.com</b></p>
-
-      <p class="monserrat-color">Tipo de relación con el alumno: <b>Padre</b></p>
+      <p><b>juan.legresti@dominio.com</b> </p>
+      <p>TEL: <b>+54 9 0351 155 123456</b></p>
+      
+      
     </div>
   </div>
   <div class="col-md-offset-1 col-md-1">
@@ -23,8 +24,10 @@
   </div>
 </div>
 
+<button class="btn btn-default save-button" data-toggle="modal" data-target="#myEditModalTutor">Agregar Tutor</button>
 
 <!-- Formulario de Domicilio Actual-->
+<!--
 <div class="panel panel-default">
   <div class="panel-heading">Agregar datos de otro tutor</div>
   <div class="panel-body">
@@ -32,21 +35,31 @@
     <form role="form">
 
       <div class="form-group col-md-6">
-        <label for="inputNombreTutor">Nombre</label>
-        <input type="text" class="form-control" id="inputNombreTutor">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputSegundoNombreTutor">Segundo Nombre</label>
-        <input type="text" class="form-control" id="inputSegundoNombreTutor">
-      </div>
-
-      <div class="form-group col-md-6">
         <label for="inputApellidoTutor">Apellido</label>
         <input type="text" class="form-control" id="inputApellidoTutor">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputSegundoApellidoTutor">Segundo Apellido</label>
-        <input type="text" class="form-control" id="inputSegundoApellidoTutor">
+        <label for="inputNombreTutor">Nombre</label>
+        <input type="text" class="form-control" id="inputNombreTutor">
+      </div>
+      
+      <div class="form-group col-md-6">
+        <label for="inputGeneroTutor">Genero</label>
+        <select class="form-control">
+          <option selected disabled>-- Selecione --</option>
+          <option>Masculino</option>
+          <option>Femenino</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
+        <p class="input-group">
+          <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt-tutor" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
       </div>
 
       <div class="form-group col-md-6">
@@ -71,26 +84,7 @@
         <label for="inputEmailTutor">E-mail</label>
         <input type="email" class="form-control" id="inputEmailTutor">
       </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputGeneroTutor">Genero</label>
-        <select class="form-control">
-          <option selected disabled>-- Selecione --</option>
-          <option>Masculino</option>
-          <option>Femenino</option>
-          <option>Otro</option>
-        </select>
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
-        <p class="input-group">
-          <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt-tutor" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false"/>
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
-        </p>
-      </div>
+      
       <div class="form-group col-md-6">
         <label for="inputPaisTutor">País</label>
         <input type="text" class="form-control" id="inputPaisTutor">
@@ -170,7 +164,7 @@
     </form>
   </div>
 </div>
-
+-->
 
 <!-- Modal edicion de datos de perfil del tutor -->
 <div class="modal fade" id="myEditModalTutor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -179,27 +173,39 @@
 
       <div class="modal-header">     
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-        <h4 class="modal-title" id="myModalLabel">Datos del tutor</h4>
+        <h4 class="modal-title" id="myModalLabel"><b>Datos del tutor</b></h4>
       </div>
 
       <div class="modal-body">
         <form role="form" style="display: inline-block;">
-          <div class="form-group col-md-6">
-            <label for="inputNombre">Nombre</label>
-            <input type="text" class="form-control" id="inputNombre">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputSegundoNombre">Segundo Nombre</label>
-            <input type="text" class="form-control" id="inputSegundoNombre">
-          </div>
-
+      
+          <h4 class="monserrat-color"> <b>Datos personales:</b></h4>
           <div class="form-group col-md-6">
             <label for="inputApellido">Apellido</label>
             <input type="text" class="form-control" id="inputApellido">
           </div>
           <div class="form-group col-md-6">
-            <label for="inputSegundoApellido">Segundo Apellido</label>
-            <input type="text" class="form-control" id="inputSegundoApellido">
+            <label for="inputNombre">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="inputGeneroTutor">Genero</label>
+            <select class="form-control">
+              <option selected disabled>-- Selecione --</option>
+              <option>Masculino</option>
+              <option>Femenino</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt-tutor" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
           </div>
 
           <div class="form-group col-md-6">
@@ -216,34 +222,17 @@
             <input type="text" class="form-control" id="inputNroDocTutor">
           </div>
 
+          <h4 class="monserrat-color"><b>Datos de contacto: </b></h4>
           <div class="form-group col-md-6">
             <label for="inputTelefonoTutor">Teléfono</label>
             <input type="text" class="form-control" id="inputTelefonoTutor">
-          </div>
+          </div>  
           <div class="form-group col-md-6">
             <label for="inputEmailTutor">E-mail</label>
             <input type="email" class="form-control" id="inputEmailTutor">
           </div>
 
-          <div class="form-group col-md-6">
-            <label for="inputGenero">Genero</label>
-            <select class="form-control">
-              <option selected disabled>-- Selecione --</option>
-              <option>Masculino</option>
-              <option>Femenino</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
-            <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false"/>
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
-          </div>
-
+           <h4 class="monserrat-color"><b>Datos de domicilio actual:</b></h4>
           <div class="form-group col-md-6">
             <label for="inputPais">País</label>
             <input type="text" class="form-control" id="inputPais">
@@ -320,6 +309,12 @@
               <option>Tutor</option>
             </select>
           </div>
+          <div class="form-group col-md-6">
+            <label for="inputComentarioTutor">Comentario</label>
+            <input type="text" class="form-control" id="inputComentarioTutor">
+          </div>
+
+
         </form>
       </div> <!-- cierre de modal-body -->
 
