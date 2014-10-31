@@ -44,9 +44,9 @@ a:hover{
 
 /** Contenedor de perfil de alumno**/
 .profile-container{
-	 max-width: 100%;
-	 background-color: #eee;
-	 border-radius: 6px;
+	max-width: 100%;
+	background-color: #eee;
+	border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -56,9 +56,9 @@ a:hover{
 
 /** Contenedor de perfil de tutor**/
 .profile-container-tutor{
-	 max-width: 100%;
-	 background-color: #eee;
-	 border-radius: 6px;
+	max-width: 100%;
+	background-color: #eee;
+	border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -66,17 +66,14 @@ a:hover{
 }
 
 .profile-container-emergencia{
-	 max-width: 100%;
-	 background-color: #eee;
-	 border-radius: 6px;
+	max-width: 100%;
+	background-color: #eee;
+	border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	height: 190px;
-	
 }
-
-
 
 /** Imagen de perfil de alumno**/
 .profile-img{
@@ -88,7 +85,7 @@ a:hover{
 .edit-button-perfil-alumno{
 	background-color: rgba(120, 37, 29, 0.78);
 	color: #fff;
-    margin-top: 37px;
+    margin-top: 9px;
     border: 0px;
 }
 
