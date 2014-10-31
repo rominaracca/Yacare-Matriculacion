@@ -44,9 +44,9 @@ a:hover{
 
 /** Contenedor de perfil de alumno**/
 .profile-container{
-	 max-width: 100%;
-	 background-color: #eee;
-	 border-radius: 6px;
+	max-width: 100%;
+	background-color: #eee;
+	border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -56,9 +56,9 @@ a:hover{
 
 /** Contenedor de perfil de tutor**/
 .profile-container-tutor{
-	 max-width: 100%;
-	 background-color: #eee;
-	 border-radius: 6px;
+	max-width: 100%;
+	background-color: #eee;
+	border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -66,17 +66,14 @@ a:hover{
 }
 
 .profile-container-emergencia{
-	 max-width: 100%;
-	 background-color: #eee;
-	 border-radius: 6px;
+	max-width: 100%;
+	background-color: #eee;
+	border-radius: 6px;
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	height: 190px;
-	
 }
-
-
 
 /** Imagen de perfil de alumno**/
 .profile-img{
@@ -85,10 +82,29 @@ a:hover{
 }
 
 /** Boton Editar perfil alumno**/
-.edit-button{
+.edit-button-perfil-alumno{
 	background-color: rgba(120, 37, 29, 0.78);
 	color: #fff;
-    margin-top: 4px;
+    margin-top: 9px;
+    border: 0px;
+}
+
+.edit-button-perfil-alumno:hover{
+	background-color: rgba(120, 37, 29, 0.5);
+	color: #fff;
+}
+
+.edit-button-direccion-alumno{
+	background-color: rgba(120, 37, 29, 0.78);
+	color: #fff;
+    margin-top: 80px;
+	margin-left: 78px;
+	border: 0px;
+}
+
+.edit-button-direccion-alumno:hover{
+	background-color: rgba(120, 37, 29, 0.5);
+	color: #fff;
 }
 
 .edit-button:hover{

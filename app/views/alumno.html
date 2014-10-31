@@ -5,130 +5,91 @@
 	</div>
 
 	<div class="monserrat-color col-md-7"> 
-		<h4><b>Nicolas Agustin Legresti</b></h4>
+		<h4><b>Legresti, Nicolás </b></h4>
 	</div>
 
 	<div class="col-md-7">
+		<p>DNI : <b>22.222.222</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>20-22.222.222-9</b> </p>
+		<p> <b> Hombre. </b> Grupo sanguíneo: <b> 0+ </b></p>
 		<p>Nacido el <b>08</b> de <b>Junio</b> de <b>1989</b>
 		en <b>Córdoba</b>, <b>Argentina</b>. <img src="images/flags/ar.png"> </p>
-		<p> <b>DNI</b> : <b>22.222.222</b> <span class="monserrat-color"><b> | </b></span> <b>CUIL</b> : <b>20-22.222.222-9</b> </p>
-		<p> Grupo sanguíneo: <b> 0+ </b></p>
-		<p> <b> Hombre </b></p>  		
+		<p>De nacionalidad <b>argentina</b>, <b>italiana</b>.</p>
 	</div>
 	<div class="col-md-offset-5 col-md-2">
-		<button class="btn btn-default edit-button" data-toggle="modal" data-target="#myEditModal">Editar</button>	
+		<button class="btn btn-default edit-button-perfil-alumno" data-toggle="modal" data-target="#myEditModal">Editar</button>	
+	</div>
+</div>
+
+<div class="profile-container card-shadow" style="height: 146px;">
+	<div class="col-md-offset-2 col-md-7">
+	 	<p> Actualmente <b>Nicolás</b> vive en <b>Av. Emilio Olmos 700</b>.</p>
+	 	<p> Barrio <b>Nueva Córdoba</b>, edificio <b>Vicente I</b>, piso <b>1</b>, departamento <b>B</b>.</p>
+	 	<p> <b>Córdoba</b>, <b>Córdoba</b>, <b>Argentina</b>.</p>
+	 	<p>CP: <b>5000</b></p>
+ 	</div>
+
+	<div class="col-md-3">
+		<button class="btn btn-default edit-button-direccion-alumno" data-toggle="modal" data-target="#editAddress">Editar</button>	
 	</div>
 </div>
 
 
-<!-- Formulario de Domicilio Actual-->
-<div class="panel panel-default">
-	<div class="panel-heading"> Domicilio actual del alumno</div>
-	<div class="panel-body">
 
-		<form role="form">
+<!-- Modal edicion de datos de Domicilio Actual-->
+<div class="modal fade" id="editAddress" tabindex="-1" role="dialog" aria-labelledby="editAddress" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+				
+				<h4 class="modal-title" id="editAddress">Domicilio actual de Nicolás</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" style="display: inline-block;">
+					<div class="form-group col-md-6">
+						<label for="inputLocalidad">Localidad</label>
+						<input type="text" class="form-control" id="inputLocalidad">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputBarrio">Barrio</label>
+						<input type="text" class="form-control" id="inputBarrio">
+					</div>
 
-			<div class="form-group col-md-6">
-				<label for="inputLocalidad">Localidad</label>
-				<input type="text" class="form-control" id="inputLocalidad">
-			</div>
-			<div class="form-group col-md-6">
-				<label for="inputBarrio">Barrio</label>
-				<input type="text" class="form-control" id="inputBarrio">
-			</div>
+					<div class="form-group col-md-6">
+						<label for="inputBarrio">Calle</label>
+						<input type="text" class="form-control" id="inputCalle">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="inputNumero">Número</label>
+						<input type="text" class="form-control" id="inputNumero">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputCP">Código Postal</label>
+						<input type="text" class="form-control" id="inputCP">
+					</div>
 
-			<div class="form-group col-md-6">
-				<label for="inputBarrio">Calle</label>
-				<input type="text" class="form-control" id="inputCalle">
+					<div class="form-group col-md-3">
+						<label for="inputPico">Piso</label>
+						<input type="text" class="form-control" id="inputPiso">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="inputDpto">Departamento</label>
+						<input type="text" class="form-control" id="inputDpto">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="inputUnidad">Edifici</label>
+						<input type="text" class="form-control" id="inputUnidad">
+					</div>
+				</form>
 			</div>
-			<div class="form-group col-md-2">
-				<label for="inputNumero">Número</label>
-				<input type="text" class="form-control" id="inputNumero">
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-primary">Guardar</button>
 			</div>
-			<div class="form-group col-md-4">
-				<label for="inputCP">Código Postal</label>
-				<input type="text" class="form-control" id="inputCP">
-			</div>
-
-			<div class="form-group col-md-3">
-				<label for="inputPico">Piso</label>
-				<input type="text" class="form-control" id="inputPiso">
-			</div>
-			<div class="form-group col-md-3">
-				<label for="inputDpto">Departamento</label>
-				<input type="text" class="form-control" id="inputDpto">
-			</div>
-			<div class="form-group col-md-3">
-				<label for="inputUnidad">Unidad</label>
-				<input type="text" class="form-control" id="inputUnidad">
-			</div>
-
-		</form>
-	</div>
+		</div> <!-- cierre de modal-content -->
+	</div> <!-- cierre de modal-dialog -->
 </div>
-
-
-<!-- Formulario de Medios de Contacto-->
-<div class="panel panel-default">
-	<div class="panel-heading"> Medios de contacto del alumno</div>
-	<div class="panel-body">
-
-		<form role="form" class="form-horizontal">
-			
-			<div class="col-md-6" id="telefonos">
-				<h4 style="text-align: center;">Telefonos</h4>
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="telephone">Fijo</label>
-					<div class="col-md-9">
-						<input type="tel" class="form-control" id="telephone" value="0351-467011" style="text-align: right;">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="phone">Personal</label>
-					<div class="col-md-9">
-						<input type="tel" class="form-control" id="phone" value="0351-152474333" style="text-align: right;">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="mobil">Celular</label>
-					<div class="col-md-9">
-						<input type="tel" class="form-control" id="mobil" value="0351-156333444" style="text-align: right;">
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-6" id="emails">
-				<h4 style="text-align: center;">E-mails</h4>
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="persMail">Personal</label>
-					<div class="col-md-9">
-						<input type="tel" class="form-control" id="persMail" value="nicolegresti@gmail.com">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="instMail">Institucional</label>
-					<div class="col-md-9">
-						<input type="tel" class="form-control" id="instMail" value="nlegresti@psi.unc.edu.ar">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="otherMail">Otro</label>
-					<div class="col-md-9">
-						<input type="tel" class="form-control" id="otherMail" value="otronico@hotmail.com">
-					</div>
-				</div>
-			</div>
-
-		</form>
-	</div>
-</div>
-
-<button type="submit" class="btn btn-default save-button">Guardar</button>
-
 
 <!-- Modal edicion de datos de perfil de alumno -->
 <div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -145,34 +106,24 @@
 				<form role="form" style="display: inline-block;">
 
 					<div class="form-group col-md-6">
-						<label for="inputNombre">Nombre</label>
-						<input type="text" class="form-control" id="inputNombre">
-					</div>
-					<div class="form-group col-md-6">
-						<label for="inputSegundoNombre">Segundo Nombre</label>
-						<input type="text" class="form-control" id="inputSegundoNombre">
-					</div>
-
-					<div class="form-group col-md-6">
 						<label for="inputApellido">Apellido</label>
 						<input type="text" class="form-control" id="inputApellido">
 					</div>
 					<div class="form-group col-md-6">
-						<label for="inputSegundoApellido">Segundo Apellido</label>
-						<input type="text" class="form-control" id="inputSegundoApellido">
+						<label for="inputNombre">Nombre</label>
+						<input type="text" class="form-control" id="inputNombre">
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="inputPais">Pais</label>
-						<input type="text" class="form-control" id="inputPais">
-					</div>
-					<div class="form-group col-md-6">
-						<label for="inputLocalidad">Localidad</label>
-						<input type="text" class="form-control" id="inputLocalidad">
+						<label for="selectGenero">Genero</label>
+						<select class="form-control" id="selectGenero">
+							<option selected disabled>-- Selecione --</option>
+							<option>Masculino</option>
+							<option>Femenino</option>
+						</select>
 					</div>
 
-					
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-3">
 						<label for="inputGrupo">Grupo Sanguíneo</label>
 						<select class="form-control">
 							<option selected disabled>-- Selecione --</option>
@@ -182,7 +133,8 @@
 							<option>AB</option>
 						</select>
 					</div>
-					<div class="form-group col-md-6">
+
+					<div class="form-group col-md-3">
 						<label for="inputFactor">Factor RH</label>
 						<select class="form-control">
 							<option selected disabled>-- Selecione --</option>
@@ -191,16 +143,16 @@
 						</select>
 					</div>
 
-					<div class="form-group col-md-6">
-						<label for="selectGenero">Genero</label>
-						<select class="form-control" id="selectGenero">
-							<option selected disabled>-- Selecione --</option>
-							<option>Masculino</option>
-							<option>Femenino</option>
-							<option>Otro</option>
-						</select>
+					<div class="form-group col-md-4">
+						<label for="inputPais">País de Nacimiento</label>
+						<input type="text" class="form-control" id="inputPais">
 					</div>
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-4">
+						<label for="inputLocalidad">Localidad de Nacimiento</label>
+						<input type="text" class="form-control" id="inputLocalidad">
+					</div>
+
+					<div class="form-group col-md-4">
 						<label for="inputFechaNacimiento">Fecha de Nacimiento</label>
 						<p class="input-group">
 							<input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false" id="datepicker"/>
@@ -208,6 +160,19 @@
 								<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 							</span>
 						</p>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="nacionalidad">Nacionalidades</label>
+						<input type="text" class="form-control" id="nacionalidad">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="nacionalidad"></label>
+						<input type="text" class="form-control" id="nacionalidad">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="nacionalidad"></label>
+						<input type="text" class="form-control" id="nacionalidad">
 					</div>
 
 				</form>
