@@ -21,45 +21,40 @@ angular.module('yacareMatriculacionApp')
     $scope.opened = true;
   };
 
-  $scope.addPhone = function() {	
-  	$scope.contacts.push();
-   	$scope.contacts.push();
-  }	
+  $scope.matricula = {
+    anio:"Primer año", 
+    turno:"Turno tarde"
+  };
 
+  $scope.alumno = {
+    nombre: "Nicolás",
+    apellido: "Legresti",
+    tipo_documento: "DNI",
+    nro_documento: "22.222.222",
+    nro_cuil: "20-22.222.222-9",
+    sexo: "Hombre",
+    grupo_sanguineo: "0+",
+    nacimiento: {
+      dia: "08"
+      mes: "Junio"
+      anio: "1989"
+    },
+    lugar_nacimiento: {
+      ciudad: "Córdoba",
+      pais: "Argentina"
+    },
+    nacionalidades: [" argentina", "italiana"]
+  };
 
-	$scope.addEmail = function(last) {
-		if(last) {
-			$scope.eMails.push({type: '', eMail: ''});
-		}
-	};
+  $scope.direccion_actual = {
+    calle: "Av. Emilio Olmos",
+    nro: "700",
+    barrio: "Nueva Córdoba",
+    edificio: "Vicente I",
+    piso: "1",
+    depto: "B",
+    ciudad: "Córdoba",
+    cp:"5000"
+  };
 
-	$scope.removeEmail = function(array, idx) {
-		$scope.eMails.splice(idx, 1);
-		$scope.$apply();
-	};
-
-	$scope.eMails = [
-      {type:'institucional',
-       eMail: 'nlegresti@psi.unc.edu.ar'
-      },
-      {type:'personal',
-       eMail: 'nicolegresti@gmail.com'
-      },
-      {type:'otro',
-       eMail: 'otronico@hotmail.com'
-      }
-    ]
-
-    $scope.phones = [
-      {type:'personal',
-       eMail: 'nlegresti@psi.unc.edu.ar'
-      },
-      {type:'fijo',
-       eMail: 'nicolegresti@gmail.com'
-      },
-      {type:'celular',
-       eMail: 'otronico@hotmail.com'
-      }
-    ]
-
-  });
+});
