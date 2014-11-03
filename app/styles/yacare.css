@@ -204,3 +204,41 @@ a:hover{
 	background-color: #174C19;
 	color: #fff;
 }
+
+/**IMAGEN DE PERFIL*/
+div.image-container{
+    position: relative;
+}
+a.link{
+    text-decoration: none;  
+    position: relative;
+    display: block;
+}
+
+a.link span.overlay-image{
+    visibility: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(0,0,0,0.5); /* black background with 20% alpha */
+    color: white;
+    padding-top: 70px;
+}
+
+a.link span.overlay-image:before {    /* create a full-height inline block pseudo=element */
+    content: ' ';
+    display: inline;
+    vertical-align: middle;  /* vertical alignment of the inline element */
+    height: 100%;   
+}
+
+a.link:hover span.overlay-image img{
+    display: inline;  
+    vertical-align: middle;     
+}
+
+a.link:hover span.overlay-image{
+    visibility: visible;
+}
