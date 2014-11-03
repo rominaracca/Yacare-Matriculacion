@@ -157,7 +157,6 @@ a:hover{
 /** Boton guardar***/
 .save-button{
 	display: block;
-	width: 100px;
 	margin-right: auto;
 	margin-left: auto;
 	background-color: #174C19;
@@ -180,6 +179,19 @@ a:hover{
 
 .add-tutor-button:hover{
 	color: #174C19;
+}
+
+
+/** Estilos de los botones del modal **/
+.btn-primary {
+    color: #FFF;
+    background-color: #174C19;
+    border-color: #174C19;
+}
+
+.btn-primary:hover {
+    background-color: rgba(23, 76, 25, 0.5);
+	color: #fff;
 }
 
 .modal-dialog{
