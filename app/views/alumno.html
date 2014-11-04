@@ -6,8 +6,8 @@
 	<div class="col-md-7" style="text-align:center;">
 		<p>Matriculación en <b>Colegio Nacional de Monserrat</b>.</p>
 		<p>Bachiller Humanista con Orientación en Humanidades y Ciencias Sociales.</p>
-		<p>Primer año.</p>
-		<p>Turno tarde.</p>
+		<p>{{matricula.anio}}.</p>
+		<p>{{matricula.turno}}.</p>
  	</div>
  	<div class="col-md-2" style="text-align:center">
 		<img src="images/monserrat-logo.png" style="height: 120px;">
@@ -27,36 +27,36 @@
 		</div>
 	</div>
 
+
 	<div class="monserrat-color col-md-8"> 
-		<h4><b>Legresti, Nicolás </b></h4>
+		<h4><b>{{alumno.apellido}}, {{alumno.nombre}} </b></h4>
 	</div>
 
 	<div class="col-md-8">
-		<p>DNI : <b>22.222.222</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>20-22.222.222-9</b> </p>
-		<p> <b> Hombre. </b> Grupo sanguíneo: <b> 0+ </b></p>
-		<p>Nacido el <b>08</b> de <b>Junio</b> de <b>1989</b>
-		en <b>Córdoba</b>, <b>Argentina</b>. <img src="images/flags/ar.png"> </p>
-		<p>De nacionalidad <b>argentina</b>, <b>italiana</b>.</p>
+		<p>{{alumno.tipo_documento}} : <b>{{alumno.nro_documento}}</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>{{alumno.nro_cuil}}</b> </p>
+		<p> <b> {{alumno.sexo}}. </b> Grupo sanguíneo: <b> {{alumno.grupo_sanquineo}} </b></p>
+		<p>Nacido el <b>{{alumno.nacimiento.dia}}</b> de <b>{{alumno.nacimiento.mes}}</b> de <b>{{alumno.nacimiento.anio}}</b>
+		en <b>{{alumno.lugar_nacimiento.ciudad}}</b>, <b>{{alumno.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
+		<p>De nacionalidad <b>{{alumno.nacionalidades[0]}}</b>, <b>{{alumno.nacionalidades[1]}}</b>.</p>
 	</div>
 	<div class="col-md-offset-6 col-md-2">
 		<button class="btn btn-default edit-button-perfil-alumno" data-toggle="modal" data-target="#myEditModal">Editar</button>	
 	</div>
 </div>
 
+
 <div class="profile-container card-shadow" style="height: 146px;">
 	<div class="col-md-offset-1 col-md-8">
-	 	<p> Actualmente <b>Nicolás</b> tiene domicilio en <b>Av. Emilio Olmos 700</b>.</p>
-	 	<p> Barrio <b>Nueva Córdoba</b>, edificio <b>Vicente I</b>, piso <b>1</b>, departamento <b>B</b>.</p>
-	 	<p> <b>Córdoba</b>, <b>Córdoba</b>, <b>Argentina</b>.</p>
-	 	<p>CP: <b>5000</b></p>
+	 	<p> Actualmente <b>{{alumno.nombre}}</b> tiene domicilio en <b>{{direccion_actual.calle}} {{direccion_actual.nro}}</b>.</p>
+	 	<p> Barrio <b>{{direccion_actual.barrio}}</b>, edificio <b>{{direccion_actual.edificio}}</b>, <b>{{direccion_actual.piso}}</b> piso, departamento <b>{{direccion_actual.depto}}</b>.</p>
+	 	<p> <b>{{direccion_actual.ciudad}}</b>, <b>Córdoba</b>, <b>Argentina</b>.</p>
+	 	<p>CP: <b>{{direccion_actual.cp}}</b></p>
  	</div>
 
 	<div class="col-md-3">
 		<button class="btn btn-default edit-button-direccion-alumno" data-toggle="modal" data-target="#editAddress">Editar</button>	
 	</div>
 </div>
-
-
 
 <!-- Modal edicion de datos de Domicilio Actual-->
 <div class="modal fade" id="editAddress" tabindex="-1" role="dialog" aria-labelledby="editAddress" aria-hidden="true">
@@ -66,43 +66,43 @@
 				
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
 				
-				<h4 class="modal-title" id="editAddress">Domicilio actual de Nicolás</h4>
+				<h4 class="modal-title" id="editAddress">Domicilio actual de {{alumno.nombre}}</h4>
 			</div>
 			<div class="modal-body">
 				<form role="form" style="display: inline-block;">
 					<div class="form-group col-md-6">
 						<label for="inputLocalidad">Localidad</label>
-						<input type="text" class="form-control" id="inputLocalidad">
+						<input type="text" class="form-control" id="inputLocalidad" value="{{direccion_actual.ciudad}}">
 					</div>
 					<div class="form-group col-md-6">
 						<label for="inputBarrio">Barrio</label>
-						<input type="text" class="form-control" id="inputBarrio">
+						<input type="text" class="form-control" id="inputBarrio" value="{{direccion_actual.barrio}}">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="inputBarrio">Calle</label>
-						<input type="text" class="form-control" id="inputCalle">
+						<input type="text" class="form-control" id="inputCalle" value="{{direccion_actual.calle}}">
 					</div>
 					<div class="form-group col-md-2">
 						<label for="inputNumero">Número</label>
-						<input type="text" class="form-control" id="inputNumero">
+						<input type="text" class="form-control" id="inputNumero" value="{{direccion_actual.nro}}">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputCP">Código Postal</label>
-						<input type="text" class="form-control" id="inputCP">
+						<input type="text" class="form-control" id="inputCP" value="{{direccion_actual.cp}}">
 					</div>
 
 					<div class="form-group col-md-3">
 						<label for="inputPico">Piso</label>
-						<input type="text" class="form-control" id="inputPiso">
+						<input type="text" class="form-control" id="inputPiso" value="{{direccion_actual.piso}}">
 					</div>
 					<div class="form-group col-md-3">
 						<label for="inputDpto">Departamento</label>
-						<input type="text" class="form-control" id="inputDpto">
+						<input type="text" class="form-control" id="inputDpto" value="{{direccion_actual.depto}}">
 					</div>
 					<div class="form-group col-md-3">
 						<label for="inputUnidad">Edifici</label>
-						<input type="text" class="form-control" id="inputUnidad">
+						<input type="text" class="form-control" id="inputUnidad" value="{{direccion_actual.edificio}}">
 					</div>
 				</form>
 			</div>
@@ -130,11 +130,11 @@
 
 					<div class="form-group col-md-6">
 						<label for="inputApellido">Apellido</label>
-						<input type="text" class="form-control" id="inputApellido">
+						<input type="text" class="form-control" id="inputApellido" value="{{alumno.apellido}}">
 					</div>
 					<div class="form-group col-md-6">
 						<label for="inputNombre">Nombre</label>
-						<input type="text" class="form-control" id="inputNombre">
+						<input type="text" class="form-control" id="inputNombre" value="{{alumno.nombre}}">
 					</div>
 
 					<div class="form-group col-md-6">
@@ -168,30 +168,33 @@
 
 					<div class="form-group col-md-4">
 						<label for="inputPais">País de Nacimiento</label>
-						<input type="text" class="form-control" id="inputPais">
+						<input type="text" class="form-control" id="inputPais" value="{{alumno.lugar_nacimiento.pais}}">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputLocalidad">Localidad de Nacimiento</label>
-						<input type="text" class="form-control" id="inputLocalidad">
+						<input type="text" class="form-control" id="inputLocalidad" value="{{alumno.lugar_nacimiento.ciudad}}">
 					</div>
 
 					<div class="form-group col-md-4">
 						<label for="inputFechaNacimiento">Fecha de Nacimiento</label>
+						<input type="text" class="form-control" id="inputFecha">
+						
 						<p class="input-group">
 							<input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false" id="datepicker"/>
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 							</span>
 						</p>
+						
 					</div>
 
 					<div class="form-group col-md-4">
 						<label for="nacionalidad">Nacionalidades</label>
-						<input type="text" class="form-control" id="nacionalidad">
+						<input type="text" class="form-control" id="nacionalidad" value="{{alumno.nacionalidades[0]}}">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="nacionalidad"></label>
-						<input type="text" class="form-control" id="nacionalidad">
+						<input type="text" class="form-control" id="nacionalidad" value="{{alumno.nacionalidades[1]}}">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="nacionalidad"></label>

@@ -75,7 +75,7 @@ a:hover{
 	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	height: 190px;
+	height: 130px;
 	
 }
 
@@ -139,8 +139,8 @@ a:hover{
 .edit-button-emergencia{
 	background-color: rgba(23, 76, 25, 0.78);
 	color: #fff;
-    margin-top: 85px;
     border: 0px;
+    margin-top: 20px;"
 }
 
 .edit-button-emergencia:hover{
@@ -159,6 +159,7 @@ a:hover{
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
+	margin-bottom: 10px;
 	background-color: #174C19;
 	color: #fff;
 }
@@ -196,6 +197,10 @@ a:hover{
 
 .modal-dialog{
 	width: 700px;
+}
+
+.modal-dialog-tutor{
+	width: 970px;
 }
 
 

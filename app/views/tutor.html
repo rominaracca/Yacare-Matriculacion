@@ -1,18 +1,17 @@
 <!-- PERFIL DEL TUTOR -->
-<div class="profile-container-tutor card-shadow">
+<div class="profile-container-tutor card-shadow" ng-repeat="item in tutores">
   <div class="col-md-offset-1" >
     <div class="monserrat-color col-md-8"> 
-      <h4><b>Legresti, Juan </b> - <b> Padre </b> de <b> Nicolas </b></h4>
+      <h4><b>{{item.apellido}}, {{item.nombre}}</b> - <b> {{item.tipo_relacion}} </b> de <b> Nicolas </b></h4>
     </div>
     <div class="col-md-8">
-      <p><b>DNI</b>:<b>33.333.333</b></p>
-      <p><b>Hombre,</b> nacido el <b>08</b> de <b>Junio</b> de <b>1950</b>
-      en <b>Córdoba</b>, <b>Argentina</b>. <img src="images/flags/ar.png"> </p>
-      <p> Con domicilio en <b>Av. Emilio Olmos</b> número <b>700</b> piso <b>1º</b> departamento <b>B</b> edificio <b>Vicente I</b> barrio <b>Nueva Córdoba</b>,<b>Córdoba</b>, <b>Córdoba</b>, <b>Argentina</b> CP: <b>5000</b></p>
+      <p><b>{{item.tipo_documento}}</b>:<b>{{item.nro_documento}}</b></p>
+      <p><b>{{item.sexo}},</b> nacido el <b>{{item.nacimiento.dia}}</b> de <b>{{item.nacimiento.mes}}</b> de <b>{{item.nacimiento.anio}}</b>
+      en <b>{{item.lugar_nacimiento.ciudad}}</b>, <b>{{item.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
+      <p> Con domicilio en <b>{{item.direccion_actual.calle}}</b> número <b>{{item.direccion_actual.nro}}</b> piso <b>{{item.direccion_actual.piso}}</b> departamento <b>{{item.direccion_actual.depto}}</b> edificio <b>{{item.direccion_actual.edificio}}</b> barrio <b>{{item.direccion_actual.barrio}}</b>,<b>{{item.direccion_actual.ciudad}}</b>, <b>{{item.direccion_actual.provincia}}</b>, <b>{{item.direccion_actual.pais}}</b> CP: <b>{{item.direccion_actual.cp}}</b></p>
 
-      <p><b>juan.legresti@dominio.com</b> </p>
-      <p>TEL: <b>+54 9 0351 155 123456</b></p>
-      
+      <p><b>{{item.mail}}</b> </p>
+      <p>TEL: <b>{{item.telefono}}</b></p>
       
     </div>
   </div>
@@ -26,149 +25,10 @@
 
 <button class="btn btn-default save-button" data-toggle="modal" data-target="#myEditModalTutor">Agregar Tutor</button>
 
-<!-- Formulario de Domicilio Actual-->
-<!--
-<div class="panel panel-default">
-  <div class="panel-heading">Agregar datos de otro tutor</div>
-  <div class="panel-body">
-    
-    <form role="form">
-
-      <div class="form-group col-md-6">
-        <label for="inputApellidoTutor">Apellido</label>
-        <input type="text" class="form-control" id="inputApellidoTutor">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputNombreTutor">Nombre</label>
-        <input type="text" class="form-control" id="inputNombreTutor">
-      </div>
-      
-      <div class="form-group col-md-6">
-        <label for="inputGeneroTutor">Genero</label>
-        <select class="form-control">
-          <option selected disabled>-- Selecione --</option>
-          <option>Masculino</option>
-          <option>Femenino</option>
-          <option>Otro</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
-        <p class="input-group">
-          <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt-tutor" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false"/>
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
-        </p>
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputTipoDocTutor">Tipo de Documento</label>
-        <select class="form-control">
-          <option selected disabled>-- Selecione --</option>
-          <option>DNI</option>
-          <option>Pasaporte</option>
-          <option>Otro</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputNroDocTutor">Número de documento</label>
-        <input type="text" class="form-control" id="inputNroDocTutor">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputTelefonoTutor">Teléfono</label>
-        <input type="text" class="form-control" id="inputTelefonoTutor">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputEmailTutor">E-mail</label>
-        <input type="email" class="form-control" id="inputEmailTutor">
-      </div>
-      
-      <div class="form-group col-md-6">
-        <label for="inputPaisTutor">País</label>
-        <input type="text" class="form-control" id="inputPaisTutor">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputProvinciaTutor">Provincia</label>
-        <input type="text" class="form-control" id="inputProvinciaTutor">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputDepartamentoTutor">Departamento</label>
-        <input type="text" class="form-control" id="inputDepartamentoTutor">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputLocalidadTutor">Localidad</label>
-        <input type="text" class="form-control" id="inputLocalidadTutor">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputBarrioTutor">Barrio</label>
-        <input type="text" class="form-control" id="inputBarrioTutor">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputCPTutor">Código Postal</label>
-        <input type="text" class="form-control" id="inputCPTutor">
-      </div>
-
-      <div class="row-form">
-        <div class="form-group col-md-6">
-          <label for="inputCalleTutor">Calle</label>
-          <input type="text" class="form-control" id="inputCalleTutor">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="inputNumeroTutor">Número</label>
-          <input type="text" class="form-control" id="inputNumeroTutor">
-        </div>
-      </div>
-
-      <div class="form-group col-md-3">
-        <label for="inputPisoTutor">Piso</label>
-        <input type="text" class="form-control" id="inputPisoTutor">
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputDptoTutor">Departamento</label>
-        <input type="text" class="form-control" id="inputDptoTutor">
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputEdificioTutor">Edificio</label>
-        <input type="text" class="form-control" id="inputEdificioTutor">
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputTipoTutor">Tipo de Residencia</label>
-        <select class="form-control">
-          <option selected disabled>-- Selecione --</option>
-          <option>Casa</option>
-          <option>Departamento</option>
-          <option>Pension o residencia</option>
-          <option>Otros</option>
-        </select>
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputRelacionTutor">Tipo de relación con el alumno</label>
-        <select class="form-control">
-          <option selected disabled>-- Selecione --</option>
-          <option>Padre</option>
-          <option>Madre</option>
-          <option>Hijo</option>
-          <option>Sobrino</option>
-          <option>Primo</option>
-          <option>Tio</option>
-          <option>Hermano</option>
-          <option>Abuelo</option>
-          <option>Tutor</option>
-        </select>
-      </div>
-    </form>
-  </div>
-</div>
--->
 
 <!-- Modal edicion de datos de perfil del tutor -->
 <div class="modal fade" id="myEditModalTutor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-tutor">
     <div class="modal-content">
 
       <div class="modal-header">     
@@ -180,92 +40,96 @@
         <form role="form" style="display: inline-block;">
       
           <h4 class="monserrat-color"> <b>Datos personales:</b></h4>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputApellido">Apellido</label>
             <input type="text" class="form-control" id="inputApellido">
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputNombre">Nombre</label>
             <input type="text" class="form-control" id="inputNombre">
           </div>
 
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputGeneroTutor">Genero</label>
             <select class="form-control">
               <option selected disabled>-- Selecione --</option>
               <option>Masculino</option>
               <option>Femenino</option>
-              <option>Otro</option>
             </select>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
+            
             <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt-tutor" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false"/>
+              <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="Date()" ng-required="true" show-button-bar="false"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </p>
+           
           </div>
 
-          <div class="form-group col-md-6">
-            <label for="inputTipoDocTutor">Tipo de Documento</label>
-            <select class="form-control">
-              <option selected disabled>-- Selecione --</option>
-              <option>DNI</option>
-              <option>Pasaporte</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputNroDocTutor">Número de documento</label>
-            <input type="text" class="form-control" id="inputNroDocTutor">
+          <div class="row" style="margin-left: 0px;">
+            <div class="form-group col-md-3">
+              <label for="inputTipoDocTutor">Tipo de Documento</label>
+              <select class="form-control">
+                <option selected disabled>-- Selecione --</option>
+                <option>DNI</option>
+                <option>Pasaporte</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputNroDocTutor">Número de documento</label>
+              <input type="text" class="form-control" id="inputNroDocTutor">
+            </div>
           </div>
 
           <h4 class="monserrat-color"><b>Datos de contacto: </b></h4>
-          <div class="form-group col-md-6">
+          <div class="row" style="margin-left: 0px;">
+          <div class="form-group col-md-3">
             <label for="inputTelefonoTutor">Teléfono</label>
             <input type="text" class="form-control" id="inputTelefonoTutor">
           </div>  
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputEmailTutor">E-mail</label>
             <input type="email" class="form-control" id="inputEmailTutor">
           </div>
+          </div>
 
            <h4 class="monserrat-color"><b>Datos de domicilio actual:</b></h4>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputPais">País</label>
             <input type="text" class="form-control" id="inputPais">
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputProvincia">Provincia</label>
             <input type="text" class="form-control" id="inputProvincia">
           </div>
 
-          <div class="form-group col-md-6">
-            <label for="inputDepartamento">Departamento</label>
-            <input type="text" class="form-control" id="inputDepartamento">
+          <div class="form-group col-md-3">
+            <label for="inputCiudad">Ciudad</label>
+            <input type="text" class="form-control" id="inputCiudad">
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputLocalidad">Localidad</label>
             <input type="text" class="form-control" id="inputLocalidad">
           </div>
 
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputBarrio">Barrio</label>
             <input type="text" class="form-control" id="inputBarrio">
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="inputCP">Código Postal</label>
             <input type="text" class="form-control" id="inputCP">
           </div>
-
           <div class="row-form">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
               <label for="inputBarrio">Calle</label>
               <input type="text" class="form-control" id="inputCalle">
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
               <label for="inputNumero">Número</label>
               <input type="text" class="form-control" id="inputNumero">
             </div>
@@ -283,17 +147,7 @@
             <label for="inputEdificio">Edificio</label>
             <input type="text" class="form-control" id="inputEdificio">
           </div>
-          <div class="form-group col-md-3">
-            <label for="inputTipo">Tipo de Residencia</label>
-            <select class="form-control">
-              <option selected disabled>-- Selecione --</option>
-              <option>Casa</option>
-              <option>Departamento</option>
-              <option>Pension o residencia</option>
-              <option>Otros</option>
-            </select>
-          </div>
-
+          
           <div class="form-group col-md-6">
             <label for="inputRelacion">Tipo de relación con el alumno</label>
             <select class="form-control">

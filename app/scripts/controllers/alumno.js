@@ -22,7 +22,7 @@ angular.module('yacareMatriculacionApp')
   };
 
   $scope.matricula = {
-    anio:"Primer año", 
+    anio:"Primer año",
     turno:"Turno tarde"
   };
 
@@ -35,8 +35,8 @@ angular.module('yacareMatriculacionApp')
     sexo: "Hombre",
     grupo_sanguineo: "0+",
     nacimiento: {
-      dia: "08"
-      mes: "Junio"
+      dia: "08",
+      mes: "Junio",
       anio: "1989"
     },
     lugar_nacimiento: {
