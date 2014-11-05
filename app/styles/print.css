@@ -1,0 +1,53 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+.container_resumen{
+	display: inline-block;
+	width: 100%;
+}
+
+hr.faded {
+  width: 100%; 
+  height: 1px;
+  background-color: #174C19;
+}
+
+.title{
+	font-size: 12pt;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	line-height: 25px;
+}
+
+.subtitle {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 25px;
+}  
+
+.paragraph{
+	font-family: 'Roboto', sans-serif;
+	line-height: 25px;
+}
+@media screen {
+	#page_footer{
+		display: none;
+	}
+}
+
+@media print {
+	#banner, #tabs, #footer, #btn-print{
+		display: none;
+	}	
+
+	#page_footer{
+		position: fixed;
+        bottom: 0;
+	}
+
+	@page { 
+		size: A4; 
+	} 
+
+}
+
+ 

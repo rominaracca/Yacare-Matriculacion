@@ -27,20 +27,19 @@
 		</div>
 	</div>
 
-
 	<div class="monserrat-color col-md-8"> 
 		<h4><b>{{alumno.apellido}}, {{alumno.nombre}} </b></h4>
 	</div>
 
 	<div class="col-md-8">
 		<p>{{alumno.tipo_documento}} : <b>{{alumno.nro_documento}}</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>{{alumno.nro_cuil}}</b> </p>
-		<p> <b> {{alumno.sexo}}. </b> Grupo sanguíneo: <b> {{alumno.grupo_sanquineo}} </b></p>
+		<p> <b> {{alumno.sexo}}. </b> Grupo sanguíneo: <b> {{alumno.grupo_sanguineo}} </b></p>
 		<p>Nacido el <b>{{alumno.nacimiento.dia}}</b> de <b>{{alumno.nacimiento.mes}}</b> de <b>{{alumno.nacimiento.anio}}</b>
 		en <b>{{alumno.lugar_nacimiento.ciudad}}</b>, <b>{{alumno.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
 		<p>De nacionalidad <b>{{alumno.nacionalidades[0]}}</b>, <b>{{alumno.nacionalidades[1]}}</b>.</p>
 	</div>
 	<div class="col-md-offset-6 col-md-2">
-		<button class="btn btn-default edit-button-perfil-alumno" data-toggle="modal" data-target="#myEditModal">Editar</button>	
+		<button class="btn btn-default edit-button-perfil-alumno" data-toggle="modal" data-target="#myEditModal" ng-click="setSelectedAlumno()">Editar</button>	
 	</div>
 </div>
 
@@ -54,7 +53,7 @@
  	</div>
 
 	<div class="col-md-3">
-		<button class="btn btn-default edit-button-direccion-alumno" data-toggle="modal" data-target="#editAddress">Editar</button>	
+		<button class="btn btn-default edit-button-direccion-alumno" data-toggle="modal" data-target="#editAddress" ng-click="setSelectedDireccion()">Editar</button>	
 	</div>
 </div>
 
@@ -71,8 +70,8 @@
 			<div class="modal-body">
 				<form role="form" style="display: inline-block;">
 					<div class="form-group col-md-6">
-						<label for="inputLocalidad">Localidad</label>
-						<input type="text" class="form-control" id="inputLocalidad" value="{{direccion_actual.ciudad}}">
+						<label for="inputCiudad">Ciudad</label>
+						<input type="text" class="form-control" id="inputCiudad" value="{{tmpDireccion.ciudad}}" ng-model="tmpDireccion.ciudad">
 					</div>
 					<div class="form-group col-md-6">
 						<label for="inputBarrio">Barrio</label>
@@ -108,7 +107,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary">Guardar</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateDomicilio()">Guardar</button>
 			</div>
 		</div> <!-- cierre de modal-content -->
 	</div> <!-- cierre de modal-dialog -->
@@ -130,11 +129,11 @@
 
 					<div class="form-group col-md-6">
 						<label for="inputApellido">Apellido</label>
-						<input type="text" class="form-control" id="inputApellido" value="{{alumno.apellido}}">
+						<input type="text" class="form-control" id="inputApellido" value="{{tmpAlumno.apellido}}" ng-model="tmpAlumno.apellido">
 					</div>
 					<div class="form-group col-md-6">
 						<label for="inputNombre">Nombre</label>
-						<input type="text" class="form-control" id="inputNombre" value="{{alumno.nombre}}">
+						<input type="text" class="form-control" id="inputNombre" value="{{tmpAlumno.nombre}}" ng-model="tmpAlumno.nombre">
 					</div>
 
 					<div class="form-group col-md-6">
@@ -168,17 +167,16 @@
 
 					<div class="form-group col-md-4">
 						<label for="inputPais">País de Nacimiento</label>
-						<input type="text" class="form-control" id="inputPais" value="{{alumno.lugar_nacimiento.pais}}">
+						<input type="text" class="form-control" id="inputPais" value="{{tmpAlumno.lugar_nacimiento.pais}}" ng-model="tmpAlumno.lugar_nacimiento.pais">
 					</div>
 					<div class="form-group col-md-4">
-						<label for="inputLocalidad">Localidad de Nacimiento</label>
-						<input type="text" class="form-control" id="inputLocalidad" value="{{alumno.lugar_nacimiento.ciudad}}">
+						<label for="inputCiudad">Ciudad de Nacimiento</label>
+						<input type="text" class="form-control" id="inputCiudad" value="{{tmpAlumno.lugar_nacimiento.ciudad}}" ng-model="tmpAlumno.lugar_nacimiento.ciudad">
 					</div>
 
 					<div class="form-group col-md-4">
 						<label for="inputFechaNacimiento">Fecha de Nacimiento</label>
-						<input type="text" class="form-control" id="inputFecha">
-						
+												
 						<p class="input-group">
 							<input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false" id="datepicker"/>
 							<span class="input-group-btn">
@@ -190,15 +188,15 @@
 
 					<div class="form-group col-md-4">
 						<label for="nacionalidad">Nacionalidades</label>
-						<input type="text" class="form-control" id="nacionalidad" value="{{alumno.nacionalidades[0]}}">
+						<input type="text" class="form-control" id="nacionalidad" value="{{tmpAlumno.nacionalidades[0]}}" ng-model="tmpAlumno.nacionalidades[0]">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="nacionalidad"></label>
-						<input type="text" class="form-control" id="nacionalidad" value="{{alumno.nacionalidades[1]}}">
+						<input type="text" class="form-control" id="nacionalidad" value="{{tmpAlumno.nacionalidades[1]}}" ng-model="tmpAlumno.nacionalidades[1]">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="nacionalidad"></label>
-						<input type="text" class="form-control" id="nacionalidad">
+						<input type="text" class="form-control" id="nacionalidad" value="{{tmpAlumno.nacionalidades[3]}}" ng-model="tmpAlumno.nacionalidades[3]">
 					</div>
 
 				</form>
@@ -206,7 +204,7 @@
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary">Guardar</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateAlumno()">Guardar</button>
 			</div>
 		</div> <!-- cierre de modal-content -->
 	</div> <!-- cierre de modal-dialog -->

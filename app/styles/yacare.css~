@@ -6,6 +6,9 @@
 	/* color verde yacare: 7CA730*/
 }
 
+.card-shadow{
+	box-shadow: 5px 5px 5px #9B9B9B;
+}
 
 /** Ancho del contendor de la pagina**/
 .container {
@@ -42,19 +45,38 @@ a:hover{
 }
 
 
-.container_gral{
-	display: inline-block;
-	width: 100%;
-	background-color: #eee;
-	border-radius: 6px;
-	box-shadow: 5px 5px 5px #9B9B9B;
-	
-	/** separacion del contenedor al texto **/
+/** Contenedor de perfil de alumno**/
+.profile-container{
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
+	margin-bottom: 20px;
 	padding-top: 15px;
 	padding-bottom: 15px;
+	height: 230px;
+	
+}
 
-	/** separacion entre contenedores **/
+/** Contenedor de perfil de tutor**/
+.profile-container-tutor{
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
 	margin-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	height: 240px;
+}
+
+.profile-container-emergencia{
+	 max-width: 100%;
+	 background-color: #eee;
+	 border-radius: 6px;
+	margin-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	height: 130px;
+	
 }
 
 /** Imagen de perfil de alumno**/
@@ -118,7 +140,7 @@ a:hover{
 	background-color: rgba(23, 76, 25, 0.78);
 	color: #fff;
     border: 0px;
-    margin-top: 20px;
+    margin-top: 20px;"
 }
 
 .edit-button-emergencia:hover{

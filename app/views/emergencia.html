@@ -1,5 +1,5 @@
 <!-- PERFIL DEL CONTACTO EN CASO DE EMERGENCIA -->
-<div class="profile-container-emergencia card-shadow"  ng-repeat="item in contactos">
+<div class="container_gral"  ng-repeat="item in contactos">
   <div class="col-md-offset-1" >
     <div class="monserrat-color col-md-8"> 
       <h4><b>{{item.apellido}}, {{item.nombre}}</b></h4>
@@ -90,7 +90,7 @@
           </div>
           <div class="form-group col-md-12">
             <label for="inputComentarioEmergencia">Comentario</label>
-            <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioEmergencia" ng-model="nvoContacto.comentario" maxlength="70">
+            <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioEmergencia" ng-model="nvoContacto.comentario">
            </textarea>
           </div>
          

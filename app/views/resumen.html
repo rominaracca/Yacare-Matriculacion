@@ -1,37 +1,99 @@
-<label>Hola {{matricula.turno}}</label>
-
-<div class="profile-container card-shadow">
-	<div class="col-md-offset-1 col-md-3" style="text-align:center">
-		<div class="image-container">
-			
-			<a class="link" href="#" type="file" >  
-				<img class="image img-rounded profile-img" src="images/nico-perfil.jpg"/>
-				<span class="overlay-image img-rounded">
-					<b>Haga click aqui para modificar la imagen</b>
-				</span>
-			</a>    
-
-		</div>
+<!--
+<div id="membrete" class="container_resumen">
+	<div class="col-md-offset-2 col-md-2">
+		<img src="images/monserrat-logo.png" style="height: 100px;">		
 	</div>
-	<div class="monserrat-color col-md-8"> 
-		<h4><b>Legresti, Nicolás </b></h4>
+	<div class="col-md-4">
+	Colegio Nacional de Monserrat
 	</div>
+</div>
+-->
+
+<div class="container_resumen">
+	<button id="btn-print" type="button" class="btn btn-primary col-md-offset-10">Imprimir</button>
+</div>
+
+<hr class="faded"></hr>
+<div class="container_resumen col-md-offset-1">
 	<div class="col-md-8">
-		<p>DNI : <b>22.222.222</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>20-22.222.222-9</b> </p>
-		<p> <b> Hombre. </b> Grupo sanguíneo: <b> 0+ </b></p>
-		<p>Nacido el <b>08</b> de <b>Junio</b> de <b>1989</b>
-			en <b>Córdoba</b>, <b>Argentina</b>. <img src="images/flags/ar.png"> </p>
-			<p>De nacionalidad <b>argentina</b>, <b>italiana</b>.</p>
+		<p class="title">DATOS PERSONALES DEL ALUMNO</p>
+		<span class="subtitle"><b>Legresti, Nicolás</b></span>
+		<div class="paragraph">
+			DNI : 22.222.222 CUIL : 20-22.222.222-9 <br/>
+			Hombre. Grupo sanguíneo: 0+ <br/>
+			Nacido el 08 de Junio de 1989 en Córdoba, Argentina. <br/>
+			De nacionalidad argentina, italiana. <br/>
 		</div>
-		<div class="col-md-offset-6 col-md-2">
-			<button class="btn btn-default edit-button-perfil-alumno" data-toggle="modal" data-target="#myEditModal">Editar</button>	
-		</div>
+	</div>
+	<div class="col-md-2">
+	<img src="images/nico-perfil.jpg" style="height: 165px;">
 	</div>
 </div>
 
-<form method="post" enctype="multipart/form-data"><br>
-<input type=file size=60 name=""><br><br>
-<input type=submit value="subir"><br>
-</form>
 
-<input type="file" accept="image/*;capture=camera">
+<hr class="faded"></hr>
+<div class="container_resumen col-md-offset-1">
+	<p class="title">MATRICULACIÓN</p>
+	<div class="paragraph">
+		Matriculación en Colegio Nacional de Monserrat. <br/>
+		Bachiller Humanista con Orientación en Humanidades y Ciencias Sociales. <br/>
+		Primer año.	Turno tarde. <br/>
+	</div>
+</div>
+
+<hr class="faded"></hr>
+<div class="container_resumen col-md-offset-1">
+	<p class="title">DOMICILIO ACTUAL DEL ALUMNO</p>
+	<div class="paragraph">
+		Actualmente Nicolás tiene domicilio en Av. Emilio Olmos 700. <br/>
+		Barrio Nueva Córdoba, edificio Vicente I, 1 piso, departamento B. <br/>
+		Córdoba, Córdoba, Argentina. <br/>
+		CP: 5000
+	</div>
+</div>
+
+<hr class="faded"></hr>
+<div class="container_resumen col-md-offset-1">
+	<p class="title">DATOS DE LOS TUTORES</p>
+	<span class="subtitle"><b>Legresti, Juan - Padre de Nicolas</b></span>
+	<div class="paragraph">
+		DNI:16.132.456  <br/>
+		Hombre, nacido el 08 de Junio de 1960 en Córdoba, Argentina. <br/>  
+		Con domicilio en Av. Emilio Olmos número 700 piso 1 departamento B  <br/>edificio Vicente I barrio Nueva Córdoba,Córdoba, Córdoba, Argentina CP: 5000 <br/>
+		juan.legresti@dominio.com <br/>
+		TEL: +54 9 6 123456 <br/>
+	</div>
+	<br/>
+	<span class="subtitle"><b>Perez, Maria - Madre de Nicolas </b></span> 
+	<div class="paragraph">
+		DNI:17.214.237 <br/>
+		Mujer, nacido el 09 de Octubre de 1962 en Buenos Aires, Argentina. <br/>
+		Con domicilio en Av. Emilio Olmos número 700 piso 1 departamento B <br/> edificio Vicente I barrio Nueva Córdoba,Córdoba, Córdoba, Argentina CP: 5000
+		maria.perez@gmail.com <br/> 
+		TEL: +54 9 6 654321
+	</div>
+</div>
+
+<hr class="faded"></hr>
+<div class="container_resumen col-md-offset-1">
+	<p class="title">DATOS DE CONTACTO DE EMERGENCIA</p>
+	
+	<span class="subtitle"><b>	Perez, Juan</b></span>
+	<div class="paragraph">
+		+54 9 351 6123456 <br/>
+		Esto es un cometario del contacto en caso de emergencia
+	</div>
+	<br/>
+	<span class="subtitle"><b>Rios, Juan</b></span>
+	<div class="paragraph">	
+		+54 9 351 6123456 <br/>
+		Cometario del contacto en caso de emergencia 
+	</div>
+</div>
+
+
+<div id="page_header">
+</div>
+<div id="page_footer">
+	<img src="images/yacare-apaizado.gif" style="width:4cm;">
+</div>

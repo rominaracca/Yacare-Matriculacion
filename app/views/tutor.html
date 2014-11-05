@@ -1,5 +1,5 @@
 <!-- PERFIL DEL TUTOR -->
-<div class="profile-container-tutor card-shadow" ng-repeat="item in tutores">
+<div class="container_gral" ng-repeat="item in tutores">
   <div class="col-md-offset-1" >
     <div class="monserrat-color col-md-8"> 
       <h4><b>{{item.apellido}}, {{item.nombre}}</b> - <b> {{item.tipo_relacion}} </b> de <b> Nicolas </b></h4>
@@ -68,82 +68,21 @@
             </p>
            
           </div>
-
-          <div class="row" style="margin-left: 0px;">
-            <div class="form-group col-md-3">
-              <label for="inputTipoDocTutor">Tipo de Documento</label>
-              <select class="form-control">
-                <option selected disabled>-- Selecione --</option>
-                <option>DNI</option>
-                <option>Pasaporte</option>
-                <option>Otro</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputNroDocTutor">Número de documento</label>
-              <input type="text" class="form-control" id="inputNroDocTutor" value="{{tmpTutor.nro_documento}}" ng-model="tmpTutor.nro_documento">
-            </div>
-          </div>
-
-          <h4 class="monserrat-color"><b>Datos de contacto: </b></h4>
-          <div class="row" style="margin-left: 0px;">
+         
           <div class="form-group col-md-3">
-            <label for="inputTelefonoTutor">Teléfono</label>
-            <input type="text" class="form-control" id="inputTelefonoTutor" value="{{tmpTutor.telefono}}" ng-model="tmpTutor.telefono">
-          </div>  
-          <div class="form-group col-md-3">
-            <label for="inputEmailTutor">E-mail</label>
-            <input type="email" class="form-control" id="inputEmailTutor" value="{{tmpTutor.mail}}" ng-model="tmpTutor.mail">
-          </div>
-          </div>
-
-           <h4 class="monserrat-color"><b>Datos de domicilio actual:</b></h4>
-          <div class="form-group col-md-3">
-            <label for="inputPais">País</label>
-            <input type="text" class="form-control" id="inputPais" value="{{tmpTutor.direccion_actual.pais}}" ng-model="tmpTutor.direccion_actual.pais">
+            <label for="inputTipoDocTutor">Tipo de Documento</label>
+            <select class="form-control">
+              <option selected disabled>-- Selecione --</option>
+              <option>DNI</option>
+              <option>Pasaporte</option>
+              <option>Otro</option>
+            </select>
           </div>
           <div class="form-group col-md-3">
-            <label for="inputProvincia">Provincia</label>
-            <input type="text" class="form-control" id="inputProvincia" value="{{tmpTutor.direccion_actual.provincia}}" ng-model="tmpTutor.direccion_actual.provincia">
+            <label for="inputNroDocTutor">Número de documento</label>
+            <input type="text" class="form-control" id="inputNroDocTutor" value="{{tmpTutor.nro_documento}}" ng-model="tmpTutor.nro_documento">
           </div>
-
-          <div class="form-group col-md-3">
-            <label for="inputCiudad">Ciudad</label>
-            <input type="text" class="form-control" id="inputCiudad" value="{{tmpTutor.direccion_actual.ciudad}}" ng-model="tmpTutor.direccion_actual.ciudad">
-          </div>
-
-          <div class="form-group col-md-3">
-            <label for="inputBarrio">Barrio</label>
-            <input type="text" class="form-control" id="inputBarrio" value="{{tmpTutor.direccion_actual.barrio}}" ng-model="tmpTutor.direccion_actual.barrio">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputCP">Código Postal</label>
-            <input type="text" class="form-control" id="inputCP" value="{{tmpTutor.direccion_actual.cp}}"ng-model="tmpTutor.direccion_actual.cp">
-          </div>
-          <div class="row-form">
-            <div class="form-group col-md-3">
-              <label for="inputBarrio">Calle</label>
-              <input type="text" class="form-control" id="inputCalle" value="{{tmpTutor.direccion_actual.calle}}" ng-model="tmpTutor.direccion_actual.rue">
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputNumero">Número</label>
-              <input type="text" class="form-control" id="inputNumero" value="{{tmpTutor.direccion_actual.nro}}" ng-model="tmpTutor.direccion_actual.nro">
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label for="inputPico">Piso</label>
-            <input type="text" class="form-control" id="inputPiso" value="{{tmpTutor.direccion_actual.piso}}" ng-model="tmpTutor.direccion_actual.piso">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputDpto">Departamento</label>
-            <input type="text" class="form-control" id="inputDpto" value="{{tmpTutor.direccion_actual.depto}}" ng-model="tmpTutor.direccion_actual.depto">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputEdificio">Edificio</label>
-            <input type="text" class="form-control" id="inputEdificio" value="{{tmpTutor.direccion_actual.edificio}}" ng-model="tmpTutor.direccion_actual.edificio">
-          </div>
-          
+      
           <div class="form-group col-md-6">
             <label for="inputRelacion">Tipo de relación con el alumno</label>
             <select class="form-control">
@@ -159,9 +98,66 @@
               <option>Tutor</option>
             </select>
           </div>
-          <div class="form-group col-md-6">
+
+          <h4 class="monserrat-color"><b>Datos de contacto: </b></h4>
+          <div class="row" style="margin-left: 0px;">
+          <div class="form-group col-md-3">
+            <label for="inputTelefonoTutor">Teléfono</label>
+            <input type="text" class="form-control" id="inputTelefonoTutor" value="{{tmpTutor.telefono}}" ng-model="tmpTutor.telefono">
+          </div>  
+          <div class="form-group col-md-3">
+            <label for="inputEmailTutor">E-mail</label>
+            <input type="email" class="form-control" id="inputEmailTutor" value="{{tmpTutor.mail}}" ng-model="tmpTutor.mail">
+          </div>
+          </div>
+
+           <h4 class="monserrat-color"><b>Datos de domicilio actual:</b></h4>
+          
+          <div class="form-group col-md-3">
+            <label for="inputPais">País</label>
+            <input type="text" class="form-control" id="inputPais" value="{{tmpTutor.direccion_actual.pais}}" ng-model="tmpTutor.direccion_actual.pais">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputProvincia">Provincia</label>
+            <input type="text" class="form-control" id="inputProvincia" value="{{tmpTutor.direccion_actual.provincia}}" ng-model="tmpTutor.direccion_actual.provincia">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputCiudad">Ciudad</label>
+            <input type="text" class="form-control" id="inputCiudad" value="{{tmpTutor.direccion_actual.ciudad}}" ng-model="tmpTutor.direccion_actual.ciudad">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputBarrio">Barrio</label>
+            <input type="text" class="form-control" id="inputBarrio" value="{{tmpTutor.direccion_actual.barrio}}" ng-model="tmpTutor.direccion_actual.barrio">
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="inputCP">Código Postal</label>
+            <input type="text" class="form-control" id="inputCP" value="{{tmpTutor.direccion_actual.cp}}"ng-model="tmpTutor.direccion_actual.cp">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputBarrio">Calle</label>
+            <input type="text" class="form-control" id="inputCalle" value="{{tmpTutor.direccion_actual.calle}}" ng-model="tmpTutor.direccion_actual.rue">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputNumero">Número</label>
+            <input type="text" class="form-control" id="inputNumero" value="{{tmpTutor.direccion_actual.nro}}" ng-model="tmpTutor.direccion_actual.nro">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputPico">Piso</label>
+            <input type="text" class="form-control" id="inputPiso" value="{{tmpTutor.direccion_actual.piso}}" ng-model="tmpTutor.direccion_actual.piso">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputDpto">Departamento</label>
+            <input type="text" class="form-control" id="inputDpto" value="{{tmpTutor.direccion_actual.depto}}" ng-model="tmpTutor.direccion_actual.depto">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputEdificio">Edificio</label>
+            <input type="text" class="form-control" id="inputEdificio" value="{{tmpTutor.direccion_actual.edificio}}" ng-model="tmpTutor.direccion_actual.edificio">
+          </div>
+                    
+          <div class="form-group col-md-12">
             <label for="inputComentarioTutor">Comentario</label>
-            <input type="text" class="form-control" id="inputComentarioTutor">
+            <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioTutor"></textarea>
           </div>
 
 

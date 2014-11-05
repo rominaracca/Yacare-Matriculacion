@@ -57,4 +57,55 @@ angular.module('yacareMatriculacionApp')
     cp:"5000"
   };
 
+
+ $scope.tmpAlumno = {
+    nombre: "",
+    apellido: "",
+    tipo_documento: "",
+    nro_documento: "",
+    nro_cuil: "",
+    sexo: "",
+    grupo_sanguineo: "",
+    nacimiento: {
+      dia: "",
+      mes: "",
+      anio: ""
+    },
+    lugar_nacimiento: {
+      ciudad: "",
+      pais: ""
+    },
+    nacionalidades: []
+  };
+
+
+   $scope.tmpDireccion = {
+    calle: "",
+    nro: "",
+    barrio: "",
+    edificio: "",
+    piso: "",
+    depto: "",
+    ciudad: "",
+    cp:""
+  };
+
+    $scope.setSelectedAlumno = function(){
+      $.extend($scope.tmpAlumno, $scope.alumno);
+      $scope.tmpAlumno.lugar_nacimiento["ciudad"] = $scope.alumno.lugar_nacimiento["ciudad"];
+    };
+
+    $scope.setSelectedDireccion = function(){
+      $.extend($scope.tmpDireccion, $scope.direccion_actual);
+    };
+
+   $scope.updateAlumno = function(){
+    $.extend($scope.alumno, $scope.tmpAlumno);
+     $scope.alumno.lugar_nacimiento["ciudad"] = $scope.tmpAlumno.lugar_nacimiento["ciudad"];
+   };
+
+   $scope.updateDomicilio = function(){
+    $.extend($scope.direccion_actual, $scope.tmpDireccion);
+    };
+
 });

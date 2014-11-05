@@ -14,6 +14,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/yacare.css">
+    <link rel="stylesheet" href="styles/print.css">
     <!-- endbuild -->
   </head>
   <body ng-app="yacareMatriculacionApp" style="padding-top:0px;">
@@ -22,7 +23,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header" style="background-color:#f7f7f7">
+    <div id="banner" class="header" style="background-color:#f7f7f7">
          <div class="container">
            <img src="images/yacare-apaizado.gif" style="padding:10px 0px 15px 0px; width:235px;">
          </div>
@@ -31,6 +32,7 @@
 
 
     <div class="container"> 
+      <div id="tabs">
         <h3 class="monserrat-color"><b>Matriculación 2015</b></h3>  
       
      
@@ -43,11 +45,11 @@
           <li class="tab-yacare"><a class="tab-a-yacare" href="#emergencia" role="tab" data-toggle="pill">Contacto por Emergencias</a></li>
           <li class="tab-yacare"><a class="tab-a-yacare" href="#resumen" role="tab" data-toggle="pill">Resumen</a></li>
         </ul>
-     
+     </div>
    
       <div ng-view=""></div>
 
-      <div class="footer">
+      <div id="footer" class="footer">
         <div class="col-md-offset-4">
           <img src="images/unc.png" style="height:45px;">
           <img src="images/unc-psi.png" style="height:45px;">
