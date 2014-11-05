@@ -34,7 +34,6 @@ angular.module('yacareMatriculacionApp')
 	};
 
 	$scope.saveContact = function(){
-		console.log($scope.nvoContacto);
 		$scope.contactos.push($scope.nvoContacto);
 	};
 
@@ -48,7 +47,6 @@ angular.module('yacareMatriculacionApp')
 	};
 
 	$scope.updateContact = function(){
-		console.log($scope.nvoContacto);
 		$.extend($scope.contactos[$scope.selected], $scope.tmpContacto);
 	};
 
