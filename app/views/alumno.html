@@ -18,7 +18,7 @@
 <div class="container_gral">
 	<div class="col-md-offset-1 col-md-3" style="text-align:center">
 		<div class="image-container">
-			<a class="link" href="#" type="file" >  
+			<a class="link" href="#" type="file"  data-toggle="modal" data-target="#editProfileImage" >  
 				<img class="image img-rounded profile-img" src="images/nico-perfil.jpg"/>
 				<span class="overlay-image img-rounded">
 					<b>Haga click aqui para modificar la imagen</b>
@@ -42,7 +42,6 @@
 		<button class="btn btn-default edit-button-perfil-alumno" data-toggle="modal" data-target="#myEditModal" ng-click="setSelectedAlumno()">Editar</button>	
 	</div>
 </div>
-
 
 <div class="container_gral" style="height: 146px;">
 	<div class="col-md-offset-1 col-md-8">
@@ -211,3 +210,51 @@
 </div>
 
 
+<!-- Modal edicion de foto de perfil-->
+<div class="modal fade" id="editProfileImage" tabindex="-1" role="dialog" aria-labelledby="editProfileImage" aria-hidden="true" data-backdrop="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+				
+				<h4 class="modal-title" id="editAddress">Actualizar foto del alumno</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" style="display: inline-block;width: 100%;">
+					<div class="container-tabs">
+
+					<tabset justified="true">
+						<tab >
+						 <tab-heading>
+       						 <i class="glyphicon glyphicon-picture"></i> Subir foto nueva 
+     					 </tab-heading>
+
+     					 <div style="height: 400px;">
+     					 	<div class="fileUpload btn btn-primary">
+					    		<span style="vertical-align: -webkit-baseline-middle;">Upload</span>
+					   	 		<input type="file" class="upload" />
+							</div>
+     					 </div>
+						</tab>
+						<tab >
+						 <tab-heading>
+       						 <i class="glyphicon glyphicon-pencil"></i> Editar foto actual 
+     					 </tab-heading>
+     					 <div style="height: 400px;" >
+						<!--<canvas id="picturePanel" width="779" height="519"></canvas>--> 	
+     					 </div>
+						</tab>
+				</tabset>
+
+
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateDomicilio()">Guardar</button>
+			</div>
+		</div> <!-- cierre de modal-content -->
+	</div> <!-- cierre de modal-dialog -->
+</div>
