@@ -58,63 +58,6 @@
 	</div>
 </div>
 
-<!-- Modal edicion de datos de Domicilio Actual-->
-<div class="modal fade" id="editAddress" tabindex="-1" role="dialog" aria-labelledby="editAddress" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-				
-				<h4 class="modal-title" id="editAddress">Domicilio actual de {{alumno.nombre}}</h4>
-			</div>
-			<div class="modal-body">
-				<form role="form" style="display: inline-block;">
-					<div class="form-group col-md-6">
-						<label for="inputCiudad">Ciudad</label>
-						<input type="text" class="form-control" id="inputCiudad" value="{{tmpDireccion.ciudad}}" ng-model="tmpDireccion.ciudad">
-					</div>
-					<div class="form-group col-md-6">
-						<label for="inputBarrio">Barrio</label>
-						<input type="text" class="form-control" id="inputBarrio" value="{{direccion_actual.barrio}}">
-					</div>
-
-					<div class="form-group col-md-6">
-						<label for="inputBarrio">Calle</label>
-						<input type="text" class="form-control" id="inputCalle" value="{{direccion_actual.calle}}">
-					</div>
-					<div class="form-group col-md-2">
-						<label for="inputNumero">Número</label>
-						<input type="text" class="form-control" id="inputNumero" value="{{direccion_actual.nro}}">
-					</div>
-					<div class="form-group col-md-2">
-						<label for="inputPico">Piso</label>
-						<input type="text" class="form-control" id="inputPiso" value="{{direccion_actual.piso}}">
-					</div>
-					<div class="form-group col-md-2">
-						<label for="inputDpto">Departamento</label>
-						<input type="text" class="form-control" id="inputDpto" value="{{direccion_actual.depto}}">
-					</div>
-
-
-					<div class="form-group col-md-3">
-						<label for="inputUnidad">Edificio</label>
-						<input type="text" class="form-control" id="inputUnidad" value="{{direccion_actual.edificio}}">
-					</div>
-					<div class="form-group col-md-3">
-						<label for="inputCP">Código Postal</label>
-						<input type="text" class="form-control" id="inputCP" value="{{direccion_actual.cp}}">
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateDomicilio()">Guardar</button>
-			</div>
-		</div> <!-- cierre de modal-content -->
-	</div> <!-- cierre de modal-dialog -->
-</div>
-
 <!-- Modal edicion de datos de perfil de alumno -->
 <div class="modal fade" id="myEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -208,6 +151,62 @@
 	</div> <!-- cierre de modal-dialog -->
 </div>
 
+<!-- Modal edicion de datos de Domicilio Actual-->
+<div class="modal fade" id="editAddress" tabindex="-1" role="dialog" aria-labelledby="editAddress" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+				
+				<h4 class="modal-title" id="editAddress">Domicilio actual de {{alumno.nombre}}</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" style="display: inline-block;">
+					<div class="form-group col-md-6">
+						<label for="inputCiudad">Ciudad</label>
+						<input type="text" class="form-control" id="inputCiudad" value="{{tmpDireccion.ciudad}}" ng-model="tmpDireccion.ciudad">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputBarrio">Barrio</label>
+						<input type="text" class="form-control" id="inputBarrio" value="{{direccion_actual.barrio}}">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="inputBarrio">Calle</label>
+						<input type="text" class="form-control" id="inputCalle" value="{{direccion_actual.calle}}">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="inputNumero">Número</label>
+						<input type="text" class="form-control" id="inputNumero" value="{{direccion_actual.nro}}">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="inputPico">Piso</label>
+						<input type="text" class="form-control" id="inputPiso" value="{{direccion_actual.piso}}">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="inputDpto">Departamento</label>
+						<input type="text" class="form-control" id="inputDpto" value="{{direccion_actual.depto}}">
+					</div>
+
+
+					<div class="form-group col-md-3">
+						<label for="inputUnidad">Edificio</label>
+						<input type="text" class="form-control" id="inputUnidad" value="{{direccion_actual.edificio}}">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="inputCP">Código Postal</label>
+						<input type="text" class="form-control" id="inputCP" value="{{direccion_actual.cp}}">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateDomicilio()">Guardar</button>
+			</div>
+		</div> <!-- cierre de modal-content -->
+	</div> <!-- cierre de modal-dialog -->
+</div>
 
 <!-- Modal edicion de foto de perfil-->
 <div class="modal fade" id="editProfileImage" tabindex="-1" role="dialog" aria-labelledby="editProfileImage" aria-hidden="true" data-backdrop="false">
@@ -224,11 +223,12 @@
 					<div class="container-tabs">
 
 					<tabset justified="true">
+						
+						<!-- pestania subir foto -->	
 						<tab >
-						 <tab-heading>
+						 <tab-heading class="monserrat-color">
        						 <i class="glyphicon glyphicon-picture"></i> Subir foto nueva 
      					 </tab-heading>
-
      					 <div style="height: 400px;">
      					 	<div class="btn btn-primary btn-file">
 					    		<span>Seleccionar imagen</span>
@@ -236,17 +236,17 @@
 							</div>
      					 </div>
 						</tab>
+
+						<!-- pestania subir foto -->
 						<tab >
-						 <tab-heading>
+						 <tab-heading class="monserrat-color">
        						 <i class="glyphicon glyphicon-pencil"></i> Editar foto actual 
      					 </tab-heading>
      					 <div style="height: 400px;" >
 						<!--<canvas id="picturePanel" width="779" height="519"></canvas>--> 	
      					 </div>
 						</tab>
-				</tabset>
-
-
+					</tabset>
 
 				</form>
 			</div>

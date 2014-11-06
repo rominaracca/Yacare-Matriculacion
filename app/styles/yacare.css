@@ -229,21 +229,31 @@ a.link:hover span.overlay-image{
 
 /**estilos para boton de carga de foto**/
 .btn-file {
+ /*
     position: relative;
     overflow: hidden;
+ 	display: block;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50%;	
+	*/
 }
+
 .btn-file input[type=file] {
-    position: absolute;
+/*    position: absolute;
     top: 0;
     right: 0;
     min-width: 100%;
     min-height: 100%;
     font-size: 100px;
     text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
     background: white;
+    outline: none;
+    filter: alpha(opacity=0);
     cursor: inherit;
     display: block;
+ */   opacity: 0;  /** borra la visualizacion del boton y el path**/
+
 }
+
