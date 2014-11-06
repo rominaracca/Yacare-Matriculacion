@@ -22,7 +22,7 @@ angular.module('yacareMatriculacionApp')
   };
 
   $scope.matricula = {
-    anio:"Primer año",
+    anio:"Segundo año",
     turno:"Turno tarde"
   };
 

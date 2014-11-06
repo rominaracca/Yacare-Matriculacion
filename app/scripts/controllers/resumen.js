@@ -10,12 +10,4 @@
 angular.module('yacareMatriculacionApp')
   .controller('ResumenCtrl', function ($scope) {
   
-
-
-  $scope.matricula = {
-    anio:"Primer año",
-    turno:"Turno tarde"
-  };
-
-
   });

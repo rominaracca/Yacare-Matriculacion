@@ -1,4 +1,6 @@
 <!-- PERFIL DEL TUTOR -->
+
+<!-- Presentacion de datos Perfil Tutor-->
 <div class="container_gral" ng-repeat="item in tutores">
   <div class="col-md-offset-1" >
     <div class="monserrat-color col-md-8"> 
@@ -131,10 +133,6 @@
           </div>
 
           <div class="form-group col-md-2">
-            <label for="inputCP">Código Postal</label>
-            <input type="text" class="form-control" id="inputCP" value="{{tmpTutor.direccion_actual.cp}}"ng-model="tmpTutor.direccion_actual.cp">
-          </div>
-          <div class="form-group col-md-2">
             <label for="inputBarrio">Calle</label>
             <input type="text" class="form-control" id="inputCalle" value="{{tmpTutor.direccion_actual.calle}}" ng-model="tmpTutor.direccion_actual.rue">
           </div>
@@ -153,6 +151,10 @@
           <div class="form-group col-md-2">
             <label for="inputEdificio">Edificio</label>
             <input type="text" class="form-control" id="inputEdificio" value="{{tmpTutor.direccion_actual.edificio}}" ng-model="tmpTutor.direccion_actual.edificio">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputCP">Código Postal</label>
+            <input type="text" class="form-control" id="inputCP" value="{{tmpTutor.direccion_actual.cp}}"ng-model="tmpTutor.direccion_actual.cp">
           </div>
                     
           <div class="form-group col-md-12">
@@ -275,10 +277,6 @@
           </div>
 
           <div class="form-group col-md-2">
-            <label for="inputCP">Código Postal</label>
-            <input type="text" class="form-control" id="inputCP" ng-model="nvoTutor.direccion_actual.cp">
-          </div>
-          <div class="form-group col-md-2">
             <label for="inputBarrio">Calle</label>
             <input type="text" class="form-control" id="inputCalle" ng-model="nvoTutor.direccion_actual.rue">
           </div>
@@ -297,6 +295,10 @@
           <div class="form-group col-md-2">
             <label for="inputEdificio">Edificio</label>
             <input type="text" class="form-control" id="inputEdificio" ng-model="nvoTutor.direccion_actual.edificio">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputCP">Código Postal</label>
+            <input type="text" class="form-control" id="inputCP" ng-model="nvoTutor.direccion_actual.cp">
           </div>
           
           <div class="form-group col-md-12">
