@@ -256,6 +256,14 @@ a.link:hover span.overlay-image{
     cursor: inherit;
  */
    opacity: 0;  /** borra la visualizacion del boton y el path**/
+}
 
+.form-group.required .control-label:after{
+	content: "*";
+	color: red;
+}
+
+.error{
+	color: red;
 }
 
