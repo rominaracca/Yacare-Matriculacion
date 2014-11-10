@@ -30,7 +30,7 @@
   tipo_relacion:"Padre",
   tipo_documento:"DNI",
   nro_documento:"16.132.456",
-  sexo:"Hombre",
+  genero:"Hombre",
   nacimiento : {
     dia:"08",
     mes:"Junio",
@@ -61,7 +61,7 @@
   tipo_relacion:"Madre",
   tipo_documento:"DNI",
   nro_documento:"17.214.237",
-  sexo:"Mujer",
+  genero:"Mujer",
   nacimiento : {
     dia:"09",
     mes:"Octubre",
@@ -89,9 +89,14 @@
 
 ];
 
+$scope.genero = ['Mujer','Hombre'];
+$scope.tipo_documento = ['DNI', 'Pasaporte', 'Otro'];
+$scope.tipo_relacion = ['Padre','Madre','Hijo','Sobrino','Primo','Tio','Hermano','Abuelo','Tutor'];
+
+
 $scope.nvoTutor = {
   nombre:"",
-  apellido:"Rios",
+  apellido:"",
   tipo_relacion:"",
   tipo_documento:"",
   nro_documento:"",

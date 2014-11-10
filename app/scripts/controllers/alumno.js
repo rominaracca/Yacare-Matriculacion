@@ -32,8 +32,9 @@ angular.module('yacareMatriculacionApp')
     tipo_documento: "DNI",
     nro_documento: "22.222.222",
     nro_cuil: "20-22.222.222-9",
-    sexo: "Hombre",
-    grupo_sanguineo: "0+",
+    genero: "Hombre",   
+    grupo_sanguineo: "0",
+    factor_rh: "Positivo",
     nacimiento: {
       dia: "08",
       mes: "Junio",
@@ -45,6 +46,10 @@ angular.module('yacareMatriculacionApp')
     },
     nacionalidades: [" argentina", "italiana"]
   };
+
+  $scope.genero = ['Mujer','Hombre'];
+  $scope.grupo_sanguineo = ['0', 'A', 'B', 'AB'];
+  $scope.factor_rh = ['Positivo','Negativo'];
 
   $scope.direccion_actual = {
     calle: "Av. Emilio Olmos",
@@ -64,8 +69,9 @@ angular.module('yacareMatriculacionApp')
     tipo_documento: "",
     nro_documento: "",
     nro_cuil: "",
-    sexo: "",
+    genero: "",
     grupo_sanguineo: "",
+    factor_rh: "",
     nacimiento: {
       dia: "",
       mes: "",

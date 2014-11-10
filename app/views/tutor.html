@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-8">
       <p><b>{{item.tipo_documento}}</b>:<b>{{item.nro_documento}}</b></p>
-      <p><b>{{item.sexo}},</b> nacido el <b>{{item.nacimiento.dia}}</b> de <b>{{item.nacimiento.mes}}</b> de <b>{{item.nacimiento.anio}}</b>
+      <p><b>{{item.genero}},</b> nacido el <b>{{item.nacimiento.dia}}</b> de <b>{{item.nacimiento.mes}}</b> de <b>{{item.nacimiento.anio}}</b>
       en <b>{{item.lugar_nacimiento.ciudad}}</b>, <b>{{item.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
       <p> Con domicilio en <b>{{item.direccion_actual.calle}}</b> número <b>{{item.direccion_actual.nro}}</b> piso <b>{{item.direccion_actual.piso}}</b> departamento <b>{{item.direccion_actual.depto}}</b> edificio <b>{{item.direccion_actual.edificio}}</b> barrio <b>{{item.direccion_actual.barrio}}</b>,<b>{{item.direccion_actual.ciudad}}</b>, <b>{{item.direccion_actual.provincia}}</b>, <b>{{item.direccion_actual.pais}}</b> CP: <b>{{item.direccion_actual.cp}}</b></p>
 
@@ -59,11 +59,9 @@
             </div>
             <div class="form-group required col-md-3">
               <label class="control-label" for="inputGeneroTutor">Genero</label>
-              <select class="form-control" >
-                <option selected disabled>-- Selecione --</option>
-                <option value="hombre">Masculino</option>
-                <option value="mujer">Femenino</option>
-              </select>
+               <select class="form-control" name="selectGeneroTutor" required ng-options="l for l in genero" ng-model="tmpTutor.genero">
+                <option value="" disabled>-- Selecione --</option>  
+              </select>            
                <div class="error" ng-show="form_tutor.inputGeneroTutor.$dirty && form_tutor.inputGeneroTutor.$error.required && !form_tutor.inputGeneroTutor.$focused">
                 El campo es requerido.
               </div>
@@ -86,11 +84,8 @@
          <div class="row">
             <div class="form-group required col-md-3">
               <label class="control-label" for="selectTipoDocTutor">Tipo de Documento</label>
-              <select class="form-control" name="selectTipoDocTutor" required>
-                <option selected disabled>-- Selecione --</option>
-                <option>DNI</option>
-                <option>Pasaporte</option>
-                <option>Otro</option>
+              <select class="form-control" name="selectTipoDocTutor" required ng-options="l for l in tipo_documento" ng-model="tmpTutor.tipo_documento">
+              <option value="" disabled>-- Selecione --</option>  
               </select>
                <div class="error" ng-show="form_tutor.selectTipoDocTutor.$dirty && form_tutor.selectTipoDocTutor.$error.required && !form_tutor.selectTipoDocTutor.$focused">
                 El campo es requerido.
@@ -105,18 +100,9 @@
             </div>
             <div class="form-group required col-md-6">
               <label class="control-label" for="selectRelacion">Tipo de relación con el alumno</label>
-              <select class="form-control" name="selectRelacion" required>
-                <option selected disabled>-- Selecione --</option>
-                <option>Padre</option>
-                <option>Madre</option>
-                <option>Hijo</option>
-                <option>Sobrino</option>
-                <option>Primo</option>
-                <option>Tio</option>
-                <option>Hermano</option>
-                <option>Abuelo</option>
-                <option>Tutor</option>
-              </select>
+               <select class="form-control" name="selectRelacion" required ng-options="l for l in tipo_relacion" ng-model="tmpTutor.tipo_relacion">
+                <option value="" disabled>-- Selecione --</option>  
+              </select>           
                <div class="error" ng-show="form_tutor.selectRelacion.$dirty && form_tutor.selectRelacion.$error.required && !form_tutor.selectRelacion.$focused">
                 El campo es requerido.
               </div>
@@ -255,11 +241,11 @@
             </div>
             <div class="form-group required col-md-3">
               <label class="control-label" for="inputGeneroTutor">Genero</label>
-              <select class="form-control" >
-                <option selected disabled>-- Selecione --</option>
-                <option value="hombre">Masculino</option>
-                <option value="mujer">Femenino</option>
-              </select>
+
+               <select class="form-control" name="selectGeneroTutor" required ng-options="l for l in genero" ng-model="nvoTutor.genero">
+                <option value="" disabled>-- Selecione --</option>  
+               </select>      
+            
                <div class="error" ng-show="form_nvo_tutor.inputGeneroTutor.$dirty && form_nvo_tutor.inputGeneroTutor.$error.required && !form_nvo_tutor.inputGeneroTutor.$focused">
                 El campo es requerido.
               </div>
@@ -282,13 +268,10 @@
          <div class="row">
             <div class="form-group required col-md-3">
               <label class="control-label" for="selectTipoDocTutor">Tipo de Documento</label>
-              <select class="form-control" name="selectTipoDocTutor" required>
-                <option selected disabled>-- Selecione --</option>
-                <option>DNI</option>
-                <option>Pasaporte</option>
-                <option>Otro</option>
+              <select class="form-control" name="selectTipoDocTutor" required ng-options="l for l in tipo_documento" ng-model="nvoTutor.tipo_documento">
+              <option value="" disabled>-- Selecione --</option>  
               </select>
-               <div class="error" ng-show="form_nvo_tutor.selectTipoDocTutor.$dirty && form_nvo_tutor.selectTipoDocTutor.$error.required && !form_nvo_tutor.selectTipoDocTutor.$focused">
+              <div class="error" ng-show="form_nvo_tutor.selectTipoDocTutor.$dirty && form_nvo_tutor.selectTipoDocTutor.$error.required && !form_nvo_tutor.selectTipoDocTutor.$focused">
                 El campo es requerido.
               </div>
             </div>
@@ -301,18 +284,10 @@
             </div>
             <div class="form-group required col-md-6">
               <label class="control-label" for="selectRelacion">Tipo de relación con el alumno</label>
-              <select class="form-control" name="selectRelacion" required>
-                <option selected disabled>-- Selecione --</option>
-                <option>Padre</option>
-                <option>Madre</option>
-                <option>Hijo</option>
-                <option>Sobrino</option>
-                <option>Primo</option>
-                <option>Tio</option>
-                <option>Hermano</option>
-                <option>Abuelo</option>
-                <option>Tutor</option>
-              </select>
+              
+              <select class="form-control" name="selectRelacion" required ng-options="l for l in tipo_relacion" ng-model="nvoTutor.tipo_relacion">
+                <option value="" disabled>-- Selecione --</option>  
+              </select>              
                <div class="error" ng-show="form_nvo_tutor.selectRelacion.$dirty && form_nvo_tutor.selectRelacion.$error.required && !form_nvo_tutor.selectRelacion.$focused">
                 El campo es requerido.
               </div>

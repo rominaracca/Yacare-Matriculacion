@@ -34,7 +34,7 @@
 
 	<div class="col-md-8">
 		<p>{{alumno.tipo_documento}} : <b>{{alumno.nro_documento}}</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>{{alumno.nro_cuil}}</b> </p>
-		<p> <b> {{alumno.sexo}}. </b> Grupo sanguíneo: <b> {{alumno.grupo_sanguineo}} </b></p>
+		<p> <b> {{alumno.genero}}. </b> Grupo sanguíneo: <b> {{alumno.grupo_sanguineo}} {{alumno.factor_rh}} </b></p>
 		<p>Nacido el <b>{{alumno.nacimiento.dia}}</b> de <b>{{alumno.nacimiento.mes}}</b> de <b>{{alumno.nacimiento.anio}}</b>
 		en <b>{{alumno.lugar_nacimiento.ciudad}}</b>, <b>{{alumno.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
 		<p>De nacionalidad <b>{{alumno.nacionalidades[0]}}</b>, <b>{{alumno.nacionalidades[1]}}</b>.</p>
@@ -94,11 +94,11 @@
 				<div class="row">
 					<div class="form-group required col-md-6">
 						<label class="control-label" for="selectGenero">Genero</label>
-						<select class="form-control" name="selectGenero" required>
-							<option selected disabled>-- Selecione --</option>
-							<option>Masculino</option>
-							<option>Femenino</option>
-						</select>
+						
+						<select class="form-control" name="selectGenero" required ng-options="l for l in genero" ng-model="tmpAlumno.genero">
+							<option value="" disabled>-- Selecione --</option>	
+						</select>	
+						
 						<div class="error" ng-show="form_perfil.selectGenero.$dirty && form_perfil.selectGenero.$error.required && !form_perfil.selectGenero.$focused">
 						  El campo es requerido.
 						</div>
@@ -106,13 +106,9 @@
 
 					<div class="form-group required col-md-3">
 						<label class="control-label" for="inputGrupo">Grupo Sanguíneo</label>
-						<select class="form-control" name="selectGS" required>
-							<option selected disabled>-- Selecione --</option>
-							<option>0</option>
-							<option>A</option>
-							<option>B</option>
-							<option>AB</option>
-						</select>
+						<select class="form-control" name="selectGD" required ng-options="l for l in grupo_sanguineo" ng-model="tmpAlumno.grupo_sanguineo">
+							<option value="" disabled>-- Selecione --</option>	
+						</select>	
 						<div class="error" ng-show="form_perfil.selectGS.$dirty && form_perfil.selectGS.$error.required && !form_perfil.selectGS.$focused">
 						  El campo es requerido.
 						</div>
@@ -120,10 +116,8 @@
 
 					<div class="form-group required col-md-3">
 						<label class="control-label" for="inputFactor">Factor RH</label>
-						<select class="form-control" required="required" name="selectFactor">
-							<option selected disabled>-- Selecione --</option>
-							<option>Negativo</option>
-							<option>Positivo</option>
+						<select class="form-control" name="selectFactor" required ng-options="l for l in factor_rh" ng-model="tmpAlumno.factor_rh">
+							<option value="" disabled>-- Selecione --</option>
 						</select>
 						<div class="error" ng-show="form_perfil.selectFactor.$dirty && form_perfil.selectFactor.$error.required && !form_perfil.selectFactor.$focused">
 						  El campo es requerido.
@@ -151,7 +145,7 @@
 						<label class="control-label" for="inputFechaNacimiento">Fecha de Nacimiento</label>
 												
 						<p class="input-group">
-							<input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false" id="datepicker"/ required="required">
+							<input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false" id="datepicker"/ required>
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 							</span>
