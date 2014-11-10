@@ -33,10 +33,6 @@ angular.module('yacareMatriculacionApp')
 		$scope.contactos.splice(index, 1);
 	};
 
-	$scope.saveContact = function(){
-		$scope.contactos.push($scope.nvoContacto);
-	};
-
 	$scope.cleanModal = function(){
 		$scope.nvoContacto = {
 			apellido:"",
@@ -47,7 +43,8 @@ angular.module('yacareMatriculacionApp')
 	};
 
 	$scope.updateContact = function(){
-		$.extend($scope.contactos[$scope.selected], $scope.tmpContacto);
+		$.extend($scope.contactos[$scope.selected], $scope.tmpContacto);        
+    $('#myEditModalContactoEmergencia').modal('hide');
 	};
 
 	$scope.nvoContacto = {
@@ -63,5 +60,11 @@ angular.module('yacareMatriculacionApp')
     	tel:"",
     	comentario:""
     };
+
+    $scope.saveContact = function() {
+        $scope.contactos.push($scope.nvoContacto);
+        $('#myNvoModalContactoEmergencia').modal('hide');
+        $scope.form_nvo_emergencia.$setPristine();
+    }
 
   });

@@ -102,10 +102,12 @@ angular.module('yacareMatriculacionApp')
    $scope.updateAlumno = function(){
     $.extend($scope.alumno, $scope.tmpAlumno);
      $scope.alumno.lugar_nacimiento["ciudad"] = $scope.tmpAlumno.lugar_nacimiento["ciudad"];
+     $('#myEditModal').modal('hide');
    };
 
    $scope.updateDomicilio = function(){
     $.extend($scope.direccion_actual, $scope.tmpDireccion);
+    $('#editAddress').modal('hide');
     };
 
 });

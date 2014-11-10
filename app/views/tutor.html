@@ -39,137 +39,185 @@
       </div>
 
       <div class="modal-body">
-        <form role="form" style="display: inline-block;">
+        <form name="form_tutor" ng-submit="updateTutor()" role="form" style="display: inline-block;">
       
           <h4 class="monserrat-color"> <b>Datos personales:</b></h4>
-          <div class="form-group col-md-3">
-            <label for="inputApellido">Apellido</label>
-            <input type="text" class="form-control" id="inputApellido" value="{{tmpTutor.apellido}}" ng-model="tmpTutor.apellido">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputNombre">Nombre</label>
-            <input type="text" class="form-control" id="inputNombre" value="{{tmpTutor.nombre}}" ng-model="tmpTutor.nombre">
-          </div>
+          <div class="row">
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputApellido">Apellido</label>
+              <input type="text" class="form-control" name="inputApellido" value="{{tmpTutor.apellido}}" ng-model="tmpTutor.apellido" required>
+              <div class="error" ng-show="form_tutor.inputApellido.$dirty && form_tutor.inputApellido.$error.required && !form_tutor.inputApellido.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputNombre">Nombre</label>
+              <input type="text" class="form-control" name="inputNombre" value="{{tmpTutor.nombre}}" ng-model="tmpTutor.nombre" required>
+               <div class="error" ng-show="form_tutor.inputNombre.$dirty && form_tutor.inputNombre.$error.required && !form_tutor.inputNombre.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputGeneroTutor">Genero</label>
+              <select class="form-control" >
+                <option selected disabled>-- Selecione --</option>
+                <option value="hombre">Masculino</option>
+                <option value="mujer">Femenino</option>
+              </select>
+               <div class="error" ng-show="form_tutor.inputGeneroTutor.$dirty && form_tutor.inputGeneroTutor.$error.required && !form_tutor.inputGeneroTutor.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
+              
+              <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="Date()" ng-required="true" show-button-bar="false" required/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+              <div class="error" ng-show="form_tutor.inputFechaNacimientoTutor.$dirty && form_tutor.inputFechaNacimientoTutor.$error.required && !form_tutor.inputFechaNacimientoTutor.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+         </div>
 
-          <div class="form-group col-md-3">
-            <label for="inputGeneroTutor">Genero</label>
-            <select class="form-control" >
-              <option selected disabled>-- Selecione --</option>
-              <option value="hombre">Masculino</option>
-              <option value="mujer">Femenino</option>
-            </select>
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
-            
-            <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="Date()" ng-required="true" show-button-bar="false"/>
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
-           
-          </div>
-         
-          <div class="form-group col-md-3">
-            <label for="inputTipoDocTutor">Tipo de Documento</label>
-            <select class="form-control">
-              <option selected disabled>-- Selecione --</option>
-              <option>DNI</option>
-              <option>Pasaporte</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputNroDocTutor">Número de documento</label>
-            <input type="text" class="form-control" id="inputNroDocTutor" value="{{tmpTutor.nro_documento}}" ng-model="tmpTutor.nro_documento">
-          </div>
-      
-          <div class="form-group col-md-6">
-            <label for="inputRelacion">Tipo de relación con el alumno</label>
-            <select class="form-control">
-              <option selected disabled>-- Selecione --</option>
-              <option>Padre</option>
-              <option>Madre</option>
-              <option>Hijo</option>
-              <option>Sobrino</option>
-              <option>Primo</option>
-              <option>Tio</option>
-              <option>Hermano</option>
-              <option>Abuelo</option>
-              <option>Tutor</option>
-            </select>
-          </div>
-
-          <h4 class="monserrat-color"><b>Datos de contacto: </b></h4>
-          <div class="row" style="margin-left: 0px;">
-            <div class="form-group col-md-3">
-              <label for="inputTelefonoTutor">Teléfono</label>
-              <input type="text" class="form-control" id="inputTelefonoTutor" value="{{tmpTutor.telefono}}" ng-model="tmpTutor.telefono">
-            </div>  
-            <div class="form-group col-md-3">
-              <label for="inputEmailTutor">E-mail</label>
-              <input type="email" class="form-control" id="inputEmailTutor" value="{{tmpTutor.mail}}" ng-model="tmpTutor.mail">
+         <div class="row">
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="selectTipoDocTutor">Tipo de Documento</label>
+              <select class="form-control" name="selectTipoDocTutor" required>
+                <option selected disabled>-- Selecione --</option>
+                <option>DNI</option>
+                <option>Pasaporte</option>
+                <option>Otro</option>
+              </select>
+               <div class="error" ng-show="form_tutor.selectTipoDocTutor.$dirty && form_tutor.selectTipoDocTutor.$error.required && !form_tutor.selectTipoDocTutor.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputNroDocTutor">Número de documento</label>
+              <input type="text" class="form-control" name="inputNroDocTutor" value="{{tmpTutor.nro_documento}}" ng-model="tmpTutor.nro_documento" required>
+               <div class="error" ng-show="form_tutor.inputNroDocTutor.$dirty && form_tutor.inputNroDocTutor.$error.required && !form_tutor.inputNroDocTutor.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-6">
+              <label class="control-label" for="selectRelacion">Tipo de relación con el alumno</label>
+              <select class="form-control" name="selectRelacion" required>
+                <option selected disabled>-- Selecione --</option>
+                <option>Padre</option>
+                <option>Madre</option>
+                <option>Hijo</option>
+                <option>Sobrino</option>
+                <option>Primo</option>
+                <option>Tio</option>
+                <option>Hermano</option>
+                <option>Abuelo</option>
+                <option>Tutor</option>
+              </select>
+               <div class="error" ng-show="form_tutor.selectRelacion.$dirty && form_tutor.selectRelacion.$error.required && !form_tutor.selectRelacion.$focused">
+                El campo es requerido.
+              </div>
             </div>
           </div>
 
+          <h4 class="monserrat-color"><b>Datos de contacto: </b></h4>
+          <div class="row">
+              <div class="form-group required col-md-3">
+                <label class="control-label" for="inputTelefonoTutor">Teléfono</label>
+                <input type="text" class="form-control" name="inputTelefonoTutor" value="{{tmpTutor.telefono}}" ng-model="tmpTutor.telefono" required>
+                 <div class="error" ng-show="form_tutor.inputTelefonoTutor.$dirty && form_tutor.inputTelefonoTutor.$error.required && !form_tutor.inputTelefonoTutor.$focused">
+                El campo es requerido.
+              </div>
+              </div>  
+              <div class="form-group col-md-3">
+                <label for="inputEmailTutor">E-mail</label>
+                <input type="email" class="form-control" name="inputEmailTutor" value="{{tmpTutor.mail}}" ng-model="tmpTutor.mail">
+              </div>
+          </div>
+
            <h4 class="monserrat-color"><b>Datos de domicilio actual:</b></h4>
-          
-          <div class="form-group col-md-3">
-            <label for="inputPais">País</label>
-            <input type="text" class="form-control" id="inputPais" value="{{tmpTutor.direccion_actual.pais}}" ng-model="tmpTutor.direccion_actual.pais">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputProvincia">Provincia</label>
-            <input type="text" class="form-control" id="inputProvincia" value="{{tmpTutor.direccion_actual.provincia}}" ng-model="tmpTutor.direccion_actual.provincia">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputCiudad">Ciudad</label>
-            <input type="text" class="form-control" id="inputCiudad" value="{{tmpTutor.direccion_actual.ciudad}}" ng-model="tmpTutor.direccion_actual.ciudad">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputBarrio">Barrio</label>
-            <input type="text" class="form-control" id="inputBarrio" value="{{tmpTutor.direccion_actual.barrio}}" ng-model="tmpTutor.direccion_actual.barrio">
-          </div>
-
-          <div class="form-group col-md-2">
-            <label for="inputBarrio">Calle</label>
-            <input type="text" class="form-control" id="inputCalle" value="{{tmpTutor.direccion_actual.calle}}" ng-model="tmpTutor.direccion_actual.rue">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputNumero">Número</label>
-            <input type="text" class="form-control" id="inputNumero" value="{{tmpTutor.direccion_actual.nro}}" ng-model="tmpTutor.direccion_actual.nro">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputPico">Piso</label>
-            <input type="text" class="form-control" id="inputPiso" value="{{tmpTutor.direccion_actual.piso}}" ng-model="tmpTutor.direccion_actual.piso">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputDpto">Departamento</label>
-            <input type="text" class="form-control" id="inputDpto" value="{{tmpTutor.direccion_actual.depto}}" ng-model="tmpTutor.direccion_actual.depto">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputEdificio">Edificio</label>
-            <input type="text" class="form-control" id="inputEdificio" value="{{tmpTutor.direccion_actual.edificio}}" ng-model="tmpTutor.direccion_actual.edificio">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputCP">Código Postal</label>
-            <input type="text" class="form-control" id="inputCP" value="{{tmpTutor.direccion_actual.cp}}"ng-model="tmpTutor.direccion_actual.cp">
-          </div>
-                    
-          <div class="form-group col-md-12">
-            <label for="inputComentarioTutor">Comentario</label>
-            <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioTutor"></textarea>
+          <div class="row">
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputPais">País</label>
+              <input type="text" class="form-control" name="inputPais" value="{{tmpTutor.direccion_actual.pais}}" ng-model="tmpTutor.direccion_actual.pais" required>
+               <div class="error" ng-show="form_tutor.inputPais.$dirty && form_tutor.inputPais.$error.required && !form_tutor.inputPais.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputProvincia">Provincia</label>
+              <input type="text" class="form-control" name="inputProvincia" value="{{tmpTutor.direccion_actual.provincia}}" ng-model="tmpTutor.direccion_actual.provincia" required>
+               <div class="error" ng-show="form_tutor.inputProvincia.$dirty && form_tutor.inputProvincia.$error.required && !form_tutor.inputProvincia.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputCiudad">Ciudad</label>
+              <input type="text" class="form-control" name="inputCiudad" value="{{tmpTutor.direccion_actual.ciudad}}" ng-model="tmpTutor.direccion_actual.ciudad" required>
+               <div class="error" ng-show="form_tutor.inputCiudad.$dirty && form_tutor.inputCiudad.$error.required && !form_tutor.inputCiudad.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputBarrio">Barrio</label>
+              <input type="text" class="form-control" name="inputBarrio" value="{{tmpTutor.direccion_actual.barrio}}" ng-model="tmpTutor.direccion_actual.barrio" required>
+               <div class="error" ng-show="form_tutor.inputBarrio.$dirty && form_tutor.inputBarrio.$error.required && !form_tutor.inputBarrio.$focused">
+                El campo es requerido.
+              </div>
+            </div>
           </div>
 
+          <div class="row">
+            <div class="form-group required col-md-2">
+              <label class="control-label" for="inputBarrio">Calle</label>
+              <input type="text" class="form-control" name="inputCalle" value="{{tmpTutor.direccion_actual.calle}}" ng-model="tmpTutor.direccion_actual.calle" required>
+               <div class="error" ng-show="form_tutor.inputCalle.$dirty && form_tutor.inputCalle.$error.required && !form_tutor.inputCalle.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputNumero">Número</label>
+              <input type="text" class="form-control" name="inputNumero" value="{{tmpTutor.direccion_actual.nro}}" ng-model="tmpTutor.direccion_actual.nro">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputPico">Piso</label>
+              <input type="text" class="form-control" name="inputPiso" value="{{tmpTutor.direccion_actual.piso}}" ng-model="tmpTutor.direccion_actual.piso">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputDpto">Departamento</label>
+              <input type="text" class="form-control" name="inputDpto" value="{{tmpTutor.direccion_actual.depto}}" ng-model="tmpTutor.direccion_actual.depto">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputEdificio">Edificio</label>
+              <input type="text" class="form-control" name="inputEdificio" value="{{tmpTutor.direccion_actual.edificio}}" ng-model="tmpTutor.direccion_actual.edificio">
+            </div>
+            <div class="form-group required col-md-2">
+              <label class="control-label" for="inputCP">Código Postal</label>
+              <input type="text" class="form-control" name="inputCP" value="{{tmpTutor.direccion_actual.cp}}"ng-model="tmpTutor.direccion_actual.cp" required>
+               <div class="error" ng-show="form_tutor.inputCP.$dirty && form_tutor.inputCP.$error.required && !form_tutor.inputCP.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">  
+            <div class="form-group col-md-12">
+              <label for="inputComentarioTutor">Comentario</label>
+              <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioTutor"></textarea>
+            </div>
+          </div>
+        
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
 
         </form>
       </div> <!-- cierre de modal-body -->
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateTutor()">Guardar</button>
-      </div>
 
     </div> <!-- cierre de modal-content -->
   </div> <!-- cierre de modal-dialog -->
@@ -187,134 +235,184 @@
       </div>
 
       <div class="modal-body">
-        <form role="form" style="display: inline-block;">
+        <form name="form_nvo_tutor" role="form" ng-submit="saveTutor()" style="display: inline-block;">
       
           <h4 class="monserrat-color"> <b>Datos personales:</b></h4>
-          <div class="form-group col-md-3">
-            <label for="inputApellido">Apellido</label>
-            <input type="text" class="form-control" id="inputApellido" ng-model="nvoTutor.apellido">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputNombre">Nombre</label>
-            <input type="text" class="form-control" id="inputNombre" ng-model="nvoTutor.nombre">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputGeneroTutor">Genero</label>
-            <select class="form-control" >
-              <option selected disabled>-- Selecione --</option>
-              <option value="hombre">Masculino</option>
-              <option value="mujer">Femenino</option>
-            </select>
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
-            <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="Date()" ng-required="true" show-button-bar="false"/>
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
-          </div>
+          <div class="row">
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputApellido">Apellido</label>
+              <input type="text" class="form-control" name="inputApellido" ng-model="nvoTutor.apellido" required>
+              <div class="error" ng-show="form_nvo_tutor.inputApellido.$dirty && form_nvo_tutor.inputApellido.$error.required && !form_nvo_tutor.inputApellido.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputNombre">Nombre</label>
+              <input type="text" class="form-control" name="inputNombre" ng-model="nvoTutor.nombre" required>
+               <div class="error" ng-show="form_nvo_tutor.inputNombre.$dirty && form_nvo_tutor.inputNombre.$error.required && !form_nvo_tutor.inputNombre.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputGeneroTutor">Genero</label>
+              <select class="form-control" >
+                <option selected disabled>-- Selecione --</option>
+                <option value="hombre">Masculino</option>
+                <option value="mujer">Femenino</option>
+              </select>
+               <div class="error" ng-show="form_nvo_tutor.inputGeneroTutor.$dirty && form_nvo_tutor.inputGeneroTutor.$error.required && !form_nvo_tutor.inputGeneroTutor.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
+              
+              <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="Date()" ng-required="true" show-button-bar="false" required/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+              <div class="error" ng-show="form_nvo_tutor.inputFechaNacimientoTutor.$dirty && form_nvo_tutor.inputFechaNacimientoTutor.$error.required && !form_nvo_tutor.inputFechaNacimientoTutor.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+         </div>
 
-          
-          <div class="form-group col-md-3">
-            <label for="inputTipoDocTutor">Tipo de Documento</label>
-            <select class="form-control">
-              <option selected disabled>-- Selecione --</option>
-              <option>DNI</option>
-              <option>Pasaporte</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputNroDocTutor">Número de documento</label>
-            <input type="text" class="form-control" id="inputNroDocTutor" ng-model="nvoTutor.nro_documento">
-          </div>
-           <div class="form-group col-md-6">
-            <label for="inputRelacion">Tipo de relación con el alumno</label>
-            <select class="form-control">
-              <option selected disabled>-- Selecione --</option>
-              <option>Padre</option>
-              <option>Madre</option>
-              <option>Hijo</option>
-              <option>Sobrino</option>
-              <option>Primo</option>
-              <option>Tio</option>
-              <option>Hermano</option>
-              <option>Abuelo</option>
-              <option>Tutor</option>
-            </select>
-          </div>
-         
-          <h4 class="monserrat-color"><b>Datos de contacto: </b></h4>
-         <div class="row" style="margin-left: 0px;">
-            <div class="form-group col-md-3">
-              <label for="inputTelefonoTutor">Teléfono</label>
-              <input type="text" class="form-control" id="inputTelefonoTutor" ng-model="nvoTutor.telefono">
-            </div>  
-            <div class="form-group col-md-3">
-              <label for="inputEmailTutor">E-mail</label>
-              <input type="email" class="form-control" id="inputEmailTutor" ng-model="nvoTutor.mail">
+         <div class="row">
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="selectTipoDocTutor">Tipo de Documento</label>
+              <select class="form-control" name="selectTipoDocTutor" required>
+                <option selected disabled>-- Selecione --</option>
+                <option>DNI</option>
+                <option>Pasaporte</option>
+                <option>Otro</option>
+              </select>
+               <div class="error" ng-show="form_nvo_tutor.selectTipoDocTutor.$dirty && form_nvo_tutor.selectTipoDocTutor.$error.required && !form_nvo_tutor.selectTipoDocTutor.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputNroDocTutor">Número de documento</label>
+              <input type="text" class="form-control" name="inputNroDocTutor" ng-model="nvoTutor.nro_documento" required>
+               <div class="error" ng-show="form_nvo_tutor.inputNroDocTutor.$dirty && form_nvo_tutor.inputNroDocTutor.$error.required && !form_nvo_tutor.inputNroDocTutor.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-6">
+              <label class="control-label" for="selectRelacion">Tipo de relación con el alumno</label>
+              <select class="form-control" name="selectRelacion" required>
+                <option selected disabled>-- Selecione --</option>
+                <option>Padre</option>
+                <option>Madre</option>
+                <option>Hijo</option>
+                <option>Sobrino</option>
+                <option>Primo</option>
+                <option>Tio</option>
+                <option>Hermano</option>
+                <option>Abuelo</option>
+                <option>Tutor</option>
+              </select>
+               <div class="error" ng-show="form_nvo_tutor.selectRelacion.$dirty && form_nvo_tutor.selectRelacion.$error.required && !form_nvo_tutor.selectRelacion.$focused">
+                El campo es requerido.
+              </div>
             </div>
           </div>
 
-          <h4 class="monserrat-color"><b>Datos de domicilio actual:</b></h4>
-          <div class="form-group col-md-3">
-            <label for="inputPais">País</label>
-            <input type="text" class="form-control" id="inputPais" ng-model="nvoTutor.direccion_actual.pais">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputProvincia">Provincia</label>
-            <input type="text" class="form-control" id="inputProvincia" ng-model="nvoTutor.direccion_actual.provincia">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputCiudad">Ciudad</label>
-            <input type="text" class="form-control" id="inputCiudad" ng-model="nvoTutor.direccion_actual.ciudad">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="inputBarrio">Barrio</label>
-            <input type="text" class="form-control" id="inputBarrio" ng-model="nvoTutor.direccion_actual.barrio">
+          <h4 class="monserrat-color"><b>Datos de contacto: </b></h4>
+          <div class="row">
+              <div class="form-group required col-md-3">
+                <label class="control-label" for="inputTelefonoTutor">Teléfono</label>
+                <input type="text" class="form-control" name="inputTelefonoTutor" ng-model="nvoTutor.telefono" required>
+                 <div class="error" ng-show="form_nvo_tutor.inputTelefonoTutor.$dirty && form_nvo_tutor.inputTelefonoTutor.$error.required && !form_nvo_tutor.inputTelefonoTutor.$focused">
+                El campo es requerido.
+              </div>
+              </div>  
+              <div class="form-group col-md-3">
+                <label for="inputEmailTutor">E-mail</label>
+                <input type="email" class="form-control" name="inputEmailTutor" ng-model="nvoTutor.mail">
+              </div>
           </div>
 
-          <div class="form-group col-md-2">
-            <label for="inputBarrio">Calle</label>
-            <input type="text" class="form-control" id="inputCalle" ng-model="nvoTutor.direccion_actual.rue">
+           <h4 class="monserrat-color"><b>Datos de domicilio actual:</b></h4>
+          <div class="row">
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputPais">País</label>
+              <input type="text" class="form-control" name="inputPais" ng-model="nvoTutor.direccion_actual.pais" required>
+               <div class="error" ng-show="form_nvo_tutor.inputPais.$dirty && form_nvo_tutor.inputPais.$error.required && !form_nvo_tutor.inputPais.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputProvincia">Provincia</label>
+              <input type="text" class="form-control" name="inputProvincia" ng-model="nvoTutor.direccion_actual.provincia" required>
+               <div class="error" ng-show="form_nvo_tutor.inputProvincia.$dirty && form_nvo_tutor.inputProvincia.$error.required && !form_nvo_tutor.inputProvincia.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputCiudad">Ciudad</label>
+              <input type="text" class="form-control" name="inputCiudad" ng-model="nvoTutor.direccion_actual.ciudad" required>
+               <div class="error" ng-show="form_nvo_tutor.inputCiudad.$dirty && form_nvo_tutor.inputCiudad.$error.required && !form_nvo_tutor.inputCiudad.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group required col-md-3">
+              <label class="control-label" for="inputBarrio">Barrio</label>
+              <input type="text" class="form-control" name="inputBarrio" ng-model="nvoTutor.direccion_actual.barrio" required>
+               <div class="error" ng-show="form_nvo_tutor.inputBarrio.$dirty && form_nvo_tutor.inputBarrio.$error.required && !form_nvo_tutor.inputBarrio.$focused">
+                El campo es requerido.
+              </div>
+            </div>
           </div>
-          <div class="form-group col-md-2">
-            <label for="inputNumero">Número</label>
-            <input type="text" class="form-control" id="inputNumero" ng-model="nvoTutor.direccion_actual.nro">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputPico">Piso</label>
-            <input type="text" class="form-control" id="inputPiso" ng-model="nvoTutor.direccion_actual.piso">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputDpto">Departamento</label>
-            <input type="text" class="form-control" id="inputDpto" ng-model="nvoTutor.direccion_actual.depto">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputEdificio">Edificio</label>
-            <input type="text" class="form-control" id="inputEdificio" ng-model="nvoTutor.direccion_actual.edificio">
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputCP">Código Postal</label>
-            <input type="text" class="form-control" id="inputCP" ng-model="nvoTutor.direccion_actual.cp">
-          </div>
-          
-          <div class="form-group col-md-12">
-            <label for="inputComentarioTutor">Comentario</label>
-            <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioTutor"></textarea>
-          </div>
-         
 
+          <div class="row">
+            <div class="form-group required col-md-2">
+              <label class="control-label" for="inputBarrio">Calle</label>
+              <input type="text" class="form-control" name="inputCalle" ng-model="nvoTutor.direccion_actual.calle" required>
+               <div class="error" ng-show="form_nvo_tutor.inputCalle.$dirty && form_nvo_tutor.inputCalle.$error.required && !form_nvo_tutor.inputCalle.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputNumero">Número</label>
+              <input type="text" class="form-control" name="inputNumero" ng-model="nvoTutor.direccion_actual.nro">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputPico">Piso</label>
+              <input type="text" class="form-control" name="inputPiso" ng-model="nvoTutor.direccion_actual.piso">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputDpto">Departamento</label>
+              <input type="text" class="form-control" name="inputDpto" ng-model="nvoTutor.direccion_actual.depto">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputEdificio">Edificio</label>
+              <input type="text" class="form-control" name="inputEdificio" ng-model="nvoTutor.direccion_actual.edificio">
+            </div>
+            <div class="form-group required col-md-2">
+              <label class="control-label" for="inputCP">Código Postal</label>
+              <input type="text" class="form-control" name="inputCP" ng-model="nvoTutor.direccion_actual.cp" required>
+               <div class="error" ng-show="form_nvo_tutor.inputCP.$dirty && form_nvo_tutor.inputCP.$error.required && !form_nvo_tutor.inputCP.$focused">
+                El campo es requerido.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">  
+            <div class="form-group col-md-12">
+              <label for="inputComentarioTutor">Comentario</label>
+              <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioTutor"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
 
         </form>
       </div> <!-- cierre de modal-body -->
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveTutor()">Guardar</button>
-      </div>
 
     </div> <!-- cierre de modal-content -->
   </div> <!-- cierre de modal-dialog -->
