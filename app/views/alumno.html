@@ -19,7 +19,7 @@
 <div class="container_gral">
 	<div class="col-md-offset-1 col-md-3" style="text-align:center">
 		<div class="image-container">
-			<a class="link" href="#" type="file"  data-toggle="modal" data-target="#editProfileImage" >  
+			<a class="link" href="#" type="file" data-toggle="modal" data-target="#editProfileImage">  
 				<img class="image img-rounded profile-img" src="images/nico-perfil.jpg"/>
 				<span class="overlay-image img-rounded">
 					<b>Haga click aqui para modificar la imagen</b>
@@ -261,51 +261,115 @@
 				
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
 				
-				<h4 class="modal-title" id="editAddress">Actualizar foto del alumno</h4>
+				<h4 class="modal-title">Actualizar foto del alumno</h4>
 			</div>
 			<div class="modal-body">
 				<form role="form" style="display: inline-block;width: 100%;">
-					<div class="container-tabs">
+				
+					<div>
 
 					<tabset justified="true">
 						
 						<!-- pestania subir foto -->	
-						<tab >
-						 <tab-heading class="monserrat-color">
-       						 <i class="glyphicon glyphicon-picture"></i> Subir foto nueva 
-     					 </tab-heading>
-     					 
-     					 <div style="height:400px; display:block; padding-top:117px;">
-							
-							<i class="glyphicon glyphicon-picture" style="display:block; text-align:center; font-size:50px; color:rgba(23, 76, 25, 0.5);"></i> 
-     					 	
-     					 	<div style="text-align:center; margin-bottom:20px; font-size: 27px; color:rgba(23, 76, 25, 0.5);">
-     					 		Suba aquí una foto del alumno
-     					 	</div>
+						<tab>
+							 <tab-heading class="monserrat-color">
+	       						 <i class="glyphicon glyphicon-picture"></i> Subir foto nueva 
+	     					 </tab-heading>
+	     					 
+	     					 <div style="height:400px; display:block; padding-top:117px;">
+								
+								<i class="glyphicon glyphicon-picture" style="display:block; text-align:center; font-size:50px; color:rgba(23, 76, 25, 0.5);"></i> 
+	     					 	
+	     					 	<div style="text-align:center; margin-bottom:20px; font-size: 27px; color:rgba(23, 76, 25, 0.5);">
+	     					 		Suba aquí una foto del alumno
+	     					 	</div>
 
-     					 	<div class="btn btn-primary btn-file">
-					    		<span>Seleccionar imagen</span>
-					   	 		<input type="file" id="fileUpload"/>
-							</div>
-     					 </div>
+	     					 	<div class="btn btn-primary btn-file">
+						    		<span>Seleccionar imagen</span>
+						   	 		<input type="file" id="fileUpload"/>
+								</div>
+
+	     					 </div>
 						</tab>
 
 						<!-- pestania subir foto -->
 						<tab >
-						 <tab-heading class="monserrat-color">
-       						 <i class="glyphicon glyphicon-pencil"></i> Editar foto actual 
-     					 </tab-heading>
-     					 <div style="height: 400px;" >
-						<!--<canvas id="picturePanel" width="779" height="519"></canvas>--> 	
-     					 </div>
+							 <tab-heading class="monserrat-color">
+	       						 <i class="glyphicon glyphicon-pencil"></i> Editar foto actual 
+	     					 </tab-heading>
+	     					 
+	     					<div style="height:400px; display:block;">
+								
+							
+									<div id="image-cropper">  
+ 										<div class="cropit-image-preview-container">
+   											<div class="cropit-image-preview" ng-init="applyCrop()"></div>
+  										</div>
+  
+  										<input type="range" class="cropit-image-zoom-input" />
+									</div>
+								
+
+<!--
+<div class="demo-wrapper">
+	<div class="preview-wrapper">
+		<div class="cropit-image-preview-container" style="position: relative;">
+			<div class="cropit-image-background-container" style="position: absolute; z-index: 0; left: 1px; top: 1px; width: 448px; height: 448px;">
+				<img class="cropit-image-background" alt="" src="http://scottcheng.github.io/cropit/images/0-1920.jpg" style="position: absolute; left: -112px; top: 0px; width: 672px; height: 448px;">
+			</div>
+			<div class="cropit-image-preview cropit-image-loaded" style="position: relative; background-image: url(http://scottcheng.github.io/cropit/images/0-1920.jpg); background-size: 672px 448px; background-position: -112px 0px; background-repeat: no-repeat;">
+				<div class="spinner">
+					<div class="spinner-dot"></div>
+					<div class="spinner-dot"></div>
+					<div class="spinner-dot"></div>
+				</div>
+			</div>
+		</div>
+		<div class="slider-wrapper">
+			<span class="icon icon-image small-image"></span>
+			<input type="range" class="cropit-image-zoom-input custom" min="0" max="1" step="0.01">
+			<span class="icon icon-image large-image"></span>
+		</div>
+	</div>
+</div>
+
+<div class="demo-wrapper">
+	<div class="preview-wrapper">
+		<div id="image-cropper">
+			<div class="cropit-image-preview-container" style="position: relative;">
+
+				<div class="cropit-image-background-container" style="position: absolute; z-index: 0; left: 0px; top: 0px; width: 350px; height: 350px;">
+					<img class="cropit-image-background" alt="" style="position: absolute; left: 0px; top: 0px; width: 622.22222px; height: 350px;" src="images/dog.jpg">
+				</div>
+				<div class="cropit-image-preview cropit-image-loaded" ng-init="applyCrop()" style="position: relative; background-image: url(http://localhost:9000/images/dog.jpg); background-size: 622.22222px 350px; background-position: 0px 0px; background-repeat: no-repeat;">
+				</div>
+			</div>
+			
+			<input type="range" class="cropit-image-zoom-input" min="0" max="1" step="0.01">		
+		</div>
+	</div>
+</div>
+-->
+<!--
+								<img src="images/nico-perfil.jpg" class="v-photo" id="editPhoto" ng-init="applyCrop()"/>
+								<img src="images/yacare-apaizado.gif" class="h-photo" id="editPhoto" ng-init="applyCrop()"/> 
+							
+								<div id="preview-pane">	    
+				    				<div class="preview-container">
+				      					<img src="images/nico-perfil.jpg" class="jcrop-preview"/>
+				    				</div>
+			    				</div>
+-->
+
+	     					</div>
 						</tab>
 					</tabset>
 
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateDomicilio()">Guardar</button>
+					</div>
 				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateDomicilio()">Guardar</button>
 			</div>
 		</div> <!-- cierre de modal-content -->
 	</div> <!-- cierre de modal-dialog -->
