@@ -266,3 +266,49 @@ a.link:hover span.overlay-image{
 .error{
 	color: red;
 }
+
+
+.cropit-image-preview {
+  /* You can specify preview size in CSS */
+  width: 300px;
+  height: 300px;
+  cursor: move;
+}
+
+
+/* Translucent background image */
+.cropit-image-background {
+  opacity: .2;
+  width: 300px;
+  height: 300px;
+}
+
+/*
+ * If the slider or anything else is covered by the background image,
+ * use relative or absolute position on it
+ */
+input.cropit-image-zoom-input {
+ 	position: relative;
+}
+
+/* Limit the background image by adding overflow: hidden */
+.image-cropper {
+  overflow: hidden;
+}
+
+.demo-wrapper {
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.demo-wrapper .preview-wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
