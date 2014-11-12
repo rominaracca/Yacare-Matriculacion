@@ -266,30 +266,52 @@
 			<div class="modal-body">
 				<form role="form" style="display: inline-block;width: 100%;">
 				
-					<div>
+				
 
 					<tabset justified="true">
 						
 						<!-- pestania subir foto -->	
-						<tab>
-							 <tab-heading class="monserrat-color">
+						<tab >
+							 <tab-heading class="monserrat-color" >
 	       						 <i class="glyphicon glyphicon-picture"></i> Subir foto nueva 
 	     					 </tab-heading>
 	     					 
-	     					 <div style="height:400px; display:block; padding-top:117px;">
-								
-								<i class="glyphicon glyphicon-picture" style="display:block; text-align:center; font-size:50px; color:rgba(23, 76, 25, 0.5);"></i> 
-	     					 	
-	     					 	<div style="text-align:center; margin-bottom:20px; font-size: 27px; color:rgba(23, 76, 25, 0.5);">
-	     					 		Suba aquí una foto del alumno
-	     					 	</div>
+							
+		     					 <div ng-show="!onChangePhoto" style="height:400px; display:block; padding-top:117px;" class="image-editor">
+									
+									<i class="glyphicon glyphicon-picture" style="display:block; text-align:center; font-size:50px; color:rgba(23, 76, 25, 0.5);"></i> 
+		     					 	
+		     					 	<div style="text-align:center; margin-bottom:20px; font-size: 27px; color:rgba(23, 76, 25, 0.5);">
+		     					 		Suba aquí una foto del alumno
+		     					 	</div>
 
-	     					 	<div class="btn btn-primary btn-file">
-						    		<span>Seleccionar imagen</span>
-						   	 		<input type="file" id="fileUpload"/>
-								</div>
+		     					 	<div class="btn btn-primary btn-file">
+							    		<span>Seleccionar imagen</span>
+							   	 		<input type="file" id="fileUpload" accept="image/*" onchange="angular.element(this).scope().showPhotoUp()">
+									</div>
+		     					 </div>
 
-	     					 </div>
+
+								<div ng-show="onChangePhoto" style="height:400px; display:block;" class="image-editor">
+									<div class="demo-wrapper">
+										<div class="preview-wrapper">
+											<div class="cropit-image-preview-container">
+					     					 	<div class="cropit-image-preview" ng-init="applyCropUp()"></div>
+											</div>
+											<div style="width: 100%; text-align: center; margin-top:20px;font-size:18px; color:rgba(23, 76, 25, 0.75);">
+			  										<i class="glyphicon glyphicon-zoom-out"></i>
+			  										<input type="range" class="cropit-image-zoom-input photo-range" style="display: inline-block; width: 50%;" />
+			  										<i class="glyphicon glyphicon-zoom-in"></i>
+		  									</div>	
+				     					 	<div class="btn btn-primary btn-file-other">
+									    		<span>Cambiar imagen</span>
+									   	 		<input type="file" id="fileUpload" accept="image/*" class="cropit-image-input">
+											</div>
+										</div>
+									</div>
+		     					 </div>
+							
+
 						</tab>
 
 						<!-- pestania subir foto -->
@@ -298,8 +320,9 @@
 	       						 <i class="glyphicon glyphicon-pencil"></i> Editar foto actual 
 	     					 </tab-heading>
 	     					 
+	     	
 	     					<div style="height:400px; display:block;">
-								
+						
 								<div class="demo-wrapper">
 								<div class="preview-wrapper">
 									<div id="image-cropper">  
@@ -320,6 +343,7 @@
 							</div>
 
 	     					</div>
+	     					
 						</tab>
 					</tabset>
 
