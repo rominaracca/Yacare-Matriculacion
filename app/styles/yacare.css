@@ -162,6 +162,13 @@ a:hover{
 
 
 /** Estilos de los botones del modal **/
+.btn-default:focus{
+	background-color: rgba(23, 76, 25, 0.78);
+	color: #fff;
+    border: 0px;
+}
+
+
 .btn-primary {
     color: #FFF;
     background-color: #174C19;
@@ -171,6 +178,17 @@ a:hover{
 .btn-primary:hover {
     background-color: rgba(23, 76, 25, 0.5);
 	color: #fff;
+	border: 0px;
+}
+
+.btn-primary:focus{
+	color: #FFF;
+    background-color: #174C19;
+    border-color: #174C19;
+}
+
+.select-option {
+	box-shadow: #5cb85c 0px 2px 14px;
 }
 
 .modal-dialog{
@@ -180,6 +198,8 @@ a:hover{
 .modal-dialog-tutor{
 	width: 970px;
 }
+
+
 
 
 /** re definicion de colores de modal **/

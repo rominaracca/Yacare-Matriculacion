@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-8">
       <p><b>{{item.tipo_documento}}</b>:<b>{{item.nro_documento}}</b></p>
-      <p><b>{{item.genero}},</b> nacido el <b>{{item.nacimiento.dia}}</b> de <b>{{item.nacimiento.mes}}</b> de <b>{{item.nacimiento.anio}}</b>
+      <p><b>{{item.genero}},</b> <span ng-show="item.genero=='Hombre'">nacido</span><span ng-show="item.genero=='Mujer'">nacida</span> el <b>{{item.nacimiento.dia}}</b> de <b>{{item.nacimiento.mes}}</b> de <b>{{item.nacimiento.anio}}</b>
       en <b>{{item.lugar_nacimiento.ciudad}}</b>, <b>{{item.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
       <p> Con domicilio en <b>{{item.direccion_actual.calle}}</b> número <b>{{item.direccion_actual.nro}}</b> piso <b>{{item.direccion_actual.piso}}</b> departamento <b>{{item.direccion_actual.depto}}</b> edificio <b>{{item.direccion_actual.edificio}}</b> barrio <b>{{item.direccion_actual.barrio}}</b>,<b>{{item.direccion_actual.ciudad}}</b>, <b>{{item.direccion_actual.provincia}}</b>, <b>{{item.direccion_actual.pais}}</b> CP: <b>{{item.direccion_actual.cp}}</b></p>
 
@@ -100,7 +100,7 @@
             </div>
             <div class="form-group required col-md-6">
               <label class="control-label" for="selectRelacion">Tipo de relación con el alumno</label>
-               <select class="form-control" name="selectRelacion" required ng-options="l for l in tipo_relacion" ng-model="tmpTutor.tipo_relacion">
+               <select class="form-control select-option" name="selectRelacion" required ng-options="l for l in tipo_relacion" ng-model="tmpTutor.tipo_relacion">
                 <option value="" disabled>-- Selecione --</option>  
               </select>           
                <div class="error" ng-show="form_tutor.selectRelacion.$dirty && form_tutor.selectRelacion.$error.required && !form_tutor.selectRelacion.$focused">
@@ -285,7 +285,7 @@
             <div class="form-group required col-md-6">
               <label class="control-label" for="selectRelacion">Tipo de relación con el alumno</label>
               
-              <select class="form-control" name="selectRelacion" required ng-options="l for l in tipo_relacion" ng-model="nvoTutor.tipo_relacion">
+              <select class="form-control select-option" name="selectRelacion" required ng-options="l for l in tipo_relacion" ng-model="nvoTutor.tipo_relacion">
                 <option value="" disabled>-- Selecione --</option>  
               </select>              
                <div class="error" ng-show="form_nvo_tutor.selectRelacion.$dirty && form_nvo_tutor.selectRelacion.$error.required && !form_nvo_tutor.selectRelacion.$focused">

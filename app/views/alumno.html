@@ -35,7 +35,7 @@
 	<div class="col-md-8">
 		<p>{{alumno.tipo_documento}} : <b>{{alumno.nro_documento}}</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>{{alumno.nro_cuil}}</b> </p>
 		<p> <b> {{alumno.genero}}. </b> Grupo sanguíneo: <b> {{alumno.grupo_sanguineo}} {{alumno.factor_rh}} </b></p>
-		<p>Nacido el <b>{{alumno.nacimiento.dia}}</b> de <b>{{alumno.nacimiento.mes}}</b> de <b>{{alumno.nacimiento.anio}}</b>
+		<p><span ng-show="alumno.genero=='Hombre'">Nacido</span><span ng-show="alumno.genero=='Mujer'">Nacida</span> el <b>{{alumno.nacimiento.dia}}</b> de <b>{{alumno.nacimiento.mes}}</b> de <b>{{alumno.nacimiento.anio}}</b>
 		en <b>{{alumno.lugar_nacimiento.ciudad}}</b>, <b>{{alumno.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
 		<p>De nacionalidad <b>{{alumno.nacionalidades[0]}}</b>, <b>{{alumno.nacionalidades[1]}}</b>.</p>
 	</div>
