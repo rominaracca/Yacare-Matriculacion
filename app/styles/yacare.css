@@ -332,3 +332,17 @@ input.cropit-image-zoom-input {
 	-ms-transform: translate(-50%,-50%);
 	transform: translate(-50%,-50%);
 }
+
+.photo-range{
+	display: inline-block;
+	width: 70%;
+	margin:0px 20px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	height: 5px;
+	background: #808080;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	outline: none;
+}

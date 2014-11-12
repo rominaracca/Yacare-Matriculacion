@@ -18,7 +18,7 @@ angular.module('yacareMatriculacionApp')
     //var imageSrc = "images/nico-perfil.jpg";
    $('#image-cropper').cropit({
       imageState: {
-          src: 'images/nico-perfil.jpg'
+          src: 'images/nico-perfil-big.jpg'
       },
       imageBackground: true
     });

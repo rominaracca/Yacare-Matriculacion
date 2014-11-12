@@ -254,7 +254,7 @@
 </div>
 
 <!-- Modal edicion de foto de perfil-->
-<div class="modal fade" id="editProfileImage" tabindex="-1" role="dialog" aria-labelledby="editProfileImage" aria-hidden="true" data-backdrop="false">
+<div class="modal fade" id="editProfileImage" tabindex="-1" role="dialog" aria-labelledby="editProfileImage" aria-hidden="true" >
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -306,8 +306,15 @@
  										<div class="cropit-image-preview-container">
    											<div class="cropit-image-preview" ng-init="applyCrop()"></div>
   										</div>
-  
-  										<input type="range" class="cropit-image-zoom-input" />
+  										
+  										<div style="width: 100%; text-align: center; margin-top:20px;font-size:18px; color:rgba(23, 76, 25, 0.75);">
+
+		  										<i class="glyphicon glyphicon-zoom-out"></i>
+		  										<input type="range" class="cropit-image-zoom-input photo-range" style="display: inline-block; width: 50%;" />
+		  										<i class="glyphicon glyphicon-zoom-in"></i>
+	  										
+	  									</div>	
+  										
 									</div>
 								</div>
 							</div>
