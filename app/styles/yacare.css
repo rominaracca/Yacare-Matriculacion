@@ -275,8 +275,49 @@ a.link:hover span.overlay-image{
     filter: alpha(opacity=0);
     cursor: inherit;
  */
+ 	position: absolute;
+	width: 200px;
+	height: 58px;
+	top: 280px;
+	right: 250px;
+	/*cursor: pointer; */
    opacity: 0;  /** borra la visualizacion del boton y el path**/
 }
+
+.btn-file-other{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+	height: 39px;
+	width: 133px;
+	margin-top: 10px;
+}
+
+.btn-file-other input[type=file] {
+    /*position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    background: white;
+    outline: none;
+    display: block;
+    filter: alpha(opacity=0);
+    cursor: inherit;
+ */
+	position: absolute;
+	width: 102px;
+	height: 45px;
+	top: 350px;
+	left: 79px;
+	/*cursor: pointer; */
+   opacity: 0;  /** borra la visualizacion del boton y el path**/
+}
+
+
 
 .form-group.required .control-label:after{
 	content: "*";
