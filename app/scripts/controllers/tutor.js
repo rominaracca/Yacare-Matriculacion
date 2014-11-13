@@ -160,7 +160,7 @@ $scope.tmpTutor = {
 
 $scope.setSelected = function(index){
   $scope.selected = index;
-  $.extend($scope.tmpTutor, $scope.tutores[index]);
+  $.extend(true, $scope.tmpTutor, $scope.tutores[index]);
   console.log($scope.tmpTutor);
 };
 
@@ -205,7 +205,7 @@ $scope.cleanModal = function(){
 };
 
 $scope.updateTutor = function(){
-  $.extend($scope.tutores[$scope.selected], $scope.tmpTutor);
+  $.extend(true, $scope.tutores[$scope.selected], $scope.tmpTutor);
   $('#myEditModalTutor').modal('hide');
 };
 
