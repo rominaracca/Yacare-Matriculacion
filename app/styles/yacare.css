@@ -255,10 +255,8 @@ a.link:hover span.overlay-image{
 	padding-top: 15px;
 	height: 55px;
 	width: 209px;
- /*
-    position: relative;
-    overflow: hidden;
-*/
+	margin-top: -180px;
+	margin-bottom: 125px;
 }
 
 .btn-file input[type=file] {
@@ -276,12 +274,12 @@ a.link:hover span.overlay-image{
     cursor: inherit;
  */
  	position: absolute;
-	width: 200px;
-	height: 58px;
-	top: 280px;
-	right: 250px;
-	/*cursor: pointer; */
-   opacity: 0;  /** borra la visualizacion del boton y el path**/
+	width: 191px;
+	height: 45px;
+	position: absolute;
+	top: 282px;
+	/*cursor: pointer;*/
+  opacity: 0;  /** borra la visualizacion del boton y el path**/
 }
 
 .btn-file-other{
@@ -309,12 +307,12 @@ a.link:hover span.overlay-image{
     cursor: inherit;
  */
 	position: absolute;
-	width: 102px;
-	height: 45px;
-	top: 350px;
-	left: 79px;
+	width: 129px;
+	height: 39px;
+	top: 417px;
+	left: 284px;
 	/*cursor: pointer; */
-   opacity: 0;  /** borra la visualizacion del boton y el path**/
+	opacity: 0;  /** borra la visualizacion del boton y el path**/
 }
 
 
@@ -386,4 +384,9 @@ input.cropit-image-zoom-input {
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	outline: none;
+}
+
+/* Gray out zoom slider when the image cannot be zoomed */
+.cropit-image-zoom-input[disabled] {
+  opacity: .25;
 }

@@ -18,21 +18,32 @@ angular.module('yacareMatriculacionApp')
     //var imageSrc = "images/nico-perfil.jpg";
    $('#image-cropper').cropit({
       imageState: {
-          src: 'images/nico-perfil-big.jpg'
+         src: 'images/nico-perfil-big.jpg'
       },
       imageBackground: true
+    });
+   $('.export').click(function() {
+          var imageData = $('#image-cropper').cropit('export', {type: 'image/png'});
+          
+          window.open(imageData);
     });
   };
 
 $scope.applyCropUp = function() {
+
      $('.image-editor').cropit({
+          width: 300,
+          height: 300,
+          exportZoom: 1.25,
           imageState: {
-            src: 'http://lorempixel.com/500/400/'
+          
           },
-      imageBackground: true
+          imageBackground: true,
+          allowCrossOrigin: true
         });
     $('.export').click(function() {
-          var imageData = $('.image-editor').cropit('export');
+          var imageData = $('.image-editor').cropit('export', {type: 'image/png'});
+          console.log(imageData);
           window.open(imageData);
     });
   };
