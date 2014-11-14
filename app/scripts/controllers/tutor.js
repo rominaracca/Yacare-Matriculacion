@@ -10,6 +10,33 @@
  angular.module('yacareMatriculacionApp')
  .controller('TutorCtrl', function ($scope, $location, toasty, backend) {
 
+var numToMonth = {
+  1: 'Enero',
+  2: 'Febrero',
+  3: 'Marzo',
+  4: 'Abril',
+  5: 'Mayo',
+  6: 'Junio',
+  7: 'Julio',
+  8: 'Agosto',
+  9: 'Septiembre',
+  10: 'Octubre',
+  11: 'Noviembre',
+  12: 'Diciembre'
+}
+
+var parseDate = function(dateStr) {
+  if(!dateStr) return {};
+  var d = dateStr.split('/');
+  if(d.length > 1) {
+    return {dia: parseInt(d[0], 10), mes: numToMonth[parseInt(d[1],10)], anio: parseInt(d[2], 10)};
+  } 
+  var d = dateStr.split('-');
+  if(d.length > 1) {
+    return {dia: parseInt(d[2], 10), mes: numToMonth[parseInt(d[1],10)], anio: parseInt(d[0], 10)};
+  } 
+  return {};
+}
 
 backend.tutor(function(err, tutores) {
   if(err) {
@@ -20,13 +47,14 @@ backend.tutor(function(err, tutores) {
     //$location.path('/login');
   } else {
     $scope.tutores = tutores.data;
+
     $scope.update = tutores.update;
   }
 });
 
-  $scope.today = function() {
+$scope.today = function() {
    $scope.dt = new Date();
- };
+};
 
  $scope.today();
 
@@ -35,6 +63,16 @@ backend.tutor(function(err, tutores) {
    $event.stopPropagation();
    $scope.opened = true;
  };
+
+!$scope.tutores&&($scope.tutores=[]);
+
+$scope.$watch('tutores', function(newTut, oldTut){
+  newTut.forEach(function(tutor, i) {
+    //if(tutor.fecha_nacimiento != oldTut[i].fecha_nacimiento) {
+      tutor.nacimiento = parseDate(tutor.fecha_nacimiento);
+    //}
+  });
+}, true);
 
  /*$scope.tutores = [
  {
