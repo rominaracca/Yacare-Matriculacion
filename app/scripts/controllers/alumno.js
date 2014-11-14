@@ -14,6 +14,7 @@ $scope.initCalendar = function(){
   $('#datetimepicker').datetimepicker({
     dayOfWeekStart : 1,
     lang:'es',
+    value: $scope.tmpAlumno.nac,
     format:'d/m/Y',
     maxDate: new Date(),
     //mask:'39/19/9999',
@@ -79,6 +80,53 @@ $scope.applyCropUp = function() {
   //$scope.anios = ['Primer año','Segundo año','Tercer año','Cuarto año','Quinto año','Sexto año','Séptimo año'];
   $scope.turnos = ['Turno mañana', 'Turno tarde'];
 
+  $scope.$watch('alumno.nac', function() {
+      $scope.tmpAlumno.nac = $scope.alumno.nac;
+      var parsedDate = $scope.tmpAlumno.nac.split("/");
+      $scope.alumno.nacimiento.dia = parsedDate[0];
+      switch (parsedDate[1]) {
+          case '01':
+              $scope.alumno.nacimiento.mes = "Enero";
+              break;
+          case '02':
+              $scope.alumno.nacimiento.mes = "Febrero";
+              break;
+          case '03':
+              $scope.alumno.nacimiento.mes = "Marzo";
+              break;
+          case '04':
+              $scope.alumno.nacimiento.mes = "Abril";
+              break;
+          case '05':
+              $scope.alumno.nacimiento.mes = "Mayo";
+              break;
+          case '06':
+              $scope.alumno.nacimiento.mes = "Junio";
+              break;
+          case '07':
+              $scope.alumno.nacimiento.mes = "Julio";
+              break;
+          case '08':
+              $scope.alumno.nacimiento.mes = "Agosto";
+              break;
+          case '09':
+              $scope.alumno.nacimiento.mes = "Septiembre";
+              break;
+          case '10':
+              $scope.alumno.nacimiento.mes = "Octubre";
+              break;
+          case '11':
+              $scope.alumno.nacimiento.mes = "Noviembre";
+              break;
+          case '12':
+              $scope.alumno.nacimiento.mes = "Diciembre";
+              break;
+
+          
+} 
+      $scope.alumno.nacimiento.anio = parsedDate[2];
+   });
+
   $scope.alumno = {
     nombre: "Nicolás",
     apellido: "Legresti",
@@ -88,6 +136,7 @@ $scope.applyCropUp = function() {
     genero: "Hombre",   
     grupo_sanguineo: "0",
     factor_rh: "Positivo",
+    nac: "08/06/1990",
     nacimiento: {
       dia: "08",
       mes: "Junio",
@@ -125,6 +174,7 @@ $scope.applyCropUp = function() {
     genero: "",
     grupo_sanguineo: "",
     factor_rh: "",
+    nac: "",
     nacimiento: {
       dia: "",
       mes: "",

@@ -52,13 +52,7 @@ backend.tutor(function(err, tutores) {
   }
 });
 
-$scope.today = function() {
-   $scope.dt = new Date();
-};
-
- $scope.today();
-
- $scope.open = function($event) {
+$scope.open = function($event) {
    $event.preventDefault();
    $event.stopPropagation();
    $scope.opened = true;
