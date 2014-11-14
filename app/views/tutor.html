@@ -9,7 +9,7 @@
     <div class="col-md-8">
       <p><b>{{item.tipo_documento}}</b>:<b>{{item.nro_documento}}</b></p>
       <p><b>{{item.genero}},</b> <span ng-show="item.genero=='Hombre'">nacido</span><span ng-show="item.genero=='Mujer'">nacida</span> el <b>{{item.nacimiento.dia}}</b> de <b>{{item.nacimiento.mes}}</b> de <b>{{item.nacimiento.anio}}</b>
-      en <b>{{item.lugar_nacimiento.ciudad}}</b>, <b>{{item.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
+      en <b>{{item.lugar_nacimiento.ciudad}}</b>, <b>{{item.lugar_nacimiento.pais}}</b>. </p>
       <p> Con domicilio en <b>{{item.direccion_actual.calle}}</b> número <b>{{item.direccion_actual.nro}}</b> piso <b>{{item.direccion_actual.piso}}</b> departamento <b>{{item.direccion_actual.depto}}</b> edificio <b>{{item.direccion_actual.edificio}}</b> barrio <b>{{item.direccion_actual.barrio}}</b>,<b>{{item.direccion_actual.ciudad}}</b>, <b>{{item.direccion_actual.provincia}}</b>, <b>{{item.direccion_actual.pais}}</b> CP: <b>{{item.direccion_actual.cp}}</b></p>
 
       <p><b>{{item.mail}}</b> </p>
@@ -113,7 +113,7 @@
           <div class="row">
               <div class="form-group required col-md-3">
                 <label class="control-label" for="inputTelefonoTutor">Teléfono</label>
-                <input type="text" class="form-control" name="inputTelefonoTutor" value="{{tmpTutor.telefono}}" ng-model="tmpTutor.telefono" required>
+                <input type="text" class="form-control" name="inputTelefonoTutor" value="{{tmpTutor.telefono}}" ng-model="tmpTutor.telefono" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                  <div class="error" ng-show="form_tutor.inputTelefonoTutor.$dirty && form_tutor.inputTelefonoTutor.$error.required && !form_tutor.inputTelefonoTutor.$focused">
                 El campo es requerido.
               </div>
@@ -159,14 +159,14 @@
           <div class="row">
             <div class="form-group required col-md-2">
               <label class="control-label" for="inputBarrio">Calle</label>
-              <input type="text" class="form-control" name="inputCalle" value="{{tmpTutor.direccion_actual.calle}}" ng-model="tmpTutor.direccion_actual.calle" required>
+              <input type="text" class="form-control" name="inputCalle" value="{{tmpTutor.direccion_actual.calle}}" ng-model="tmpTutor.direccion_actual.calle" required >
                <div class="error" ng-show="form_tutor.inputCalle.$dirty && form_tutor.inputCalle.$error.required && !form_tutor.inputCalle.$focused">
                 El campo es requerido.
               </div>
             </div>
             <div class="form-group col-md-2">
               <label for="inputNumero">Número</label>
-              <input type="text" class="form-control" name="inputNumero" value="{{tmpTutor.direccion_actual.nro}}" ng-model="tmpTutor.direccion_actual.nro">
+              <input type="text" class="form-control" name="inputNumero" value="{{tmpTutor.direccion_actual.nro}}" ng-model="tmpTutor.direccion_actual.nro" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
             </div>
             <div class="form-group col-md-2">
               <label for="inputPico">Piso</label>
@@ -182,7 +182,7 @@
             </div>
             <div class="form-group required col-md-2">
               <label class="control-label" for="inputCP">Código Postal</label>
-              <input type="text" class="form-control" name="inputCP" value="{{tmpTutor.direccion_actual.cp}}"ng-model="tmpTutor.direccion_actual.cp" required>
+              <input type="text" class="form-control" name="inputCP" value="{{tmpTutor.direccion_actual.cp}}"ng-model="tmpTutor.direccion_actual.cp" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                <div class="error" ng-show="form_tutor.inputCP.$dirty && form_tutor.inputCP.$error.required && !form_tutor.inputCP.$focused">
                 El campo es requerido.
               </div>
@@ -192,7 +192,7 @@
           <div class="row">  
             <div class="form-group col-md-12">
               <label for="inputComentarioTutor">Comentario</label>
-              <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioTutor"></textarea>
+              <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioTutor" maxlength="200"></textarea>
             </div>
           </div>
         
@@ -298,8 +298,8 @@
           <div class="row">
               <div class="form-group required col-md-3">
                 <label class="control-label" for="inputTelefonoTutor">Teléfono</label>
-                <input type="text" class="form-control" name="inputTelefonoTutor" ng-model="nvoTutor.telefono" required>
-                 <div class="error" ng-show="form_nvo_tutor.inputTelefonoTutor.$dirty && form_nvo_tutor.inputTelefonoTutor.$error.required && !form_nvo_tutor.inputTelefonoTutor.$focused">
+                <input type="text" class="form-control" name="inputTelefonoTutor" ng-model="nvoTutor.telefono" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                 <div class="error" ng-show="form_nvo_tutor.inputTelefonoTutor.$dirty && form_nvo_tutor.inputTelefonoTutor.$error.required && !form_nvo_tutor.inputTelefonoTutor.$focused" >
                 El campo es requerido.
               </div>
               </div>  
@@ -351,7 +351,7 @@
             </div>
             <div class="form-group col-md-2">
               <label for="inputNumero">Número</label>
-              <input type="text" class="form-control" name="inputNumero" ng-model="nvoTutor.direccion_actual.nro">
+              <input type="text" class="form-control" name="inputNumero" ng-model="nvoTutor.direccion_actual.nro" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
             </div>
             <div class="form-group col-md-2">
               <label for="inputPico">Piso</label>
@@ -367,7 +367,7 @@
             </div>
             <div class="form-group required col-md-2">
               <label class="control-label" for="inputCP">Código Postal</label>
-              <input type="text" class="form-control" name="inputCP" ng-model="nvoTutor.direccion_actual.cp" required>
+              <input type="text" class="form-control" name="inputCP" ng-model="nvoTutor.direccion_actual.cp" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                <div class="error" ng-show="form_nvo_tutor.inputCP.$dirty && form_nvo_tutor.inputCP.$error.required && !form_nvo_tutor.inputCP.$focused">
                 El campo es requerido.
               </div>
@@ -377,7 +377,7 @@
           <div class="row">  
             <div class="form-group col-md-12">
               <label for="inputComentarioTutor">Comentario</label>
-              <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioTutor"></textarea>
+              <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioTutor" maxlength="200"></textarea>
             </div>
           </div>
           <div class="modal-footer">

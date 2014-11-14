@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-8">
         <p> <b>{{item.tel}}</b></p>
-        <p> {{item.comentario}} </p>
+        <p style="word-wrap: break-word;"> {{item.comentario}} </p>
     </div>
   </div>
   <div class="col-md-offset-1 col-md-1">
@@ -50,7 +50,7 @@
           </div>
            <div class="form-group required col-md-4">
             <label class="control-label" for="inputTelefono">Telefono</label>
-            <input type="text" class="form-control" name="inputTelefono" value="{{tmpContacto.tel}}" ng-model="tmpContacto.tel" required>
+            <input type="text" class="form-control" name="inputTelefono" value="{{tmpContacto.tel}}" ng-model="tmpContacto.tel" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
             <div class="error" ng-show="form_emergencia.inputTelefono.$dirty && form_emergencia.inputTelefono.$error.required && !form_emergencia.inputTelefono.$focused">
                 El campo es requerido.
               </div>
@@ -60,7 +60,7 @@
          <div class="row">
           <div class="form-group col-md-12">
             <label for="inputComentarioEmergencia">Comentario</label>
-            <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioEmergencia" ng-model="tmpContacto.comentario">{{tmpContacto.comentario}}</textarea>
+            <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioEmergencia" ng-model="tmpContacto.comentario" maxlength="200">{{tmpContacto.comentario}}</textarea>
           </div>
          </div>
 
@@ -106,7 +106,7 @@
             </div>
            <div class="form-group required col-md-4">
               <label class="control-label" for="inputTelefono">Telefono</label>
-              <input type="text" class="form-control" name="inputTelefono" ng-model="nvoContacto.tel" required>
+              <input type="text" class="form-control" name="inputTelefono" ng-model="nvoContacto.tel" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
               <div class="error" ng-show="form_nvo_emergencia.inputTelefono.$dirty && form_nvo_emergencia.inputTelefono.$error.required && !form_nvo_emergencia.inputTelefono.$focused">
                 El campo es requerido.
               </div>
@@ -116,7 +116,7 @@
            <div class="row">
             <div class="form-group col-md-12">
               <label for="inputComentarioEmergencia">Comentario</label>
-              <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioEmergencia" ng-model="nvoContacto.comentario">
+              <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioEmergencia" ng-model="nvoContacto.comentario" maxlength="200">
              </textarea>
             </div>
           </div>

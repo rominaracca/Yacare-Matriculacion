@@ -390,3 +390,20 @@ input.cropit-image-zoom-input {
 .cropit-image-zoom-input[disabled] {
   opacity: .25;
 }
+
+.styled-select {
+background: #215F23;
+width: 136px;
+padding-left: 7px;
+font-size: 14px;
+border: 0;
+border-radius: 9px;
+height: 31px;
+text-transform: capitalize;
+color: white;
+font-style: italic;
+ }
+
+ .styled-select:focus {
+ 	outline: 0px;
+ }
