@@ -8,8 +8,21 @@
  * Controller of the yacareMatriculacionApp
  */
  angular.module('yacareMatriculacionApp')
- .controller('TutorCtrl', function ($scope) {
+ .controller('TutorCtrl', function ($scope, $location, toasty, backend) {
 
+
+backend.tutor(function(err, tutores) {
+  if(err) {
+    toasty.pop.error({
+      title: 'Error',
+      msg: 'Ha ocurrido un error: '+err.message
+    });
+    //$location.path('/login');
+  } else {
+    $scope.tutores = tutores.data;
+    $scope.update = tutores.update;
+  }
+});
 
   $scope.today = function() {
    $scope.dt = new Date();
@@ -23,7 +36,7 @@
    $scope.opened = true;
  };
 
- $scope.tutores = [
+ /*$scope.tutores = [
  {
   nombre:"Juan",
   apellido:"Legresti",
@@ -87,7 +100,7 @@
   telefono: "+54 9 6 654321"
 },
 
-];
+];*/
 
 $scope.genero = ['Mujer','Hombre'];
 $scope.tipo_documento = ['DNI', 'Pasaporte', 'Otro'];

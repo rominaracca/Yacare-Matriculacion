@@ -14,7 +14,8 @@ angular
     'ngResource',
     'ngRoute',
     'ui.bootstrap',
-    'ui.router'
+    'ui.router',
+    'toasty'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -48,7 +49,12 @@ angular
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: function($scope, backend) {
+          $scope.data = {};
+          $scope.login = function() {
+            backend.login($scope.data);
+          }
+        }
       });
 
   })
@@ -72,7 +78,7 @@ angular
   }])
   .factory('backend', ['$http', '$location', 'toasty', function($http, $location, toasty) {
 
-    defaultCb = function(err, data) {
+    var defaultCb = function(err, data) {
       if(err) {
         toasty.pop.error({
           title: 'Error!',
@@ -83,11 +89,13 @@ angular
 
     var globalData = {};
 
+    var fromPath = '/alumno';
+
     return {
       login: function(data) {
         $http.post('/api/login', data)
         .success(function(data) {
-          $location.path('/alumno');
+          $location.path(fromPath);
         })
         .error(function(data) {
           toasty.pop.error({
@@ -97,6 +105,7 @@ angular
         });
       },
       alumno: function(cb) {
+        fromPath = '/alumno';
         if(!cb) cb = defaultCb;
         $http.get('/api/alumno')
         .success(function(data) {
@@ -117,6 +126,7 @@ angular
         });
       },
       tutor: function(cb) {
+        fromPath = '/tutor';
         if(!cb) cb = defaultCb;
         $http.get('/api/tutor')
         .success(function(data) {
@@ -137,6 +147,7 @@ angular
         });
       },
       emergencia: function(cb) {
+        fromPath = '/emergencia';
         if(!cb) cb = defaultCb;
         $http.get('/api/emergencia')
         .success(function(data) {
