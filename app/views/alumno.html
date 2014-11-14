@@ -4,11 +4,21 @@
 	<div class="col-md-2" style="text-align:center; margin-left: 4.16%;">
 		<img src="images/monserrat-logo.png" style="height: 120px;">
 	</div>
+
 	<div class="col-md-7" style="text-align:center;">
 		<p>Matriculación en <b>Colegio Nacional de Monserrat</b>.</p>
 		<p>Bachiller Humanista con Orientación en Humanidades y Ciencias Sociales.</p>
-		<p>{{matricula.anio}}.</p>
-		<p>{{matricula.turno}}.</p>
+		<p><b>{{matricula.anio}}.</b></p>
+		<p ng-show="matricula.anio!='Primer año'"><b>{{matricula.turno}}.</b></p>
+		<form ng-show="matricula.anio=='Primer año'" class="form-horizontal" role="form">
+  			<div class="form-group">
+    			<div class="col-sm-12" style="text-align: center;">
+      				<select class="styled-select" name="selectAnio" required ng-options="t for t in turnos" ng-model="matricula.turno">
+      					<option value="" disabled selected> Selecione Turno</option>  
+      				</select>
+    			</div>
+  			</div>
+  		</form>
  	</div>
  	<div class="col-md-2" style="text-align:center">
 		<img src="images/monserrat-logo.png" style="height: 120px;">
@@ -36,7 +46,7 @@
 		<p>{{alumno.tipo_documento}} : <b>{{alumno.nro_documento}}</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>{{alumno.nro_cuil}}</b> </p>
 		<p> <b> {{alumno.genero}}. </b> Grupo sanguíneo: <b> {{alumno.grupo_sanguineo}} {{alumno.factor_rh}} </b></p>
 		<p><span ng-show="alumno.genero=='Hombre'">Nacido</span><span ng-show="alumno.genero=='Mujer'">Nacida</span> el <b>{{alumno.nacimiento.dia}}</b> de <b>{{alumno.nacimiento.mes}}</b> de <b>{{alumno.nacimiento.anio}}</b>
-		en <b>{{alumno.lugar_nacimiento.ciudad}}</b>, <b>{{alumno.lugar_nacimiento.pais}}</b>. <img src="images/flags/ar.png"> </p>
+		en <b>{{alumno.lugar_nacimiento.ciudad}}</b>, <b>{{alumno.lugar_nacimiento.pais}}</b>. </p>
 		<p>De nacionalidad <b>{{alumno.nacionalidades[0]}}</b>, <b>{{alumno.nacionalidades[1]}}</b>.</p>
 	</div>
 	<div class="col-md-offset-6 col-md-2">
@@ -211,14 +221,14 @@
 
 						<div class="form-group required col-md-6">
 							<label class="control-label" for="inputBarrio">Calle</label>
-							<input type="text" class="form-control" name="inputCalle" value="{{tmpDireccion.calle}}" ng-model="tmpDireccion.calle" required>
+							<input type="text" class="form-control" name="inputCalle" value="{{tmpDireccion.calle}}" ng-model="tmpDireccion.calle" required >
 							<div class="error" ng-show="form_address.inputCalle.$dirty && form_address.inputCalle.$error.required && !form_address.inputCalle.$focused">
 							  El campo es requerido.
 							</div>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputNumero">Número</label>
-							<input type="text" class="form-control" id="inputNumero" value="{{tmpDireccion.nro}}" ng-model="tmpDireccion.nro" >
+							<input type="text" class="form-control" id="inputNumero" value="{{tmpDireccion.nro}}" ng-model="tmpDireccion.nro" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputPico">Piso</label>
@@ -237,7 +247,7 @@
 						</div>
 						<div class="form-group required col-md-3">
 							<label class="control-label" for="inputCP">Código Postal</label>
-							<input type="text" class="form-control" name="inputCP" value="{{tmpDireccion.cp}}" ng-model="tmpDireccion.cp" required>
+							<input type="text" class="form-control" name="inputCP" value="{{tmpDireccion.cp}}" ng-model="tmpDireccion.cp" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 							<div class="error" ng-show="form_address.inputCP.$dirty && form_address.inputCP.$error.required && !form_address.inputCP.$focused">
 							  El campo es requerido.
 							</div>

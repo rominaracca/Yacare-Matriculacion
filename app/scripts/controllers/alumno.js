@@ -65,9 +65,12 @@ $scope.applyCropUp = function() {
   };
 
   $scope.matricula = {
-    anio:"Segundo año",
-    turno:"Turno tarde"
+    anio:"Primer año",
+    turno:""
   };
+
+  //$scope.anios = ['Primer año','Segundo año','Tercer año','Cuarto año','Quinto año','Sexto año','Séptimo año'];
+  $scope.turnos = ['Turno mañana', 'Turno tarde'];
 
   $scope.alumno = {
     nombre: "Nicolás",
