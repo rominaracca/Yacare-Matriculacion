@@ -13,29 +13,44 @@ angular
     'ngAnimate',
     'ngResource',
     'ngRoute',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise("/alumno");
+
+    $stateProvider
+      .state('form', {
+        abstract: true,
+        templateUrl: 'views/form.html'
+      })
+      .state('form.alumno', {
+        url: '/alumno', 
         templateUrl: 'views/alumno.html',
         controller: 'AlumnoCtrl'
       })
-      .when('/tutor', {
+      .state('form.tutor', {
+        url: '/tutor',
         templateUrl: 'views/tutor.html',
         controller: 'TutorCtrl'
       })
-      .when('/emergencia', {
+      .state('form.emergencia', {
+        url: '/emergencia',
         templateUrl: 'views/emergencia.html',
         controller: 'EmergenciaCtrl'
       })
-      .when('/resumen', {
+      .state('form.resumen', {
+        url: '/resumen',
         templateUrl: 'views/resumen.html',
         controller: 'ResumenCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       });
+
   })
 
   .directive('ngFocus', [function() {
@@ -54,5 +69,108 @@ angular
         });
       }
     }
+  }])
+  .factory('backend', ['$http', '$location', 'toasty', function($http, $location, toasty) {
+
+    defaultCb = function(err, data) {
+      if(err) {
+        toasty.pop.error({
+          title: 'Error!',
+          msg: data.message
+        });
+      }
+    };
+
+    var globalData = {};
+
+    return {
+      login: function(data) {
+        $http.post('/api/login', data)
+        .success(function(data) {
+          $location.path('/alumno');
+        })
+        .error(function(data) {
+          toasty.pop.error({
+            title: 'Error!',
+            msg: data.message
+          });
+        });
+      },
+      alumno: function(cb) {
+        if(!cb) cb = defaultCb;
+        $http.get('/api/alumno')
+        .success(function(data) {
+          var alumno = {
+            data: data,
+            update: function(data) {
+              globalData.alumno = data;
+            }
+          }
+          cb(null, alumno);
+        })
+        .error(function(err, status) {
+          if(status == 401) {
+            $location.path('/login');
+          } else {
+            cb(err);
+          }
+        });
+      },
+      tutor: function(cb) {
+        if(!cb) cb = defaultCb;
+        $http.get('/api/tutor')
+        .success(function(data) {
+          var tutor = {
+            data: data,
+            update: function(data) {
+              globalData.tutor = data;
+            }
+          }
+          cb(null, tutor);
+        })
+        .error(function(err, status) {
+          if(status == 401) {
+            $location.path('/login');
+          } else {
+            cb(err);
+          }
+        });
+      },
+      emergencia: function(cb) {
+        if(!cb) cb = defaultCb;
+        $http.get('/api/emergencia')
+        .success(function(data) {
+          var emergencia = {
+            data: data,
+            update: function(data) {
+              globalData.emergencia = data;
+            }
+          }
+          cb(null, emergencia);
+        })
+        .error(function(err, status) {
+          if(status == 401) {
+            $location.path('/login');
+          } else {
+            cb(err);
+          }
+        });
+      },
+      guardar: function() {
+        $http.get('/api/guardar')
+        .success(function(data) {
+          toasty.pop.success({
+            title: 'Éxito!',
+            msg: 'Los datos se guardaron con éxito.'
+          });
+        })
+        .error(function(data) {
+          toasty.pop.error({
+            title: 'Error!',
+            msg: data.message
+          });
+        });
+      }
+    };
   }]);
 
