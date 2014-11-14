@@ -70,11 +70,12 @@
               <label class="control-label" for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
               
               <p class="input-group">
-                <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="Date()" ng-required="true" show-button-bar="false" required/>
+                <input type="text" class="form-control" id="datetimepicker" ng-init="initCalendar()" ng-model="tmpTutor.fecha_nacimiento" required/>
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  <button type="button" class="btn btn-default" style="cursor: default;"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </p>
+
               <div class="error" ng-show="form_tutor.inputFechaNacimientoTutor.$dirty && form_tutor.inputFechaNacimientoTutor.$error.required && !form_tutor.inputFechaNacimientoTutor.$focused">
                 El campo es requerido.
               </div>
@@ -254,11 +255,12 @@
               <label class="control-label" for="inputFechaNacimientoTutor">Fecha de Nacimiento</label>
               
               <p class="input-group">
-                <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="Date()" ng-required="true" show-button-bar="false" required/>
+                <input type="text" class="form-control" id="datetimepicker" ng-init="initCalendar()" ng-model="nvoTutor.fecha_nacimiento" required/>
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  <button type="button" class="btn btn-default" style="cursor: default;"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </p>
+
               <div class="error" ng-show="form_nvo_tutor.inputFechaNacimientoTutor.$dirty && form_nvo_tutor.inputFechaNacimientoTutor.$error.required && !form_nvo_tutor.inputFechaNacimientoTutor.$focused">
                 El campo es requerido.
               </div>

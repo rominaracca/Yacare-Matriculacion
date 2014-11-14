@@ -25,6 +25,20 @@ var numToMonth = {
   12: 'Diciembre'
 }
 
+$scope.initCalendar = function(){
+  $('#datetimepicker').datetimepicker({
+    dayOfWeekStart : 1,
+    lang:'es',
+    value: $scope.tmpTutor.fecha_nacimiento,
+    format:'d/m/Y',
+    maxDate: new Date(),
+    //mask:'39/19/9999',
+    timepicker:false
+  });
+} ;
+
+
+
 var parseDate = function(dateStr) {
   if(!dateStr) return {};
   var d = dateStr.split('/');
@@ -68,7 +82,8 @@ $scope.$watch('tutores', function(newTut, oldTut){
   });
 }, true);
 
- /*$scope.tutores = [
+/*
+ $scope.tutores = [
  {
   nombre:"Juan",
   apellido:"Legresti",
@@ -76,6 +91,7 @@ $scope.$watch('tutores', function(newTut, oldTut){
   tipo_documento:"DNI",
   nro_documento:"16.132.456",
   genero:"Hombre",
+  fecha_nacimiento: "08/06/1960",
   nacimiento : {
     dia:"08",
     mes:"Junio",
@@ -107,6 +123,7 @@ $scope.$watch('tutores', function(newTut, oldTut){
   tipo_documento:"DNI",
   nro_documento:"17.214.237",
   genero:"Mujer",
+  fecha_nacimiento: "09/10/1962",
   nacimiento : {
     dia:"09",
     mes:"Octubre",
@@ -131,8 +148,8 @@ $scope.$watch('tutores', function(newTut, oldTut){
   mail:"maria.perez@gmail.com",
   telefono: "+54 9 6 654321"
 },
-
-];*/
+];
+*/
 
 $scope.genero = ['Mujer','Hombre'];
 $scope.tipo_documento = ['DNI', 'Pasaporte', 'Otro'];
@@ -146,6 +163,7 @@ $scope.nvoTutor = {
   tipo_documento:"",
   nro_documento:"",
   sexo:"",
+  fecha_nacimiento: "",
   nacimiento: {
     dia:"",
     mes:"",
@@ -178,6 +196,7 @@ $scope.tmpTutor = {
   tipo_documento:"",
   nro_documento:"",
   sexo:"",
+  fecha_nacimiento: "",
   nacimiento: {
     dia:"",
     mes:"",
