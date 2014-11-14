@@ -10,9 +10,16 @@
 angular.module('yacareMatriculacionApp')
   .controller('AlumnoCtrl', function ($scope) {
 
- $scope.today = function() {
-    $scope.dt = new Date();
-  };
+$scope.initCalendar = function(){
+  $('#datetimepicker').datetimepicker({
+    dayOfWeekStart : 1,
+    lang:'es',
+    format:'d/m/Y',
+    maxDate: new Date(),
+    //mask:'39/19/9999',
+    timepicker:false
+  });
+} ;
 
   $scope.applyCrop = function() {
     //var imageSrc = "images/nico-perfil.jpg";
