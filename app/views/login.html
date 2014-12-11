@@ -1,26 +1,29 @@
+<h3 class="page-header" style="margin-bottom: 29px;"> Colegio Nacional de Monserrat. <small style="font-style: italic;">Matriculación año 2015.</small></h3>
 <div style="display: inline-block; width: 100%;">
-	<div class="col-md-6">
-		La matriculación no está completa hasta que presente toda la documentación y el formulario obtenido por este sistema en el colegio. Recién allí deberá firmarlo. Recuerde adjuntar una fotografía al formulario impreso.
+	<div class="col-md-7 login-text" style="padding-top:4px">
+<p>La matriculación no estará completa hasta que presente en el colegio toda la documentación y el formulario obtenido por este sistema. Recién allí deberá firmarlo.</p>
+<p>Durante la confección del formulario de matriculación que comienza a continuación, se le solicitará adjuntar una fotografía del alumno en formato digital. <br>Se recomienda seleccionar dicha fotografía antes de comenzar el proceso a fin de evitar demoras.
+</p>
 	</div>
 	
-	<div class="form-group required col-md-4">
+	<div class="form-group required col-md-4 jumbotron" style="margin-left: 30px;margin-bottom: 127px;">
 		<form id="form_login" ng-submit="login()">
-
-			 <label class="control-label" for="inputApellido">Apellido del tutor:</label>
-			 <input type="text" class="form-control" ng-model="data.apellido" name="inputApellido" required>
 			 
-			 <label class="control-label" for="inputNombre">Nombre del tutor:</label>
-			 <input type="text" class="form-control" ng-model="data.nombre" name="inputNombre" required>
+			<!-- <label class="control-label" for="inputDocumento">Documento del tutor:</label>
+			 <input type="text" class="form-control" ng-model="data.dni" name="inputDocumento" required onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right">-->
 			 
-			 <label class="control-label" for="inputDocumento">Documento del tutor:</label>
-			 <input type="text" class="form-control" ng-model="data.dni" name="inputDocumento" required>
-			 
-			 <label class="control-label" for="inputDocumentoAlumno">Documento del alumno:</label>
-			 <input type="text" class="form-control" ng-model="data.doc" name="inputDocumentoAlumno" required>
+			 <label class="control-label" for="inputDocumentoAlumno" style="margin-top: 9px; ">Documento del alumno:</label>
+			 <input type="text" class="form-control" ng-model="data.doc" name="inputDocumentoAlumno" required onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right; margin-bottom: 12px;">
 			
-			 <button>Enviar</button> 
+			 <button class="btn btn-default edit-button" style="margin-top: 25px; padding:10px 15px; font-size: 11pt;">
+			 	Iniciar matriculación
+			 </button> 
 		</form>
 	</div>
-
 	
 </div>
+<footer>
+	<div style="font-style: italic;font-size: 10pt;">
+  		Para el correcto funcionamiento del sistema, por favor utilice <a href="https://www.google.com/chrome/browser/" target="_blank">Google Chrome</a>, <a href="https://www.mozilla.org/es-AR/firefox/new/" target="_blank">Mozilla Firefox</a> o, en su defecto, <a href="http://windows.microsoft.com/es-ar/internet-explorer/ie-11-worldwide-languages" target="_blank">Internet Explorer</a> en su última versión.
+  	</div>
+</footer>

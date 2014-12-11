@@ -2,11 +2,18 @@
 <div class="container_gral"  ng-repeat="item in contactos">
   <div class="col-md-offset-1" >
     <div class="monserrat-color col-md-8"> 
-      <h4><b>{{item.apellido}}, {{item.nombre}}</b></h4>
+       <span ng-if="hasOwner($index)">
+          <h4>
+            <b>{{item.xml.name}} {{item.xml.lastname}}</b>
+          </h4>
+        </span>
+        <span ng-if="!hasOwner($index)" class="missing-data">
+          Datos de Contacto incompletos. Haga click en el botón "Editar".
+        </span>
     </div>
     <div class="col-md-8">
         <p> <b>{{item.tel}}</b></p>
-        <p style="word-wrap: break-word;"> {{item.comentario}} </p>
+        <p style="word-wrap: break-word;"> {{item.xml.comment}}</p>
     </div>
   </div>
   <div class="col-md-offset-1 col-md-1">
@@ -19,7 +26,6 @@
 
 <button class="btn btn-default save-button" data-toggle="modal" data-target="#myNvoModalContactoEmergencia" ng-click="cleanModal()">Agregar Contacto</button>
 
-
 <!-- Modal edicion de datos del contacto en caso de emergencia -->
 <div class="modal fade" id="myEditModalContactoEmergencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -31,19 +37,19 @@
       </div>
 
       <div class="modal-body">
-        <form name="form_emergencia" ng-submit="updateContact()" role="form" style="display: inline-block;" >
+        <form name="form_emergencia" ng-submit="updateContact()" role="form">
 
         <div class="row">
           <div class="form-group required col-md-4">
             <label class="control-label" for="inputApellido">Apellido</label>
-            <input type="text" class="form-control" name="inputApellido" value="{{tmpContacto.apellido}}" ng-model="tmpContacto.apellido" required>
+            <input type="text" class="form-control" name="inputApellido" value="{{tmpContacto.xml.lastname}}" ng-model="tmpContacto.xml.lastname" required>
             <div class="error" ng-show="form_emergencia.inputApellido.$dirty && form_emergencia.inputApellido.$error.required && !form_emergencia.inputApellido.$focused">
                 El campo es requerido.
               </div>
           </div>
           <div class="form-group required col-md-4">
             <label class="control-label" for="inputNombre">Nombre</label>
-            <input type="text" class="form-control" name="inputNombre" value="{{tmpContacto.nombre}}" ng-model="tmpContacto.nombre" required>
+            <input type="text" class="form-control" name="inputNombre" value="{{tmpContacto.xml.name}}" ng-model="tmpContacto.xml.name" required>
             <div class="error" ng-show="form_emergencia.inputNombre.$dirty && form_emergencia.inputNombre.$error.required && !form_emergencia.inputNombre.$focused">
                 El campo es requerido.
               </div>
@@ -60,13 +66,13 @@
          <div class="row">
           <div class="form-group col-md-12">
             <label for="inputComentarioEmergencia">Comentario</label>
-            <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioEmergencia" ng-model="tmpContacto.comentario" maxlength="200">{{tmpContacto.comentario}}</textarea>
+            <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioEmergencia" ng-model="tmpContacto.xml.comment" maxlength="200">{{tmpContacto.xml.comment}}</textarea>
           </div>
          </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary" >Guardar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
         </div>
         </form>
       </div> <!-- cierre de modal-body -->
@@ -88,18 +94,18 @@
       </div>
 
       <div class="modal-body">
-        <form name="form_nvo_emergencia" ng-submit="saveContact()" role="form" style="display: inline-block;">
+        <form name="form_nvo_emergencia" ng-submit="saveContact()" role="form" >
           <div class="row">
             <div class="form-group required col-md-4">
               <label class="control-label" for="inputApellido">Apellido</label>
-              <input type="text" class="form-control" name="inputApellido" ng-model="nvoContacto.apellido" required>
+              <input type="text" class="form-control" name="inputApellido" ng-model="nvoContacto.xml.lastname" required>
               <div class="error" ng-show="form_nvo_emergencia.inputApellido.$dirty && form_nvo_emergencia.inputApellido.$error.required && !form_nvo_emergencia.inputApellido.$focused">
                 El campo es requerido.
               </div>
             </div>
             <div class="form-group required col-md-4">
               <label class="control-label" for="inputNombre">Nombre</label>
-              <input type="text" class="form-control" name="inputNombre" ng-model="nvoContacto.nombre" required>
+              <input type="text" class="form-control" name="inputNombre" ng-model="nvoContacto.xml.name" required>
               <div class="error" ng-show="form_nvo_emergencia.inputNombre.$dirty && form_nvo_emergencia.inputNombre.$error.required && !form_nvo_emergencia.inputNombre.$focused">
                 El campo es requerido.
               </div>
@@ -116,18 +122,16 @@
            <div class="row">
             <div class="form-group col-md-12">
               <label for="inputComentarioEmergencia">Comentario</label>
-              <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioEmergencia" ng-model="nvoContacto.comentario" maxlength="200">
+              <textarea rows="3" style="resize:none;" class="form-control" id="inputComentarioEmergencia" ng-model="nvoContacto.xml.comment" maxlength="200">
              </textarea>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
           </div>
         </form>
       </div> <!-- cierre de modal-body -->
-
-
     </div> <!-- cierre de modal-content -->
   </div> <!-- cierre de modal-dialog -->
 </div>

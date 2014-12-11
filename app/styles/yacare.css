@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 /** Color monserrat**/
 .monserrat-color{
@@ -93,6 +94,7 @@ a:hover{
 	background-color: rgba(23, 76, 25, 0.78);
 	color: #fff;
     margin-top: 9px;
+    margin-left: 50px;
     border: 0px;
 }
 
@@ -105,7 +107,7 @@ a:hover{
 	background-color: rgba(23, 76, 25, 0.78);
 	color: #fff;
     margin-top: 80px;
-    margin-left: 78px;
+    margin-left: 58px;
     border: 0px;
 }
 
@@ -185,6 +187,12 @@ a:hover{
 	color: #FFF;
     background-color: #174C19;
     border-color: #174C19;
+}
+
+.btn-print{
+	padding: 10px 25px;
+	font-weight: bold;
+	margin-left: 25px;
 }
 
 .select-option {
@@ -407,3 +415,19 @@ input.cropit-image-zoom-input {
  .styled-select:focus {
  	outline: 0px;
  }
+
+.bold{
+	font-weight: bold;
+}
+
+.missing-data{
+	font-style: italic;
+	color: rgba(255, 0, 0, 0.75);
+	font-weight: normal;
+}
+
+.login-text{
+	font-family: serif;
+	font-size: 14pt;
+	padding-right: 67px;
+}

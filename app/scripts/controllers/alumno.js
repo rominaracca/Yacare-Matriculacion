@@ -8,22 +8,91 @@
  * Controller of the yacareMatriculacionApp
  */
 angular.module('yacareMatriculacionApp')
-  .controller('AlumnoCtrl', function ($scope) {
+  .controller('AlumnoCtrl', function ($scope, toasty, backend, $rootScope) {
 
-$scope.initCalendar = function(){
-  $('#datetimepicker').datetimepicker({
-    dayOfWeekStart : 1,
-    lang:'es',
-    value: $scope.tmpAlumno.nac,
-    format:'d/m/Y',
-    maxDate: new Date(),
-    //mask:'39/19/9999',
-    timepicker:false
+var numToMonth = {
+  1: 'Enero',
+  2: 'Febrero',
+  3: 'Marzo',
+  4: 'Abril',
+  5: 'Mayo',
+  6: 'Junio',
+  7: 'Julio',
+  8: 'Agosto',
+  9: 'Septiembre',
+  10: 'Octubre',
+  11: 'Noviembre',
+  12: 'Diciembre'
+}
+
+var parseDate = function(dateStr) {
+  if(!dateStr) return {};
+  if(typeof dateStr == 'string') {
+    var d = dateStr.split('/');
+    if(d.length > 1) {
+      return {dia: parseInt(d[0], 10), mes: numToMonth[parseInt(d[1],10)], anio: parseInt(d[2], 10)};
+    } 
+    var d = dateStr.split('-');
+    if(d.length > 1) {
+      return {dia: parseInt(d[2], 10), mes: numToMonth[parseInt(d[1],10)], anio: parseInt(d[0], 10)};
+    }
+  } else if(dateStr.getDate) {
+    return {dia: dateStr.getDate(), mes: numToMonth[dateStr.getMonth()+1], anio: dateStr.getFullYear()};
+  } 
+  return {};
+};
+
+$scope.genero = ['Mujer','Hombre'];
+$scope.imagenSubida = "";
+
+if(!$rootScope.alumno) {
+  $scope.imagenActual = "";
+  backend.alumno(function(err, alumnoObj) {
+    if(err) {
+      toasty.pop.error({
+        title: 'Error',
+        msg: 'Ha ocurrido un error: '+err.message
+      });
+      //$location.path('/login');
+    } else {
+      for(var i in alumnoObj.data) {
+        $rootScope[i] = $scope[i] = alumnoObj.data[i];
+      }
+    }
   });
-} ;
+}
 
-  $scope.applyCrop = function() {
-    //var imageSrc = "images/nico-perfil.jpg";
+backend.dominios(function(err, dominios) {
+  if(err) {
+    toasty.pop.error({
+      title: 'Error',
+      msg: 'Ha ocurrido un error: '+err.message
+    });
+    //$location.path('/login');
+  } else {
+    $scope.dominios = dominios;
+  }
+});
+$scope.search = backend.search;
+
+$scope.getProfilePicture = function(){
+  if($scope.imagenActual == "" || $scope.imagenActual == "images/default-male.png" || $scope.imagenActual == "images/default-female.png"){
+    if ($scope.alumno.genero=='Mujer')
+      return "images/default-female.png";
+    else
+      return "images/default-male.png";
+  }
+  else
+    return $scope.imagenActual;
+};
+
+$scope.open = function($event) {
+   $event.preventDefault();
+   $event.stopPropagation();
+   $scope.opened = true;
+ };
+
+ /* $scope.applyCrop = function() {
    $('#image-cropper').cropit({
       imageState: {
          src: 'images/nico-perfil-big.jpg'
@@ -31,12 +100,12 @@ $scope.initCalendar = function(){
       imageBackground: true
     });
    $('.export').click(function() {
-          var imageData = $('#image-cropper').cropit('export', {type: 'image/png'});
-          
-          window.open(imageData);
+          $scope.imagenActual = $('#image-cropper').cropit('export', {type: 'image/png'});
+          //backend.update({foto: $scope.imagenActual});
+          window.open($scope.imagenActual);
     });
   };
-
+*/
 $scope.applyCropUp = function() {
 
      $('.image-editor').cropit({
@@ -44,15 +113,18 @@ $scope.applyCropUp = function() {
           height: 300,
           exportZoom: 1.25,
           imageState: {
-          
           },
           imageBackground: true,
-          allowCrossOrigin: true
         });
     $('.export').click(function() {
-          var imageData = $('.image-editor').cropit('export', {type: 'image/png'});
-          console.log(imageData);
-          window.open(imageData);
+          $scope.imagenSubida = $('.image-editor').cropit('export', {type: 'image/png'});
+          //backend.update({foto: $scope.imagenSubida});
+          //window.open($scope.imagenSubida);
+          $scope.$apply(function () {
+            $scope.imagenActual = $scope.imagenSubida;
+            backend.update({imagenActual: $scope.imagenActual});
+            $scope.onChangePhoto = false;
+          });
     });
   };
 
@@ -61,8 +133,7 @@ $scope.applyCropUp = function() {
  $scope.showPhotoUp = function() {
   $scope.$apply(function () {
     $scope.onChangePhoto = true;
-        });
-    alert($scope.onChangePhoto);
+  });
  }
   
   $scope.opened = false;
@@ -72,132 +143,15 @@ $scope.applyCropUp = function() {
     $scope.opened = true;
   };
 
-  $scope.matricula = {
-    anio:"Primer año",
-    turno:""
-  };
-
-  //$scope.anios = ['Primer año','Segundo año','Tercer año','Cuarto año','Quinto año','Sexto año','Séptimo año'];
-  $scope.turnos = ['Turno mañana', 'Turno tarde'];
+  !$scope.alumno&&($scope.alumno={});
 
   $scope.$watch('alumno.nac', function() {
-      $scope.tmpAlumno.nac = $scope.alumno.nac;
-      var parsedDate = $scope.tmpAlumno.nac.split("/");
-      $scope.alumno.nacimiento.dia = parsedDate[0];
-      switch (parsedDate[1]) {
-          case '01':
-              $scope.alumno.nacimiento.mes = "Enero";
-              break;
-          case '02':
-              $scope.alumno.nacimiento.mes = "Febrero";
-              break;
-          case '03':
-              $scope.alumno.nacimiento.mes = "Marzo";
-              break;
-          case '04':
-              $scope.alumno.nacimiento.mes = "Abril";
-              break;
-          case '05':
-              $scope.alumno.nacimiento.mes = "Mayo";
-              break;
-          case '06':
-              $scope.alumno.nacimiento.mes = "Junio";
-              break;
-          case '07':
-              $scope.alumno.nacimiento.mes = "Julio";
-              break;
-          case '08':
-              $scope.alumno.nacimiento.mes = "Agosto";
-              break;
-          case '09':
-              $scope.alumno.nacimiento.mes = "Septiembre";
-              break;
-          case '10':
-              $scope.alumno.nacimiento.mes = "Octubre";
-              break;
-          case '11':
-              $scope.alumno.nacimiento.mes = "Noviembre";
-              break;
-          case '12':
-              $scope.alumno.nacimiento.mes = "Diciembre";
-              break;
-
-          
-} 
-      $scope.alumno.nacimiento.anio = parsedDate[2];
+      if(!$scope.alumno.nac) return;
+      $scope.alumno.nacimiento = parseDate($scope.alumno.nac);
    });
 
-  $scope.alumno = {
-    nombre: "Nicolás",
-    apellido: "Legresti",
-    tipo_documento: "DNI",
-    nro_documento: "22.222.222",
-    nro_cuil: "20-22.222.222-9",
-    genero: "Hombre",   
-    grupo_sanguineo: "0",
-    factor_rh: "Positivo",
-    nac: "08/06/1990",
-    nacimiento: {
-      dia: "08",
-      mes: "Junio",
-      anio: "1989"
-    },
-    lugar_nacimiento: {
-      ciudad: "Córdoba",
-      pais: "Argentina"
-    },
-    nacionalidades: [" argentina", "italiana"]
-  };
-
-  $scope.genero = ['Mujer','Hombre'];
-  $scope.grupo_sanguineo = ['0', 'A', 'B', 'AB'];
-  $scope.factor_rh = ['Positivo','Negativo'];
-
-  $scope.direccion_actual = {
-    calle: "Av. Emilio Olmos",
-    nro: "700",
-    barrio: "Nueva Córdoba",
-    edificio: "Vicente I",
-    piso: "1",
-    depto: "B",
-    ciudad: "Córdoba",
-    cp:"5000"
-  };
-
-
- $scope.tmpAlumno = {
-    nombre: "",
-    apellido: "",
-    tipo_documento: "",
-    nro_documento: "",
-    nro_cuil: "",
-    genero: "",
-    grupo_sanguineo: "",
-    factor_rh: "",
-    nac: "",
-    nacimiento: {
-      dia: "",
-      mes: "",
-      anio: ""
-    },
-    lugar_nacimiento: {
-      ciudad: "",
-      pais: ""
-    },
-    nacionalidades: []
-  };
-
-
-   $scope.tmpDireccion = {
-    calle: "",
-    nro: "",
-    barrio: "",
-    edificio: "",
-    piso: "",
-    depto: "",
-    ciudad: "",
-    cp:""
-  };
+ $scope.tmpAlumno = {};
+ $scope.tmpDireccion = {};
 
     $scope.setSelectedAlumno = function(){
       $.extend(true, $scope.tmpAlumno, $scope.alumno);
@@ -209,12 +163,31 @@ $scope.applyCropUp = function() {
 
    $scope.updateAlumno = function(){
     $.extend(true, $scope.alumno, $scope.tmpAlumno);
+    backend.update({alumno: $scope.alumno});
      $('#myEditModal').modal('hide');
    };
 
    $scope.updateDomicilio = function(){
     $.extend(true, $scope.direccion_actual, $scope.tmpDireccion);
+    backend.update({direccion_actual: $scope.direccion_actual});
     $('#editAddress').modal('hide');
     };
+
+    $scope.hasBirthdate = function() {
+      return ($scope.alumno.nac);
+    };
+
+    $scope.hasPlaceOfBirth = function() {
+      return ($scope.alumno.lugar_nacimiento);
+    };
+
+    $scope.hasAddress = function() {
+      return ($scope.direccion_actual && $scope.direccion_actual.ciudad 
+        && $scope.direccion_actual.calle && $scope.direccion_actual.nro);
+  };
+
+  $scope.isBuilding = function() {
+    return ($scope.direccion_actual.piso && $scope.direccion_actual.depto);
+  };
 
 });

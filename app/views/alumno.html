@@ -4,21 +4,11 @@
 	<div class="col-md-2" style="text-align:center; margin-left: 4.16%;">
 		<img src="images/monserrat-logo.png" style="height: 120px;">
 	</div>
-
-	<div class="col-md-7" style="text-align:center;">
+	<div class="col-md-7" style="text-align:center;margin-top: 10px;">
 		<p>Matriculación en <b>Colegio Nacional de Monserrat</b>.</p>
 		<p>Bachiller Humanista con Orientación en Humanidades y Ciencias Sociales.</p>
-		<p><b>{{matricula.anio}}.</b></p>
-		<p ng-show="matricula.anio!='Primer año'"><b>{{matricula.turno}}.</b></p>
-		<form ng-show="matricula.anio=='Primer año'" class="form-horizontal" role="form">
-  			<div class="form-group">
-    			<div class="col-sm-12" style="text-align: center;">
-      				<select class="styled-select" name="selectAnio" required ng-options="t for t in turnos" ng-model="matricula.turno">
-      					<option value="" disabled selected> Selecione Turno</option>  
-      				</select>
-    			</div>
-  			</div>
-  		</form>
+		<p><b>{{matricula.period}}º año.</b></p>
+		<p ng-show="matricula.period!='1'"><b>Turno {{matricula.turno}}.</b></p>
  	</div>
  	<div class="col-md-2" style="text-align:center">
 		<img src="images/monserrat-logo.png" style="height: 120px;">
@@ -26,11 +16,11 @@
 </div>
 
 <!-- Presentacion de datos Perfil de Alumno-->
-<div class="container_gral">
+<div class="container_gral" >
 	<div class="col-md-offset-1 col-md-3" style="text-align:center">
 		<div class="image-container">
-			<a class="link" href="#" type="file" data-toggle="modal" data-target="#editProfileImage">  
-				<img class="image img-rounded profile-img" src="images/nico-perfil.jpg"/>
+			<a class="link" href="#" type="file" data-toggle="modal" data-target="#editProfileImage">
+				<img class="image img-rounded profile-img" ng-src="{{getProfilePicture()}}" />
 				<span class="overlay-image img-rounded">
 					<b>Haga click aqui para modificar la imagen</b>
 				</span>
@@ -43,28 +33,88 @@
 	</div>
 
 	<div class="col-md-8">
-		<p>{{alumno.tipo_documento}} : <b>{{alumno.nro_documento}}</b> <span class="monserrat-color"><b> </b></span> CUIL : <b>{{alumno.nro_cuil}}</b> </p>
-		<p> <b> {{alumno.genero}}. </b> Grupo sanguíneo: <b> {{alumno.grupo_sanguineo}} {{alumno.factor_rh}} </b></p>
-		<p><span ng-show="alumno.genero=='Hombre'">Nacido</span><span ng-show="alumno.genero=='Mujer'">Nacida</span> el <b>{{alumno.nacimiento.dia}}</b> de <b>{{alumno.nacimiento.mes}}</b> de <b>{{alumno.nacimiento.anio}}</b>
-		en <b>{{alumno.lugar_nacimiento.ciudad}}</b>, <b>{{alumno.lugar_nacimiento.pais}}</b>. </p>
-		<p>De nacionalidad <b>{{alumno.nacionalidades[0]}}</b>, <b>{{alumno.nacionalidades[1]}}</b>.</p>
+		
+		<p>
+			{{alumno.tipo_documento || 'DNI'}} : <span class="bold">{{alumno.nro_documento}}</span> 
+		</p>
+
+		<p> 
+			<span class="bold" ng-class="{'missing-data':!alumno.genero}"> {{alumno.genero || 'Género a completar.'}}. </span> Grupo sanguíneo: <span class="bold" ng-class="{'missing-data':!alumno.grupo_sanguineo_id}"> {{search('grupo_sanguineo', alumno.grupo_sanguineo_id).val || 'a completar'}} {{search('factor_sanguineo', alumno.factor_rh_id).val}}.</span>
+		</p>
+
+		<p>
+			<span ng-if="hasBirthdate()">
+				<span ng-show="alumno.genero=='Hombre'">Nacido</span>
+				<span ng-show="alumno.genero=='Mujer'">Nacida</span>
+				<span ng-show="!alumno.genero">Nació</span> 
+				el <b>{{alumno.nacimiento.dia}}</b> 
+				de <b>{{alumno.nacimiento.mes}}</b> 
+				de <b>{{alumno.nacimiento.anio}}</b>
+				en <span ng-if="hasPlaceOfBirth()">
+						<b>{{search('pais', alumno.lugar_nacimiento).val}}</b>. 					   
+				   </span>
+				   <span ng-if="!hasPlaceOfBirth()" class="missing-data">
+				   		lugar a completar.
+				   </span>
+			</span>
+			<span ng-if="!hasBirthdate()" class="missing-data">
+				Fecha de nacimiento a completar.
+			</span>
+		</p>
+
+		<p>
+			De nacionalidad 
+				<span ng-if="!!alumno.nacionalidad">
+					<b>{{search('pais', alumno.nacionalidad).nac}}</b>.
+				</span>
+				<span ng-if="!!!alumno.nacionalidad" class="missing-data">
+					a completar.
+				</span>
+		</p>
 	</div>
-	<div class="col-md-offset-6 col-md-2">
-		<button class="btn btn-default edit-button-perfil-alumno" data-toggle="modal" data-target="#myEditModal" ng-click="setSelectedAlumno()">Editar</button>	
+
+	<div class="col-md-offset-5 col-md-2">
+		<button class="btn btn-default edit-button-perfil-alumno" data-toggle="modal" data-target="#myEditModal" ng-click="setSelectedAlumno()">Editar Información</button>	
 	</div>
 </div>
 
 <!-- Presentacion de datos Domicilio Actual-->
-<div class="container_gral" style="height: 146px;">
-	<div class="col-md-offset-1 col-md-8">
-	 	<p> Actualmente <b>{{alumno.nombre}}</b> tiene domicilio en <b>{{direccion_actual.calle}} {{direccion_actual.nro}}</b>.</p>
-	 	<p> Barrio <b>{{direccion_actual.barrio}}</b>, edificio <b>{{direccion_actual.edificio}}</b>, <b>{{direccion_actual.piso}}</b> piso, departamento <b>{{direccion_actual.depto}}</b>.</p>
-	 	<p> <b>{{direccion_actual.ciudad}}</b>, <b>Córdoba</b>, <b>Argentina</b>.</p>
-	 	<p>CP: <b>{{direccion_actual.cp}}</b></p>
+<div class="container_gral">
+	<div ng-if="hasAddress()">
+		<div class="col-md-offset-1 col-md-8">
+		 	<p> 
+		 		Actualmente <b>{{alumno.apellido}}, {{alumno.nombre}}</b> tiene domicilio en 
+		 		<b>{{direccion_actual.calle}} {{direccion_actual.nro}}</b>.	
+	 		</p>
+	 		<p>Barrio
+ 				 <span class="bold" ng-class="{'missing-data':!direccion_actual.barrio}">{{direccion_actual.barrio || "a completar"}},</span> 
+ 				 <span ng-if="isBuilding()">
+ 				 	edificio <b>{{direccion_actual.edificio}}</b>, 
+		 			<b>{{direccion_actual.piso}}º </b>piso,
+		 			departamento <b>{{direccion_actual.depto}}</b>.
+	 			  </span>
+			</p>
+	 		<p> 
+	 			<b>{{direccion_actual.ciudad}}</b>,
+	 			<b>CÓRDOBA</b>, 
+	 			<b>ARGENTINA</b>.
+	 		</p>
+	 		<p>
+	 			CP: <span class="bold" ng-class="{'missing-data':!direccion_actual.cp}">{{direccion_actual.cp || "a completar"}}</span>
+			</p>
+			<p style="word-wrap: break-word;font-style: italic;">
+				{{direccion_actual.comment}}
+			</p>
+	 	</div>
  	</div>
-
+ 	<div ng-if="!hasAddress()">
+		<div class="col-md-offset-1 col-md-8 missing-data" style="margin-top: 20px;">
+		  <p>Los datos de domicilio del alumno están incompletos.</p>
+		  <p>Por favor, actualícelos haciendo click en el botón "Editar Domicilio".</p>
+		</div>
+	</div>
 	<div class="col-md-3">
-		<button class="btn btn-default edit-button-direccion-alumno" data-toggle="modal" data-target="#editAddress" ng-click="setSelectedDireccion()">Editar</button>	
+		<button class="btn btn-default edit-button-direccion-alumno" data-toggle="modal" data-target="#editAddress" ng-click="setSelectedDireccion()">Editar Domicilio</button>	
 	</div>
 </div>
 
@@ -73,21 +123,20 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
 				
 				<h4 class="modal-title" id="myModalLabel">Datos del alumno</h4>
 			</div>
 			<div class="modal-body">
 
-				<form name="form_perfil" ng-submit="updateAlumno()" role="form" action="" style="display: inline-block;">
+				<form name="form_perfil" ng-submit="updateAlumno()" role="form" action="" >
 
 				<div class="row">
 
 					<div class="form-group required col-md-6">
 						<label class="control-label" for="inputApellido">Apellido</label>
 						<input type="text" class="form-control" name="inputApellido" value="{{tmpAlumno.apellido}}" ng-model="tmpAlumno.apellido" required>
-						<div class="error" ng-show="form_perfil.inputApellido.$dirty && form_perfil.inputApellido.$error.required && !form_perfil.inputApellido.$focused">
+						<div class="error" ng-show="form_perfil.inputApellido.$dirty &amp;&amp; form_perfil.inputApellido.$error.required &amp;&amp; !form_perfil.inputApellido.$focused">
 						  El campo es requerido.
 						</div>
 
@@ -95,7 +144,7 @@
 					<div class="form-group required col-md-6">
 						<label class="control-label" for="inputNombre">Nombre</label>
 						<input type="text" class="form-control" name="inputNombre" value="{{tmpAlumno.nombre}}" ng-model="tmpAlumno.nombre" required>
-						<div class="error" ng-show="form_perfil.inputNombre.$dirty && form_perfil.inputNombre.$error.required && !form_perfil.inputNombre.$focused">
+						<div class="error" ng-show="form_perfil.inputNombre.$dirty &amp;&amp; form_perfil.inputNombre.$error.required &amp;&amp; !form_perfil.inputNombre.$focused">
 						  El campo es requerido.
 						</div>
 					</div>
@@ -109,27 +158,27 @@
 							<option value="" disabled>-- Selecione --</option>	
 						</select>	
 						
-						<div class="error" ng-show="form_perfil.selectGenero.$dirty && form_perfil.selectGenero.$error.required && !form_perfil.selectGenero.$focused">
-						  El campo es requerido.
+						<div class="error" ng-show="form_perfil.selectGenero.$dirty &amp;&amp; form_perfil.selectGenero.$error.required &amp;&amp; !form_perfil.selectGenero.$focused">
+							El campo es requerido.
 						</div>
 					</div>
 
 					<div class="form-group required col-md-3">
 						<label class="control-label" for="inputGrupo">Grupo Sanguíneo</label>
-						<select class="form-control" name="selectGD" required ng-options="l for l in grupo_sanguineo" ng-model="tmpAlumno.grupo_sanguineo">
+						<select class="form-control" name="selectGD" required ng-options="item.key as item.val for item in dominios.grupo_sanguineo" ng-model="tmpAlumno.grupo_sanguineo_id">
 							<option value="" disabled>-- Selecione --</option>	
 						</select>	
-						<div class="error" ng-show="form_perfil.selectGS.$dirty && form_perfil.selectGS.$error.required && !form_perfil.selectGS.$focused">
-						  El campo es requerido.
+						<div class="error" ng-show="form_perfil.selectGS.$dirty &amp;&amp; form_perfil.selectGS.$error.required &amp;&amp; !form_perfil.selectGS.$focused">
+							El campo es requerido.
 						</div>
 					</div>
 
 					<div class="form-group required col-md-3">
 						<label class="control-label" for="inputFactor">Factor RH</label>
-						<select class="form-control" name="selectFactor" required ng-options="l for l in factor_rh" ng-model="tmpAlumno.factor_rh">
+						<select class="form-control" name="selectFactor" required ng-options="item.key as item.val for item in dominios.factor_sanguineo" ng-model="tmpAlumno.factor_rh_id">
 							<option value="" disabled>-- Selecione --</option>
 						</select>
-						<div class="error" ng-show="form_perfil.selectFactor.$dirty && form_perfil.selectFactor.$error.required && !form_perfil.selectFactor.$focused">
+						<div class="error" ng-show="form_perfil.selectFactor.$dirty &amp;&amp; form_perfil.selectFactor.$error.required &amp;&amp; !form_perfil.selectFactor.$focused">
 						  El campo es requerido.
 						</div>
 					</div>
@@ -137,53 +186,40 @@
 
 				<div class="row">
 					<div class="form-group required col-md-4">
-						<label class="control-label" for="inputPais">País de Nacimiento</label>
-						<input type="text" class="form-control" name="inputPais" value="{{tmpAlumno.lugar_nacimiento.pais}}" ng-model="tmpAlumno.lugar_nacimiento.pais" required="required">
-						<div class="error" ng-show="form_perfil.inputPais.$dirty && form_perfil.inputPais.$error.required && !form_perfil.inputPais.$focused">
+						<label class="control-label" for="selectPaisNacimiento">País de Nacimiento</label>
+						<select class="form-control" name="selectPaisNacimiento" required ng-options="item.key as item.val for item in dominios.pais" ng-model="tmpAlumno.lugar_nacimiento">
+                			<option value="" disabled>-- Selecione --</option>  
+              			</select> 
+						<div class="error" ng-show="form_perfil.selectPaisNacimiento.$dirty &amp;&amp; form_perfil.selectPaisNacimiento.$error.required &amp;&amp; !form_perfil.selectPaisNacimiento.$focused">
 						  El campo es requerido.
 						</div>
 					</div>
 					<div class="form-group required col-md-4">
-						<label class="control-label" for="inputCiudad">Ciudad de Nacimiento</label>
-						<input type="text" class="form-control" name="inputCiudad" value="{{tmpAlumno.lugar_nacimiento.ciudad}}" ng-model="tmpAlumno.lugar_nacimiento.ciudad" required>
-						<div class="error" ng-show="form_perfil.inputCiudad.$dirty && form_perfil.inputCiudad.$error.required && !form_perfil.inputCiudad.$focused">
+							<label class="control-label" for="nacionalidad">Nacionalidad</label>
+							<select class="form-control" name="selectNacionalidad" required ng-options="item.key as item.nac for item in dominios.pais" ng-model="tmpAlumno.nacionalidad">
+                				<option value="" disabled>-- Selecione --</option>  
+              				</select> 
+							<div class="error" ng-show="form_perfil.selectNacionalidad.$dirty &amp;&amp; form_perfil.selectNacionalidad.$error.required &amp;&amp; !form_perfil.selectNacionalidad.$focused">
 						  El campo es requerido.
+							</div>
 						</div>
-					</div>
 
 					<div class="form-group required col-md-4">
 						<label class="control-label" for="inputFechaNacimiento">Fecha de Nacimiento</label>
 												
 						<p class="input-group">
-						<input type="text" class="form-control" id="datetimepicker" ng-init="initCalendar()" ng-model="tmpAlumno.nac" required/>
+						<input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="tmpAlumno.nac" is-open="opened" ng-required="true" show-button-bar="false" show-weeks="false" required placeholder="dd/mm/aaaa"/>
 						<span class="input-group-btn">
-								<button type="button" class="btn btn-default" style="cursor: default;"><i class="glyphicon glyphicon-calendar"></i></button>
-							</span>
-							<!--<input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" max-date="today()" ng-required="true" show-button-bar="false" id="datepicker"/ required>
-							<span class="input-group-btn">
 								<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-							</span>-->
+							</span>
+	
 						</p>
 					</div>	
 					</div>
 
-					<div class="row">
-						<div class="form-group required col-md-4">
-							<label class="control-label" for="nacionalidad">Nacionalidad</label>
-							<input type="text" class="form-control" name="nacionalidad" value="{{tmpAlumno.nacionalidades[0]}}" ng-model="tmpAlumno.nacionalidades[0]" required>
-							<div class="error" ng-show="form_perfil.nacionalidad.$dirty && form_perfil.nacionalidad.$error.required && !form_perfil.nacionalidad.$focused">
-						  El campo es requerido.
-							</div>
-						</div>
-						<div class="form-group col-md-4">
-							<label for="nacionalidad">Otra nacionalidad</label>
-							<input type="text" class="form-control" id="nacionalidad" value="{{tmpAlumno.nacionalidades[1]}}" ng-model="tmpAlumno.nacionalidades[1]">
-						</div>
-					</div>
-
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Aceptar</button>
 					</div>
 
 				</form>
@@ -200,23 +236,29 @@
 			<div class="modal-header">
 				
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-				
-				<h4 class="modal-title" id="editAddress">Domicilio actual de {{alumno.nombre}}</h4>
+				<h4 class="modal-title" id="editAddress">Domicilio actual de {{alumno.apellido}}, {{alumno.nombre}}</h4>
 			</div>
 			<div class="modal-body">
-				<form role="form" name="form_address" ng-submit="updateDomicilio()" style="display: inline-block;">
+				<form role="form" name="form_address" ng-submit="updateDomicilio()">
 					<div class="row">
 						<div class="form-group required col-md-6">
 							<label class="control-label" for="inputCiudad">Ciudad</label>
+						
+						<!--
+							<select class="form-control" name="selectCiudad" required ng-options="item.key as item.val for item in dominios.ciudades_cordoba" ng-model="tmpDireccion.ciudad_id">
+								<option value="" disabled>-- Selecione --</option>
+							</select>
+						-->
 							<input type="text" class="form-control" name="inputCiudad" value="{{tmpDireccion.ciudad}}" ng-model="tmpDireccion.ciudad" required>
-							<div class="error" ng-show="form_address.inputCiudad.$dirty && form_address.inputCiudad.$error.required && !form_address.inputCiudad.$focused">
+
+							<div class="error" ng-show="form_address.inputCiudad.$dirty &amp;&amp; form_address.inputCiudad.$error.required &amp;&amp; !form_address.inputCiudad.$focused">
 							  El campo es requerido.
 							</div>
 						</div>
 						<div class="form-group required col-md-6">
 							<label class="control-label" for="inputBarrio">Barrio</label>
 							<input type="text" class="form-control" name="inputBarrio" value="{{tmpDireccion.barrio}}" ng-model="tmpDireccion.barrio" required>
-							<div class="error" ng-show="form_address.inputBarrio.$dirty && form_address.inputBarrio.$error.required && !form_address.inputBarrio.$focused">
+							<div class="error" ng-show="form_address.inputBarrio.$dirty &amp;&amp; form_address.inputBarrio.$error.required &amp;&amp; !form_address.inputBarrio.$focused">
 							  El campo es requerido.
 							</div>
 						</div>
@@ -226,40 +268,52 @@
 						<div class="form-group required col-md-6">
 							<label class="control-label" for="inputBarrio">Calle</label>
 							<input type="text" class="form-control" name="inputCalle" value="{{tmpDireccion.calle}}" ng-model="tmpDireccion.calle" required >
-							<div class="error" ng-show="form_address.inputCalle.$dirty && form_address.inputCalle.$error.required && !form_address.inputCalle.$focused">
+							<div class="error" ng-show="form_address.inputCalle.$dirty &amp;&amp; form_address.inputCalle.$error.required &amp;&amp; !form_address.inputCalle.$focused">
 							  El campo es requerido.
 							</div>
 						</div>
-						<div class="form-group col-md-2">
-							<label for="inputNumero">Número</label>
-							<input type="text" class="form-control" id="inputNumero" value="{{tmpDireccion.nro}}" ng-model="tmpDireccion.nro" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+						<div class="form-group col-md-2 required">
+							<label class="control-label" for="inputNumero">Número</label>
+							<input type="text" class="form-control" name="inputNumero" value="{{tmpDireccion.nro}}" ng-model="tmpDireccion.nro" onkeypress='return event.charCode >= 48 &amp;&amp; event.charCode <= 57' required>
+							<div class="error" ng-show="form_address.inputNumero.$dirty &amp;&amp; form_address.inputNumero.$error.required &amp;&amp; !form_address.inputNumero.$focused">
+							  Requerido.
+							</div>
 						</div>
+
+						<div class="form-group required col-md-4">
+              				<label class="control-label" for="inputCP">Código Postal</label>
+              				<input type="text" class="form-control" name="inputCP" value="{{tmpDireccion.cp}}" ng-model="tmpDireccion.cp" required>
+               				<div class="error" ng-show="form_address.inputCP.$dirty &amp;&amp; form_address.inputCP.$error.required &amp;&amp; !form_address.inputCP.$focused">
+               					El campo es requerido.
+          					</div>
+						</div>
+					</div>
+					<div class="row">
 						<div class="form-group col-md-2">
 							<label for="inputPico">Piso</label>
 							<input type="text" class="form-control" id="inputPiso" value="{{tmpDireccion.piso}}" ng-model="tmpDireccion.piso">
 						</div>
 						<div class="form-group col-md-2">
-							<label for="inputDpto">Departamento</label>
+							<label for="inputDpto">Dpto</label>
 							<input type="text" class="form-control" id="inputDpto" value="{{tmpDireccion.depto}}" ng-model="tmpDireccion.depto">
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-3">
+					
+						<div class="form-group col-md-4">
 							<label for="inputUnidad">Edificio</label>
 							<input type="text" class="form-control" id="inputUnidad" value="{{tmpDireccion.edificio}}" ng-model="tmpDireccion.edificio">
 						</div>
-						<div class="form-group required col-md-3">
-							<label class="control-label" for="inputCP">Código Postal</label>
-							<input type="text" class="form-control" name="inputCP" value="{{tmpDireccion.cp}}" ng-model="tmpDireccion.cp" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-							<div class="error" ng-show="form_address.inputCP.$dirty && form_address.inputCP.$error.required && !form_address.inputCP.$focused">
-							  El campo es requerido.
-							</div>
-						</div>
 					</div>
+					<div class="row">
+			          <div class="form-group col-md-12">
+			            <label for="inputComentarioEmergencia">Comentario</label>
+			            <textarea rows="3" style="resize:none;" class="form-control" name="inputComentarioEmergencia" ng-model="tmpDireccion.comment" maxlength="200">{{tmpDireccion.comment}}</textarea>
+			          </div>
+			        </div>
+												
+					
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-						<button type="submit" class="btn btn-primary">Guardar</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Aceptar</button>
 					</div>
 				</form>
 			</div>
@@ -279,9 +333,9 @@
 			</div>
 			<div class="modal-body">
 				<form role="form" style="display: inline-block;width: 100%;">
-					<tabset justified="true">
+					<tabset >
 						<!-- pestania subir foto -->	
-						<tab >
+						<tab style="width: 47%; text-align:center;">
 							 <tab-heading class="monserrat-color" >
 	       						 <i class="glyphicon glyphicon-picture"></i> Subir foto nueva 
 	     					 </tab-heading>
@@ -317,15 +371,15 @@
 							   	 		<input type="file" accept="image/*" onchange="angular.element(this).scope().showPhotoUp()" class="cropit-image-input">
 								</div>
 	     						<div class="modal-footer">
-									<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-									<button type="button" class="btn btn-primary export" data-dismiss="modal" >Guardar</button>
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+									<button type="button" class="btn btn-primary export" data-dismiss="modal">Aceptar</button>
 								</div>
 		     				</div> 
 						</tab>
 
 						<!-- pestania eidtar foto -->
 						<!--<tab disabled="true">-->
-						<tab>
+						<!--<tab>
 							<tab-heading class="monserrat-color">
 	       						<i class="glyphicon glyphicon-pencil"></i> Editar foto actual 
 	     					</tab-heading>
@@ -350,14 +404,11 @@
 
 	     					</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-									<button type="button" class="btn btn-primary export" data-dismiss="modal" >Guardar</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+									<button type="button" class="btn btn-primary export" data-dismiss="modal" >Aceptar</button>
 								</div>
-	     					
-						</tab>
+						</tab>-->
 					</tabset>
-
-					
 				</form>
 			</div>
 		</div> <!-- cierre de modal-content -->

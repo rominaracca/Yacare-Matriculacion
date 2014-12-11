@@ -1,0 +1,4 @@
+*~
+.nfs*
+bower_components/
+node_modules/

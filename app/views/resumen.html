@@ -9,91 +9,149 @@
 </div>
 -->
 
-<div class="container_resumen">
-	<button id="btn-print" type="button" class="btn btn-primary col-md-offset-10" onclick="window.print();">Imprimir</button>
+<div ng-if="hayCambios()" class="jumbotron" style="padding-top: 20px; padding-bottom: 20px; margin-bottom: 15px; font-size: 11pt;color: cadetblue;">
+	<span class="glyphicon glyphicon-warning-sign"></span>
+		Existen cambios que no han sido guardados.
+		Para confirmarlos, haga click en el botón "Guardar".
 </div>
 
-<hr class="faded"></hr>
-
-<div class="container_resumen col-md-offset-1" style="padding:0px;">
-	<div class="col-md-8">
-		<p class="title">DATOS PERSONALES DEL ALUMNO</p>
-		<span class="subtitle"><b>Legresti, Nicolás</b></span>
-		<div class="paragraph">
-			DNI : 22.222.222 CUIL : 20-22.222.222-9 <br/>
-			Hombre. Grupo sanguíneo: 0+ <br/>
-			Nacido el 08 de Junio de 1989 en Córdoba, Argentina. <br/>
-			De nacionalidad argentina, italiana. <br/>
+<div ng-if="isRegistrationComplete()">
+	
+	<div class="container_resumen col-md-offset-1" style="margin-top: 10px;">
+		<p class="title">MATRICULACIÓN</p>
+		<div class="paragraph col-md-8">
+			Matriculación en Colegio Nacional de Monserrat.<br/>
+			Bachiller Humanista con Orientación en Humanidades y Ciencias Sociales.<br/>
+			{{matricula.period}}º año. <span ng-show="matricula.period!='1'">Turno {{matricula.turno}}.</span><br/>
+		</div>
+		<div class="col-md-2">
+			<div class="container_resumen">
+				<button id="btn-print" type="button" class="btn btn-primary btn-print" ng-click="reporte()"><span class="glyphicon glyphicon-print"></span> Imprimir</button>
+			</div>		
 		</div>
 	</div>
-	<div class="col-md-2">
-	<img src="images/nico-perfil.jpg" style="height: 165px;">
+
+	<hr class="faded"></hr>
+
+	<div class="container_resumen col-md-offset-1" style="padding:0px;">
+		<p class="title">DATOS PERSONALES DEL ALUMNO</p>
+		<div class="col-md-8">
+			<span class="subtitle"><b>{{alumno.apellido}}, {{alumno.nombre}}</b></span>
+			<div class="paragraph">
+				{{alumno.tipo_documento}} : {{alumno.nro_documento}} <br/>
+				{{alumno.genero}}. Grupo sanguíneo: {{alumno.grupo_sanguineo}}{{alumno.factor_rh}} <br/>
+				<span ng-show="alumno.genero=='Hombre'">Nacido</span>
+				<span ng-show="alumno.genero=='Mujer'">Nacida</span>
+				<span ng-show="!alumno.genero">Nació</span> 
+				el {{alumno.nacimiento.dia}}
+				de {{alumno.nacimiento.mes}}
+				de {{alumno.nacimiento.anio}}
+				en {{search('pais', alumno.lugar_nacimiento).val}}.<br/>
+				De nacionalidad {{search('pais', alumno.nacionalidad).nac}}.<br/>
+			</div>
+		</div>
+		<div class="col-md-2">
+		<img ng-src="{{getProfilePicture()}}" style="height: 165px;">
+		</div>
 	</div>
+
+	<hr class="faded"></hr>
+
+	<div class="container_resumen col-md-offset-1">
+		<p class="title">DOMICILIO ACTUAL DEL ALUMNO</p>
+		<div class="paragraph col-md-12">
+			Actualmente {{alumno.apellido}}, {{alumno.nombre}} tiene domicilio en {{direccion_actual.calle}} {{direccion_actual.nro}}. <br/>
+			Barrio {{direccion_actual.barrio}}
+				<span ng-if="isBuilding_Student()">
+					, edificio {{direccion_actual.edificio}}, 
+					{{direccion_actual.piso}}º piso 
+					{{direccion_actual.depto}}
+				</span>. 
+			<br/>
+			{{direccion_actual.ciudad}}, CÓRDOBA, ARGENTINA. <br/>
+			CP: {{direccion_actual.cp}} <br/>
+			{{direccion_actual.comment}}
+		</div>
+	</div>
+
+	<hr class="faded"></hr>
+
+	<div class="container_resumen col-md-offset-1">
+		<p class="title">DATOS DE LOS TUTORES</p>
+		<div ng-repeat="item in tutores">
+			<div class="paragraph col-md-12">
+				<span class="subtitle">
+					<b>{{item.apellido}}, {{item.nombre}} - {{item.tipo_relacion}} de {{alumno.nombre}}</b>
+				</span>
+				<br/>
+				{{item.tipo_documento || 'DNI'}}:{{item.nro_documento}}<br/>
+				<span ng-show="alumno.genero=='Hombre'">Nacido</span>
+				<span ng-show="alumno.genero=='Mujer'">Nacida</span>
+				<span ng-show="!alumno.genero">Nació</span> 
+				el {{item.nacimiento.dia}}
+				de {{item.nacimiento.mes}}
+				de {{item.nacimiento.anio}}
+				en {{search('pais', item.lugar_nacimiento).val}}.<br/>
+
+				Con domicilio en {{item.direccion_actual.calle}} {{item.direccion_actual.nro}}, 
+				<span ng-if="isBuilding_Tutor($index)">{{item.direccion_actual.piso}}º piso {{item.direccion_actual.depto}} <br/>
+				edificio {{item.direccion_actual.edificio}},  
+				</span>
+				barrio {{item.direccion_actual.barrio}}, 
+				{{item.direccion_actual.ciudad}}, 
+				{{item.direccion_actual.provincia}}, 
+				{{item.direccion_actual.pais}} 
+				CP: {{item.direccion_actual.cp}}<br/>
+				{{item.mail}}<br/>
+				TEL: {{item.telefono}}<br/>
+				{{item.direccion_actual.comentario}}<br/>
+				<br/>
+			</div>
+		</div>
+	</div>
+
+	<hr class="faded"></hr>
+
+	<div class="container_resumen col-md-offset-1">
+		<p class="title">DATOS DE CONTACTO DE EMERGENCIA</p>
+		<div ng-repeat="item in contactos">
+			<div class="paragraph col-md-12">
+				<span class="subtitle">
+					<b>{{item.xml.name}} {{item.xml.lastname}}</b><br/>
+				</span>
+				{{item.tel}}<br/>
+				{{item.xml.comment}}<br/>
+				<br/>
+			</div>
+		</div>
+	</div>
+
 </div>
 
-
-<hr class="faded"></hr>
-<div class="container_resumen col-md-offset-1">
-	<p class="title">MATRICULACIÓN</p>
-	<div class="paragraph">
-		Matriculación en Colegio Nacional de Monserrat. <br/>
-		Bachiller Humanista con Orientación en Humanidades y Ciencias Sociales. <br/>
-		Primer año.	Turno tarde. <br/>
-	</div>
-</div>
-
-<hr class="faded"></hr>
-<div class="container_resumen col-md-offset-1">
-	<p class="title">DOMICILIO ACTUAL DEL ALUMNO</p>
-	<div class="paragraph">
-		Actualmente Nicolás tiene domicilio en Av. Emilio Olmos 700. <br/>
-		Barrio Nueva Córdoba, edificio Vicente I, 1 piso, departamento B. <br/>
-		Córdoba, Córdoba, Argentina. <br/>
-		CP: 5000
-	</div>
-</div>
-
-<hr class="faded"></hr>
-<div class="container_resumen col-md-offset-1">
-	<p class="title">DATOS DE LOS TUTORES</p>
-	<span class="subtitle"><b>Legresti, Juan - Padre de Nicolas</b></span>
-	<div class="paragraph">
-		DNI:16.132.456  <br/>
-		Hombre, nacido el 08 de Junio de 1960 en Córdoba, Argentina. <br/>  
-		Con domicilio en Av. Emilio Olmos número 700 piso 1 departamento B  <br/>edificio Vicente I barrio Nueva Córdoba,Córdoba, Córdoba, Argentina CP: 5000 <br/>
-		juan.legresti@dominio.com <br/>
-		TEL: +54 9 6 123456 <br/>
+<div class="jumbotron missing-data" ng-if="(!isRegistrationComplete()) && (!hayCambios())" style="text-align: left;font-size: 12pt;">
+	<div> 
+		Para poder imprimir el resumen de matriculación, usted deberá:
 	</div>
 	<br/>
-	<span class="subtitle"><b>Perez, Maria - Madre de Nicolas </b></span> 
-	<div class="paragraph">
-		DNI:17.214.237 <br/>
-		Mujer, nacido el 09 de Octubre de 1962 en Buenos Aires, Argentina. <br/>
-		Con domicilio en Av. Emilio Olmos número 700 piso 1 departamento B <br/> edificio Vicente I barrio Nueva Córdoba,Córdoba, Córdoba, Argentina CP: 5000
-		maria.perez@gmail.com <br/> 
-		TEL: +54 9 6 654321
-	</div>
-</div>
+	<ul>
+		<li ng-if="!isStudentDataComplete()">
+			completar los datos requeridos en la pestaña "Datos del alumno".
+		</li>
 
-<hr class="faded"></hr>
-<div class="container_resumen col-md-offset-1">
-	<p class="title">DATOS DE CONTACTO DE EMERGENCIA</p>
-	
-	<span class="subtitle"><b>	Perez, Juan</b></span>
-	<div class="paragraph">
-		+54 9 351 6123456 <br/>
-		Esto es un cometario del contacto en caso de emergencia
-	</div>
-	<br/>
-	<span class="subtitle"><b>Rios, Juan</b></span>
-	<div class="paragraph">	
-		+54 9 351 6123456 <br/>
-		Cometario del contacto en caso de emergencia 
-	</div>
-</div>
+		<li ng-if="!isTutorDataComplete()">
+			completar los datos requeridos en la pestaña "Tutores".
+		</li>
 
+		<li ng-if="!existsTutor()">
+			agregar al menos un tutor en la pestaña "Tutores".
+		</li>
 
-<div id="page_header">
-</div>
-<div id="page_footer">	
+		<li ng-if="!isContactDataComplete()">
+			completar campos requeridos en la pestaña "Contacto por Emergencias".
+		</li>
+
+		<li ng-if="!existsContact()">
+			agregar al menos un contacto por caso de emergencias en la pestaña "Contacto por Emergencias".
+		</li>
+	</ul>
 </div>

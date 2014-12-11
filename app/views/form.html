@@ -1,6 +1,18 @@
 <div id="tabs">
-  <h3 class="monserrat-color"><b>Matriculación 2015</b></h3>  
-  <ul class="nav nav-pills" role="tablist">
+  <h3 class="monserrat-color clearfix">
+    <b>Matriculación 2015</b> 
+    <button class="btn btn-default edit-button-emergencia pull-right" style="margin-top: 0px;" 
+      ng-click="cerrarSesion()" ui-sref="login">
+      <span class="glyphicon glyphicon-off"></span> 
+      Cerrar Sesión
+    </button>
+    <button class="btn btn-default edit-button-emergencia pull-right" style="margin-top: 0px;margin-right: 14px;" 
+      ng-click="guardar()" ng-disabled="!hayCambios()">
+      <span class="glyphicon glyphicon-floppy-disk"></span> 
+      Guardar
+    </button>
+  </h3>  
+  <ul class="nav nav-pills clearfix" role="tablist">
     <li class="active tab-yacare">
       <a class="tab-a-yacare" ui-sref="form.alumno" data-target="#target" role="tab" data-toggle="pill">Datos del Alumno</a>
     </li>
@@ -16,7 +28,6 @@
   </ul>
 
 </div>
-
 
 <div ui-view></div>
 

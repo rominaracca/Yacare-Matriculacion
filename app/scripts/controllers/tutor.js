@@ -8,7 +8,7 @@
  * Controller of the yacareMatriculacionApp
  */
  angular.module('yacareMatriculacionApp')
- .controller('TutorCtrl', function ($scope, $location, toasty, backend) {
+ .controller('TutorCtrl', function ($scope, $location, toasty, backend, $rootScope) {
 
 var numToMonth = {
   1: 'Enero',
@@ -25,20 +25,68 @@ var numToMonth = {
   12: 'Diciembre'
 }
 
+$scope.initCalendar = function(){
+  $('#datetimepicker').datetimepicker({
+    dayOfWeekStart : 1,
+    lang:'es',
+    value: $scope.tmpTutor.fecha_nacimiento,
+    format:'d/m/Y',
+    maxDate: new Date(),
+    //mask:'39/19/9999',
+    timepicker:false
+  });
+} ;
+
+
+
 var parseDate = function(dateStr) {
   if(!dateStr) return {};
-  var d = dateStr.split('/');
-  if(d.length > 1) {
-    return {dia: parseInt(d[0], 10), mes: numToMonth[parseInt(d[1],10)], anio: parseInt(d[2], 10)};
-  } 
-  var d = dateStr.split('-');
-  if(d.length > 1) {
-    return {dia: parseInt(d[2], 10), mes: numToMonth[parseInt(d[1],10)], anio: parseInt(d[0], 10)};
+  if(typeof dateStr == 'string') {
+    var d = dateStr.split('/');
+    if(d.length > 1) {
+      return {dia: parseInt(d[0], 10), mes: numToMonth[parseInt(d[1],10)], anio: parseInt(d[2], 10)};
+    } 
+    var d = dateStr.split('-');
+    if(d.length > 1) {
+      return {dia: parseInt(d[2], 10), mes: numToMonth[parseInt(d[1],10)], anio: parseInt(d[0], 10)};
+    }
+  } else if(dateStr.getDate) {
+    return {dia: dateStr.getDate(), mes: numToMonth[dateStr.getMonth()+1], anio: dateStr.getFullYear()};
   } 
   return {};
+};
+
+if(!$rootScope.tutores) {
+  backend.tutor(function(err, tutores) {
+    if(err) {
+      toasty.pop.error({
+        title: 'Error',
+        msg: 'Ha ocurrido un error: '+err.message
+      });
+      //$location.path('/login');
+    } else {
+      $scope.tutores = $rootScope.tutores = tutores.data;
+      $scope.update = tutores.update;
+    }
+  });
 }
 
-backend.tutor(function(err, tutores) {
+
+ backend.alumno(function(err, alumnoObj) {
+    if(err) {
+    toasty.pop.error({
+      title: 'Error',
+      msg: 'Ha ocurrido un error: '+err.message
+    });
+    //$location.path('/resumen');
+    } else {
+      for(var i in alumnoObj.data) {
+          $scope[i] = alumnoObj.data[i];
+      }
+    }
+  }); 
+
+backend.dominios(function(err, dominios) {
   if(err) {
     toasty.pop.error({
       title: 'Error',
@@ -46,11 +94,10 @@ backend.tutor(function(err, tutores) {
     });
     //$location.path('/login');
   } else {
-    $scope.tutores = tutores.data;
-
-    $scope.update = tutores.update;
+    $scope.dominios = dominios;
   }
 });
+$scope.search = backend.search;
 
 $scope.open = function($event) {
    $event.preventDefault();
@@ -68,7 +115,8 @@ $scope.$watch('tutores', function(newTut, oldTut){
   });
 }, true);
 
- /*$scope.tutores = [
+/*
+ $scope.tutores = [
  {
   nombre:"Juan",
   apellido:"Legresti",
@@ -76,6 +124,7 @@ $scope.$watch('tutores', function(newTut, oldTut){
   tipo_documento:"DNI",
   nro_documento:"16.132.456",
   genero:"Hombre",
+  fecha_nacimiento: "08/06/1960",
   nacimiento : {
     dia:"08",
     mes:"Junio",
@@ -107,6 +156,7 @@ $scope.$watch('tutores', function(newTut, oldTut){
   tipo_documento:"DNI",
   nro_documento:"17.214.237",
   genero:"Mujer",
+  fecha_nacimiento: "09/10/1962",
   nacimiento : {
     dia:"09",
     mes:"Octubre",
@@ -131,13 +181,14 @@ $scope.$watch('tutores', function(newTut, oldTut){
   mail:"maria.perez@gmail.com",
   telefono: "+54 9 6 654321"
 },
-
-];*/
+];
+*/
 
 $scope.genero = ['Mujer','Hombre'];
-$scope.tipo_documento = ['DNI', 'Pasaporte', 'Otro'];
-$scope.tipo_relacion = ['Padre','Madre','Hijo','Sobrino','Primo','Tio','Hermano','Abuelo','Tutor'];
 
+$scope.nvoTutor = {};
+
+$scope.tmpTutor = {};
 
 $scope.nvoTutor = {
   nombre:"",
@@ -146,6 +197,7 @@ $scope.nvoTutor = {
   tipo_documento:"",
   nro_documento:"",
   sexo:"",
+  fecha_nacimiento: "",
   nacimiento: {
     dia:"",
     mes:"",
@@ -178,6 +230,7 @@ $scope.tmpTutor = {
   tipo_documento:"",
   nro_documento:"",
   sexo:"",
+  fecha_nacimiento: "",
   nacimiento: {
     dia:"",
     mes:"",
@@ -205,60 +258,53 @@ $scope.tmpTutor = {
 
 $scope.setSelected = function(index){
   $scope.selected = index;
-  $.extend(true, $scope.tmpTutor, $scope.tutores[index]);
-  console.log($scope.tmpTutor);
+  $scope.tmpTutor = $.extend(true, {}, $scope.tutores[index]);
 };
 
 $scope.removeTutor = function(index){
   $scope.tutores.splice(index, 1);
+  backend.update({tutores: $scope.tutores});
 };
 
 
 $scope.cleanModal = function(){
-  $scope.nvoTutor = {
-    nombre:"",
-    apellido:"",
-    tipo_relacion:"",
-    tipo_documento:"",
-    nro_documento:"",
-    sexo:"",
-    nacimiento: {
-      dia:"",
-      mes:"",
-      anio:""
-    },
-    lugar_nacimiento: {
-      ciudad: "",
-      pais: ""
-    },
-    direccion_actual: {
-      calle: "",
-      nro: "",
-      barrio: "",
-      edificio: "",
-      piso: "",
-      depto: "",
-      ciudad: "",
-      provincia: "",
-      pais:"",
-      cp:""
-    },
-    mail:"",
-    telefono: ""
-  };
-
+  $scope.nvoTutor = {};
 };
 
 $scope.updateTutor = function(){
   $.extend(true, $scope.tutores[$scope.selected], $scope.tmpTutor);
+  backend.update({tutores: $scope.tutores});
   $('#myEditModalTutor').modal('hide');
 };
 
 $scope.saveTutor = function(){
   $scope.tutores.push($scope.nvoTutor);
+  backend.update({tutores: $scope.tutores});
   $('#myNvoModalTutor').modal('hide');
   $scope.form_nvo_tutor.$setPristine();
 };
 
+$scope.hasBirthdate = function(index) {
+  return ($scope.tutores[index].fecha_nacimiento);
+};
+
+$scope.hasPlaceOfBirth = function(index) {
+  return ($scope.tutores[index].lugar_nacimiento);
+};
+
+$scope.hasAddress = function(index) {
+    if($scope.tutores[index].hasOwnProperty('direccion_actual')){
+        return ($scope.tutores[index].direccion_actual.calle && $scope.tutores[index].direccion_actual.nro 
+            && $scope.tutores[index].direccion_actual.barrio && $scope.tutores[index].direccion_actual.cp
+            && $scope.tutores[index].direccion_actual.ciudad && $scope.tutores[index].direccion_actual.provincia_id
+            && $scope.tutores[index].direccion_actual.pais_id);
+    }else{
+      return false;
+    }
+  };
+
+  $scope.isBuilding = function(index) {
+    return ($scope.tutores[index].direccion_actual.piso && $scope.tutores[index].direccion_actual.depto);
+  };
 
 });
