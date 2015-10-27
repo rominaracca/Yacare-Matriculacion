@@ -62,7 +62,7 @@ angular.module('yacareMatriculacionApp')
 
 	$scope.updateContact = function(){
     if (!!!$scope.tmpContacto.xml.comment)
-      $scope.tmpContacto.xml.comment = " "
+      $scope.tmpContacto.xml.comment = " ";
 		$.extend($scope.contactos[$scope.selected], $scope.tmpContacto);        
     backend.update({contactos:$scope.contactos});
     $('#myEditModalContactoEmergencia').modal('hide');

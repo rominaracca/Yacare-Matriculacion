@@ -124,10 +124,10 @@ angular.module('yacareMatriculacionApp')
 		.success(function() {
 			window.open('api/report');
 		})
-		.error(function(){
+		.error(function(data){
 			toasty.pop.error({
 				title: "Error",
-				msg: "No se pudo guardar su matricula."
+				msg: "No se pudo guardar su matricula. "+data.message
 			});
 		});
 		

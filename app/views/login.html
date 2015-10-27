@@ -13,7 +13,9 @@
 			 <input type="text" class="form-control" ng-model="data.dni" name="inputDocumento" required onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right">-->
 			 
 			 <label class="control-label" for="inputDocumentoAlumno" style="margin-top: 9px; ">Documento del alumno:</label>
-			 <input type="text" class="form-control" ng-model="data.doc" name="inputDocumentoAlumno" required onkeypress='return event.charCode >= 48 && event.charCode <= 57' style="text-align:right; margin-bottom: 12px;">
+			 <input type="text" class="form-control" ng-model="data.doc" name="inputDocumentoAlumno" required 
+			 onkeypress='return event.charCode >= 46 && event.charCode <= 57 || event.charCode == 8 || event.charCode == 13 || event.charCode == 37 || event.charCode == 39' 
+			 style="text-align:right; margin-bottom: 12px;">
 			
 			 <button class="btn btn-default edit-button" style="margin-top: 25px; padding:10px 15px; font-size: 11pt;">
 			 	Iniciar matriculación

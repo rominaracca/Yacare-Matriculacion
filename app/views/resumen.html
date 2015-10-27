@@ -39,7 +39,7 @@
 			<span class="subtitle"><b>{{alumno.apellido}}, {{alumno.nombre}}</b></span>
 			<div class="paragraph">
 				{{alumno.tipo_documento}} : {{alumno.nro_documento}} <br/>
-				{{alumno.genero}}. Grupo sanguíneo: {{alumno.grupo_sanguineo}}{{alumno.factor_rh}} <br/>
+				{{alumno.genero}}. Grupo sanguíneo: {{alumno.grupo_sanguineo}} {{alumno.factor_rh}} <br/>
 				<span ng-show="alumno.genero=='Hombre'">Nacido</span>
 				<span ng-show="alumno.genero=='Mujer'">Nacida</span>
 				<span ng-show="!alumno.genero">Nació</span> 

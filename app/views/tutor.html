@@ -4,10 +4,11 @@
 <div class="container_gral" ng-repeat="item in tutores">
   <div class="col-md-offset-1" >
     <div class="monserrat-color col-md-12"> 
-      <h4><b>{{item.apellido}}, {{item.nombre}}</b> - <b> {{item.tipo_relacion}} </b> de {{alumno.apellido}}, {{alumno.nombre}} </b></h4>
+      <h4><b>{{item.apellido}}, {{item.nombre}}</b> - 
+      <b> {{search('relacion_familiar', item.tipo_relacion_id).val}} 
+      </b> de {{alumno.apellido}}, {{alumno.nombre}} </b></h4>
     </div>
     <div class="col-md-8">
-      
       <p>
         <b>{{search('tipo_documento', item.tipo_documento_id).val || "DNI"}}</b>:
         <!--<b>{{item.tipo_documento || "DNI"}}</b>: -->

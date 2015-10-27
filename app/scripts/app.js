@@ -39,10 +39,13 @@
   */
   $scope.guardar = function() {
     backend.guardar();
-    location.reload();
+    //location.reload();
   };
 
   $scope.cerrarSesion = function() {
+    $rootScope.alumno = null;
+    $rootScope.tutores = null;
+    $rootScope.contactos = null;
     backend.logout();
   };
 
